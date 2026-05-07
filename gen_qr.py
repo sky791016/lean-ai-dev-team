@@ -22,7 +22,7 @@ MUTED     = (148, 163, 184)
 QR_FG     = (220, 215, 255)     # light purple dots
 QR_BG     = (18,  18,  28)      # slightly lighter than BG
 
-W, H = 900, 1200
+W, H = 900, 1080
 
 # ── helpers ───────────────────────────────────────────────────────────────────
 def load_font(size, bold=False):
@@ -132,8 +132,25 @@ hy = badge_y + 50
 centered_text(draw, hy,      "AI Dev Team 精益开发团队", font_h1, TEXT)
 centered_text(draw, hy + 50, "8智能体 · 战略优先 · 业务价值驱动", font_sub, MUTED)
 
+# ── core value callout ────────────────────────────────────────────────────────
+val_y  = hy + 96
+val_text = "有了它，你就拥有了一支行业顶尖的精益AI开发团队"
+font_val = load_font(22, bold=True)
+# measure text
+draw = ImageDraw.Draw(poster)
+bb = draw.textbbox((0, 0), val_text, font=font_val)
+tw = bb[2] - bb[0]
+pad_x, pad_y = 28, 14
+rx0 = (W - tw) // 2 - pad_x
+rx1 = (W + tw) // 2 + pad_x
+# filled highlight box with green tint
+rounded_rect(poster, (rx0, val_y, rx1, val_y + (bb[3]-bb[1]) + pad_y*2),
+             14, fill=(12, 50, 36), border_color=GREEN, border_width=2)
+draw = ImageDraw.Draw(poster)
+centered_text(draw, val_y + pad_y, val_text, font_val, GREEN)
+
 # ── divider ───────────────────────────────────────────────────────────────────
-div_y = hy + 100
+div_y = val_y + (bb[3]-bb[1]) + pad_y*2 + 24
 gradient_bar(poster, 60, div_y, W - 60, div_y + 1)
 
 # ── QR card ───────────────────────────────────────────────────────────────────
