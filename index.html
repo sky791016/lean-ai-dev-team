@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lean AI Dev Team — AI-Native Multi-Agent Development for Claude Code</title>
+  <meta name="description" content="An 8-agent AI development team powered by Lean AI Methodology. Transforms business scenarios into measurable, production-ready software — with ROI at every step." />
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --bg2: #111118;
+      --bg3: #1a1a24;
+      --border: #2a2a38;
+      --accent: #6c63ff;
+      --accent2: #a78bfa;
+      --accent3: #38bdf8;
+      --green: #34d399;
+      --yellow: #fbbf24;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --card: #16161f;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Nav */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    nav .logo {
+      font-size: 1rem; font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--accent3));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    nav a {
+      color: var(--muted); text-decoration: none; font-size: 0.875rem;
+      transition: color .2s;
+    }
+    nav a:hover { color: var(--text); }
+    nav .nav-links { display: flex; gap: 2rem; }
+    nav .cta-btn {
+      background: var(--accent); color: #fff;
+      padding: 0.5rem 1.25rem; border-radius: 6px;
+      font-size: 0.875rem; font-weight: 600;
+      text-decoration: none; transition: opacity .2s;
+    }
+    nav .cta-btn:hover { opacity: .85; color: #fff; }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(108,99,255,.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(108,99,255,.1); border: 1px solid rgba(108,99,255,.3);
+      color: var(--accent2); border-radius: 100px;
+      padding: 0.35rem 1rem; font-size: 0.8rem; font-weight: 600;
+      margin-bottom: 2rem; letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800; line-height: 1.1;
+      max-width: 900px;
+      background: linear-gradient(135deg, #fff 0%, var(--accent2) 60%, var(--accent3) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 1.5rem;
+    }
+    .hero p {
+      font-size: 1.2rem; color: var(--muted);
+      max-width: 620px; margin: 0 auto 2.5rem;
+    }
+    .hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #8b83ff);
+      color: #fff; padding: 0.85rem 2rem;
+      border-radius: 8px; font-size: 1rem; font-weight: 700;
+      text-decoration: none; transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 24px rgba(108,99,255,.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(108,99,255,.5); }
+    .btn-secondary {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border);
+      padding: 0.85rem 2rem; border-radius: 8px;
+      font-size: 1rem; font-weight: 600;
+      text-decoration: none; transition: border-color .2s;
+    }
+    .btn-secondary:hover { border-color: var(--accent); }
+
+    /* Methodology banner */
+    .method-banner {
+      background: linear-gradient(90deg, rgba(108,99,255,.08), rgba(56,189,248,.08));
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 2.5rem 2rem; text-align: center;
+    }
+    .method-banner .author {
+      font-size: 0.875rem; color: var(--muted); margin-bottom: 1rem;
+    }
+    .method-banner blockquote {
+      font-size: 1.1rem; font-style: italic; color: var(--accent2);
+      max-width: 780px; margin: 0 auto;
+      border-left: 3px solid var(--accent); padding-left: 1.25rem;
+      text-align: left;
+    }
+    .method-banner .principles {
+      display: flex; flex-wrap: wrap; gap: 0.75rem;
+      justify-content: center; margin-top: 1.75rem;
+    }
+    .pill {
+      background: rgba(108,99,255,.1); border: 1px solid rgba(108,99,255,.25);
+      color: var(--accent2); border-radius: 100px;
+      padding: 0.35rem 0.9rem; font-size: 0.8rem; font-weight: 500;
+    }
+
+    /* Sections */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem;
+    }
+    h2 {
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 800; line-height: 1.2; margin-bottom: 1rem;
+    }
+    .subtitle { font-size: 1.1rem; color: var(--muted); max-width: 620px; margin-bottom: 3rem; }
+
+    /* Team grid */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .agent-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color .2s, transform .2s;
+    }
+    .agent-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .agent-phase {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem;
+    }
+    .agent-name {
+      font-size: 1.05rem; font-weight: 700; margin-bottom: 0.25rem;
+    }
+    .agent-name span { color: var(--muted); font-weight: 400; font-size: 0.875rem; }
+    .agent-desc { font-size: 0.875rem; color: var(--muted); margin-bottom: 1rem; }
+    .agent-outputs { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag {
+      background: rgba(255,255,255,.05); border: 1px solid var(--border);
+      border-radius: 4px; padding: 0.2rem 0.55rem;
+      font-size: 0.72rem; color: var(--muted);
+    }
+    .phase-1 .agent-name { color: var(--yellow); }
+    .phase-2 .agent-name { color: var(--green); }
+    .phase-3 .agent-name { color: var(--accent3); }
+    .phase-4 .agent-name { color: var(--accent2); }
+    .phase-5 .agent-name { color: #f472b6; }
+
+    /* Loop diagram */
+    .loops {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.25rem; margin-top: 2.5rem;
+    }
+    .loop-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.5rem;
+    }
+    .loop-icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
+    .loop-title { font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; }
+    .loop-desc { font-size: 0.85rem; color: var(--muted); }
+
+    /* Why Skills section */
+    .why-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.25rem; margin-top: 2.5rem;
+    }
+    .why-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.75rem;
+    }
+    .why-card .icon {
+      width: 42px; height: 42px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25rem; margin-bottom: 1rem;
+    }
+    .why-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .why-card p { font-size: 0.875rem; color: var(--muted); }
+    .icon-purple { background: rgba(108,99,255,.15); }
+    .icon-blue { background: rgba(56,189,248,.15); }
+    .icon-green { background: rgba(52,211,153,.15); }
+    .icon-yellow { background: rgba(251,191,36,.15); }
+
+    /* Phases flow */
+    .phase-flow {
+      display: flex; flex-direction: column; gap: 1rem; margin-top: 2.5rem;
+    }
+    .phase-row {
+      display: grid; grid-template-columns: 80px 1fr;
+      gap: 1.5rem; align-items: start;
+    }
+    .phase-num {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 0.75rem;
+      text-align: center; font-weight: 800; font-size: 0.75rem;
+      color: var(--muted); letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    .phase-content {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.25rem 1.5rem;
+    }
+    .phase-content h4 { font-weight: 700; margin-bottom: 0.35rem; font-size: 0.95rem; }
+    .phase-content p { font-size: 0.85rem; color: var(--muted); }
+    .parallel-badge {
+      display: inline-block;
+      background: rgba(52,211,153,.1); border: 1px solid rgba(52,211,153,.3);
+      color: var(--green); border-radius: 4px;
+      padding: 0.15rem 0.5rem; font-size: 0.7rem; font-weight: 700;
+      margin-left: 0.5rem; vertical-align: middle;
+    }
+
+    /* Install section */
+    .install-box {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 12px; padding: 2rem;
+      font-family: 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 0.9rem; overflow-x: auto;
+    }
+    .install-box .comment { color: var(--muted); }
+    .install-box .cmd { color: var(--accent3); }
+    .install-box .str { color: var(--green); }
+    .install-box .kw { color: var(--accent2); }
+    .step-list { counter-reset: steps; list-style: none; margin-top: 2rem; }
+    .step-list li {
+      counter-increment: steps;
+      display: grid; grid-template-columns: 32px 1fr;
+      gap: 1rem; margin-bottom: 1.5rem; align-items: start;
+    }
+    .step-list li::before {
+      content: counter(steps);
+      background: var(--accent); color: #fff;
+      border-radius: 50%; width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; font-weight: 700; flex-shrink: 0;
+    }
+    .step-list li h4 { font-weight: 700; margin-bottom: 0.25rem; }
+    .step-list li p { font-size: 0.875rem; color: var(--muted); }
+    code {
+      background: rgba(255,255,255,.07); border: 1px solid var(--border);
+      border-radius: 4px; padding: 0.15rem 0.45rem;
+      font-family: monospace; font-size: 0.85em; color: var(--accent3);
+    }
+
+    /* Stats */
+    .stats {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+      margin-top: 2.5rem;
+    }
+    .stat {
+      background: var(--card); padding: 2rem;
+      text-align: center;
+    }
+    .stat .num {
+      font-size: 2.5rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent3));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .stat .label { font-size: 0.85rem; color: var(--muted); margin-top: 0.25rem; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem; text-align: center;
+      color: var(--muted); font-size: 0.875rem;
+    }
+    footer a { color: var(--accent2); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .footer-logo {
+      font-size: 1.25rem; font-weight: 800; margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent3));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    @media (max-width: 640px) {
+      nav .nav-links { display: none; }
+      .phase-row { grid-template-columns: 1fr; }
+      .phase-num { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">⚡ Lean AI Dev Team</div>
+  <div class="nav-links">
+    <a href="#why">Why Skills</a>
+    <a href="#team">The Team</a>
+    <a href="#methodology">Methodology</a>
+    <a href="#install">Install</a>
+  </div>
+  <a href="#install" class="cta-btn">Get Started →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">🔬 Lean AI Methodology · 史凯 Kai Shi</div>
+  <h1>The AI Dev Team That Thinks in Business Value</h1>
+  <p>
+    An 8-agent Claude Code skill that coordinates a full development team —
+    from business strategy to ROI measurement to production code —
+    powered by the <strong>Lean AI Methodology</strong>.
+  </p>
+  <div class="hero-ctas">
+    <a href="#install" class="btn-primary">Install the Skill →</a>
+    <a href="#team" class="btn-secondary">Meet the Team</a>
+  </div>
+</section>
+
+<!-- METHODOLOGY BANNER -->
+<div class="method-banner">
+  <p class="author">精益AI方法论（Lean AI Methodology） — 史凯 Kai Shi</p>
+  <blockquote>
+    "AI transformation is not model procurement — it is lean reconstruction of processes,
+    data, organization, technology, and operations, with business scenarios as the core."
+  </blockquote>
+  <div class="principles">
+    <span class="pill">Scenario First</span>
+    <span class="pill">Value-Driven</span>
+    <span class="pill">Small Steps, Fast Cycles</span>
+    <span class="pill">Data Before Code</span>
+    <span class="pill">Controlled Execution</span>
+    <span class="pill">Continuous Operations</span>
+    <span class="pill">Human-AI Collaboration</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<section style="padding: 3rem 2rem; background: var(--bg2);">
+  <div class="container">
+    <div class="stats">
+      <div class="stat">
+        <div class="num">8</div>
+        <div class="label">Specialized AI Agents</div>
+      </div>
+      <div class="stat">
+        <div class="num">6</div>
+        <div class="label">Execution Phases</div>
+      </div>
+      <div class="stat">
+        <div class="num">4</div>
+        <div class="label">Closed-Loop Checks</div>
+      </div>
+      <div class="stat">
+        <div class="num">0</div>
+        <div class="label">Blind Code Stubs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY SKILLS -->
+<section id="why">
+  <div class="container">
+    <p class="section-label">Why Claude Code Skills</p>
+    <h2>AI Dev Teams Need a Brain, Not Just Tools</h2>
+    <p class="subtitle">
+      Most AI coding tools generate code. Skills generate <em>coordinated systems</em> —
+      where every agent knows its role, reads existing code, and hands off to the next stage.
+    </p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="icon icon-purple">🎯</div>
+        <h3>Persistent Methodology</h3>
+        <p>Skills are reusable playbooks baked into Claude Code. Once installed, every
+        invocation follows the same Lean AI sequence — no prompting required.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon icon-blue">🔄</div>
+        <h3>Sequential + Parallel Execution</h3>
+        <p>Strategy agents run first, then developers run in parallel.
+        Skills orchestrate this automatically — you get 6 phases of coordinated output.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon icon-green">📊</div>
+        <h3>Business Value Embedded</h3>
+        <p>Every phase produces ROI measurements, scenario cards, and success metrics —
+        not just code. Business and engineering outputs are unified in one workflow.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon icon-yellow">🏗️</div>
+        <h3>Read Before You Write</h3>
+        <p>Every agent is instructed to read existing code before generating anything.
+        No phantom modules, no mismatched APIs — the team works with your actual codebase.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon icon-purple">⚖️</div>
+        <h3>Four Closed-Loop Guarantee</h3>
+        <p>Value loop, data loop, model loop, and operations loop are checked at the end
+        of every task. Nothing ships without all four confirmed.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon icon-blue">🛡️</div>
+        <h3>Compliance Built In</h3>
+        <p>The Compliance PM agent runs last on every task — reviewing data privacy,
+        access control, audit logging, and AI governance before DoD is signed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" style="background: var(--bg2);">
+  <div class="container">
+    <p class="section-label">The 8-Agent Team</p>
+    <h2>Strategy to Code, Without Gaps</h2>
+    <p class="subtitle">
+      Each agent owns a distinct domain. Earlier agents set constraints that later agents must honor —
+      especially API contracts between Architect → Frontend → Backend.
+    </p>
+    <div class="team-grid">
+      <div class="agent-card phase-1">
+        <div class="agent-phase">Phase 1 · Strategy</div>
+        <div class="agent-name">业务规划师 <span>/ Business Planner</span></div>
+        <div class="agent-desc">Sets the strategic frame before any analysis begins. Defines the business case, stakeholder map, scenario level (L1–L5), and 3-stage roadmap.</div>
+        <div class="agent-outputs">
+          <span class="tag">Business Case</span>
+          <span class="tag">L1–L5 Scenario Level</span>
+          <span class="tag">3-Phase Roadmap</span>
+        </div>
+      </div>
+
+      <div class="agent-card phase-2">
+        <div class="agent-phase">Phase 2 · Product</div>
+        <div class="agent-name">产品经理 <span>/ Product Manager</span></div>
+        <div class="agent-desc">Owns commercialization and ROI. Produces the Lean AI scenario card, quantified ROI model, success KPI dashboard, and go/no-go criteria.</div>
+        <div class="agent-outputs">
+          <span class="tag">Scenario Card</span>
+          <span class="tag">ROI Model</span>
+          <span class="tag">KPI Dashboard</span>
+          <span class="tag">Stop Conditions</span>
+        </div>
+      </div>
+
+      <div class="agent-card phase-3">
+        <div class="agent-phase">Phase 3 · Analysis</div>
+        <div class="agent-name">业务分析师 <span>/ Business Analyst</span></div>
+        <div class="agent-desc">Translates strategy into engineering specs. User stories, As-Is → To-Be flows, Given/When/Then acceptance criteria, human-AI handoff design.</div>
+        <div class="agent-outputs">
+          <span class="tag">User Stories</span>
+          <span class="tag">As-Is / To-Be</span>
+          <span class="tag">Acceptance Criteria</span>
+          <span class="tag">Human-AI Split</span>
+        </div>
+      </div>
+
+      <div class="agent-card phase-4">
+        <div class="agent-phase">Phase 4 · Architecture</div>
+        <div class="agent-name">技术架构师 <span>/ Technical Architect</span></div>
+        <div class="agent-desc">Designs the system before any code is written. ADRs, Clean Core + Cognitive Sidecar design, full API contracts, governance framework, data flows.</div>
+        <div class="agent-outputs">
+          <span class="tag">ADRs</span>
+          <span class="tag">API Contracts</span>
+          <span class="tag">Clean Core Design</span>
+          <span class="tag">Governance Plan</span>
+        </div>
+      </div>
+
+      <div class="agent-card phase-5">
+        <div class="agent-phase">Phase 5 · Build (Parallel)</div>
+        <div class="agent-name">前端开发 <span>/ Frontend</span></div>
+        <div class="agent-desc">Implements UI following the architect's API contracts. Reads existing components first, builds human-AI collaboration interfaces, exposes operational dashboards.</div>
+        <div class="agent-outputs">
+          <span class="tag">Component Changes</span>
+          <span class="tag">API Usage Map</span>
+          <span class="tag">Ops Dashboard UI</span>
+        </div>
+      </div>
+
+      <div class="agent-card phase-5">
+        <div class="agent-phase">Phase 5 · Build (Parallel)</div>
+        <div class="agent-name">后端开发 <span>/ Backend</span></div>
+        <div class="agent-desc">Implements APIs per the architect's contracts. Follows existing service patterns, adds @Transactional for multi-table writes, logs all controlled actions.</div>
+        <div class="agent-outputs">
+          <span class="tag">Endpoints List</span>
+          <span class="tag">Service Logic</span>
+          <span class="tag">Audit Logs</span>
+        </div>
+      </div>
+
+      <div class="agent-card phase-5">
+        <div class="agent-phase">Phase 5 · Build (Parallel)</div>
+        <div class="agent-name">数据集成 <span>/ Data Integration</span></div>
+        <div class="agent-desc">Handles schema, migrations, knowledge base design, and external APIs. Crucially: designs the data feedback loop so AI outputs improve future models.</div>
+        <div class="agent-outputs">
+          <span class="tag">Migration SQL</span>
+          <span class="tag">Data Flow</span>
+          <span class="tag">Feedback Loop</span>
+          <span class="tag">Knowledge Base</span>
+        </div>
+      </div>
+
+      <div class="agent-card phase-1" style="border-color: rgba(251,191,36,.3);">
+        <div class="agent-phase">Phase 6 · Closure</div>
+        <div class="agent-name" style="color: var(--yellow);">合规项目管理 <span>/ Compliance PM</span></div>
+        <div class="agent-desc">Consolidates all outputs, runs the four-loop check, detects interface conflicts, produces ordered execution checklist and Definition of Done.</div>
+        <div class="agent-outputs">
+          <span class="tag">4-Loop Check</span>
+          <span class="tag">Conflict Report</span>
+          <span class="tag">Execution Checklist</span>
+          <span class="tag">DoD</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODOLOGY DEEP DIVE -->
+<section id="methodology">
+  <div class="container">
+    <p class="section-label">Lean AI Framework</p>
+    <h2>Built on 一心·两翼·三层·四闭环</h2>
+    <p class="subtitle">
+      Every agent prompt is aligned to Kai Shi's Lean AI Framework — the same methodology
+      used for enterprise AI transformation at scale.
+    </p>
+
+    <div class="loops">
+      <div class="loop-card">
+        <div class="loop-icon">💰</div>
+        <div class="loop-title">Value Loop</div>
+        <div class="loop-desc">Every task answers: what business problem? for whom? measurable how? worth scaling?</div>
+      </div>
+      <div class="loop-card">
+        <div class="loop-icon">🗄️</div>
+        <div class="loop-title">Data Loop</div>
+        <div class="loop-desc">AI outputs, user corrections, and failures feed back into knowledge bases and training sets.</div>
+      </div>
+      <div class="loop-card">
+        <div class="loop-icon">🤖</div>
+        <div class="loop-title">Model Loop</div>
+        <div class="loop-desc">Architecture decisions support future model swaps. No lock-in to a single provider.</div>
+      </div>
+      <div class="loop-card">
+        <div class="loop-icon">📈</div>
+        <div class="loop-title">Operations Loop</div>
+        <div class="loop-desc">KPI dashboards, usage metrics, and prompt optimization cadence are defined before launch.</div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 3.5rem; margin-bottom: 0.5rem; font-size: 1.25rem;">Execution Flow</h3>
+    <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 1.5rem;">How the 6 phases connect</p>
+
+    <div class="phase-flow">
+      <div class="phase-row">
+        <div class="phase-num">Phase<br>1</div>
+        <div class="phase-content">
+          <h4>业务规划师 — Strategic Frame</h4>
+          <p>Sets scenario level (L1–L5), value type, stakeholder map, and 3-phase roadmap. Nothing begins until "why" is answered.</p>
+        </div>
+      </div>
+      <div class="phase-row">
+        <div class="phase-num">Phase<br>2</div>
+        <div class="phase-content">
+          <h4>产品经理 — Scenario Card & ROI</h4>
+          <p>Produces the standard Lean AI scenario card, quantified ROI model, KPI dashboard template, and stop conditions.</p>
+        </div>
+      </div>
+      <div class="phase-row">
+        <div class="phase-num">Phase<br>3</div>
+        <div class="phase-content">
+          <h4>业务分析师 — Engineering Specs</h4>
+          <p>User stories, process maps (As-Is → To-Be), acceptance criteria, human-AI handoff nodes, and data requirements.</p>
+        </div>
+      </div>
+      <div class="phase-row">
+        <div class="phase-num">Phase<br>4</div>
+        <div class="phase-content">
+          <h4>技术架构师 — System Blueprint</h4>
+          <p>ADRs, Clean Core + Cognitive Sidecar design, full API contracts, governance framework. Frontend and backend must honor this.</p>
+        </div>
+      </div>
+      <div class="phase-row">
+        <div class="phase-num">Phase<br>5</div>
+        <div class="phase-content">
+          <h4>前端 + 后端 + 数据集成 <span class="parallel-badge">PARALLEL</span></h4>
+          <p>Three agents build simultaneously. All three work from the architect's API contracts and read existing code before writing.</p>
+        </div>
+      </div>
+      <div class="phase-row">
+        <div class="phase-num">Phase<br>6</div>
+        <div class="phase-content">
+          <h4>合规项目管理 — Four-Loop Closure</h4>
+          <p>Consolidates all outputs. Runs value, data, model, and ops loop checks. Flags interface conflicts. Signs off on DoD.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTALL -->
+<section id="install" style="background: var(--bg2);">
+  <div class="container">
+    <p class="section-label">Get Started</p>
+    <h2>Install in 3 Steps</h2>
+    <p class="subtitle">Requires Claude Code (claude.ai/code). Works with any codebase.</p>
+
+    <ol class="step-list">
+      <li>
+        <div>
+          <h4>Clone the skill</h4>
+          <div class="install-box" style="margin-top: 0.75rem;">
+            <span class="comment"># Clone into your Claude skills directory</span><br>
+            <span class="cmd">git clone</span> <span class="str">https://github.com/yourusername/lean-ai-dev-team</span> \<br>
+            &nbsp;&nbsp;<span class="str">~/.claude/skills/dev-team</span>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h4>Verify installation</h4>
+          <p>Open Claude Code in your project. The skill auto-loads from <code>~/.claude/skills/</code>. No configuration needed.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h4>Invoke the team</h4>
+          <div class="install-box" style="margin-top: 0.75rem;">
+            <span class="comment"># In any Claude Code session:</span><br>
+            <span class="kw">/dev-team</span> <span class="str">Add a real-time notification system for user events</span><br><br>
+            <span class="comment"># Or invoke directly:</span><br>
+            <span class="str">"Run dev-team: implement user dashboard with ROI tracking"</span>
+          </div>
+        </div>
+      </li>
+    </ol>
+
+    <div style="margin-top: 3rem; padding: 2rem; background: rgba(108,99,255,.06); border: 1px solid rgba(108,99,255,.2); border-radius: 12px;">
+      <h3 style="margin-bottom: 0.75rem;">When to Use Each Mode</h3>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+        <div>
+          <p style="font-size: 0.85rem; color: var(--muted);">
+            <strong style="color: var(--text);">Full 8-agent team</strong> — new features, AI-native products,
+            cross-layer changes, anything touching strategy + code.
+          </p>
+        </div>
+        <div>
+          <p style="font-size: 0.85rem; color: var(--muted);">
+            <strong style="color: var(--text);">Lightweight mode</strong> — bug fixes start at Phase 3 (Analyst),
+            pure UI work starts at Phase 5. Skip agents you don't need.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">⚡ Lean AI Dev Team</div>
+  <p style="margin-bottom: 0.5rem;">
+    Powered by <a href="#">Lean AI Methodology</a> · Built for <a href="https://claude.ai/code">Claude Code</a>
+  </p>
+  <p>
+    Methodology by <strong>史凯 Kai Shi</strong> ·
+    核心命题：AI转型不是模型采购，而是以业务场景为核心的精益化重构。
+  </p>
+</footer>
+
+</body>
+</html>
