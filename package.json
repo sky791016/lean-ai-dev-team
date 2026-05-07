@@ -1,0 +1,24 @@
+{
+  "name": "lean-ai-dev-team",
+  "version": "1.0.0",
+  "description": "> Copyright (c) 2026 **Kai Shi (史凯)** · sky.kugua@gmail.com · Founder of Lean AI Method > Apache License 2.0 · Non-Commercial Use Only · Commercial use requires authorization",
+  "main": "submit_ph.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sky791016/lean-ai-dev-team.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/sky791016/lean-ai-dev-team/issues"
+  },
+  "homepage": "https://github.com/sky791016/lean-ai-dev-team#readme",
+  "dependencies": {
+    "playwright": "^1.59.1"
+  }
+}
