@@ -1,5 +1,8 @@
 # Lean AI Dev Team — Claude Code Skill
 
+> Copyright (c) 2026 **Kai Shi (史凯)** · sky.kugua@gmail.com · Founder of Lean AI Method
+> Apache License 2.0 · Non-Commercial Use Only · Commercial use requires authorization
+
 > An 8-agent AI development team powered by the **Lean AI Methodology** (精益AI方法论) by Kai Shi.
 
 Transforms any development task into a coordinated, value-driven workflow — from business strategy to production code to ROI measurement.
@@ -54,6 +57,20 @@ Based on **精益AI方法论** (Lean AI Methodology) by 史凯 Kai Shi:
 9. Platform Grows from Scenarios — don't build platforms first
 10. Organizations Must Evolve — no org change = no real AI transformation
 
-## License
+## License & Copyright
 
-MIT
+Copyright (c) 2026 **Kai Shi (史凯)**
+📧 sky.kugua@gmail.com
+🏛️ Founder of Lean AI Method
+
+Licensed under the **Apache License 2.0** with Non-Commercial Restriction:
+
+- ✅ Free to use for personal, educational, and internal non-commercial purposes
+- ✅ Free to modify and redistribute with attribution
+- ❌ Commercial use (selling, paid consulting, product integration) requires written authorization
+- 📩 Commercial licensing: sky.kugua@gmail.com
+
+All copies must include attribution:
+> "Lean AI Dev Team Skill — Copyright (c) 2026 Kai Shi (史凯), Founder of Lean AI Method"
+
+See [LICENSE](./LICENSE) for full terms.
