@@ -1,0 +1,10 @@
+main:
+  push:
+    - stages:
+        - name: 部署 Lean AI Dev Team 首页到 EdgeOne Pages
+          image: node:20
+          jobs:
+            - name: 安装 EdgeOne CLI
+              script: npm install -g edgeone
+            - name: 发布静态网站到 Pages
+              script: edgeone pages deploy . --name lean-ai-team-skills --token $EDGEONE_PAGES_API_TOKEN
