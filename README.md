@@ -21,7 +21,7 @@ This repository contains two complementary skills built on the **Lean AI Methodo
 
 | Skill | What it is | When to use |
 |---|---|---|
-| **`dev-team`** | 10-agent rapid delivery skill | You have a defined task — feature, refactor, or review. Run straight to code. |
+| **`dev-team`** | 9-agent rapid delivery skill | You have a defined task — feature, refactor, or review. Scenario-first, minimum MVP, straight to code. |
 | **`lean-ai-agile-agent-team`** | Full-lifecycle strategy-to-delivery system | You're starting from zero or need to align goal → MVP → BA → architecture → sprint → ops properly. |
 
 ---
@@ -30,19 +30,19 @@ This repository contains two complementary skills built on the **Lean AI Methodo
 
 ---
 
-### Skill 1 · `dev-team` — 10-Agent Rapid Delivery
+### Skill 1 · `dev-team` — 9-Agent Rapid Delivery
 
 #### What It Does
 
-A structured prompt system that routes your task through a **10-agent coordinated team** — from business strategy to production-ready code.
+A structured prompt system that routes your task through a **9-agent coordinated team** — scenario and value locked in before any code is written, minimum viable MVP delivered, token-efficient structured handoffs.
 
 **Three core advantages:**
 
-> **Cuts hallucinations** — Each agent is given only what it needs: the auditor reads code before diagnosing, the architect designs before developers build, the compliance PM checks consistency across all outputs. No agent guesses.
+> **Scenario-first, value-first** — Business Planner and PM lock in the scenario, ROI, and MVP scope before any developer agent runs. No scenarioless code — the #1 AI waste.
 
-> **Minimum viable end-to-end loop** — Business case first, then requirements, then architecture, then parallel code, then 4-loop sign-off. You get a shippable increment with every run, not a pile of disconnected stubs.
+> **Minimum viable end-to-end loop** — Business case → requirements → architecture → parallel code → 4-loop sign-off. The team asks "is this MVP necessary?" at every step. Shippable increment every run.
 
-> **Saves tokens** — Structured phase handoffs replace open-ended chat. No iterative clarification loops. One structured prompt → complete output across all 10 roles.
+> **Saves tokens** — Structured phase handoffs replace open-ended chat. No iterative clarification loops. One prompt → 9 roles, complete coordinated output.
 
 #### Install
 
@@ -237,15 +237,17 @@ Full setup guide: [`references/ide-compatibility.md`](references/ide-compatibili
 
 ```
 lean-ai-dev-team/
-├── SKILL.md                          ← dev-team skill (10-agent rapid delivery)
+├── SKILL.md                          ← dev-team skill (9-agent rapid delivery)
 ├── README.md
 ├── LICENSE
 ├── references/
 │   ├── scenario-examples.md
 │   └── ide-compatibility.md
-├── assets/
-│   └── logo.png
-└── lean-ai-agile-agent-team/         ← Full lifecycle skill (v2)
+├── docs/                             ← Official website source (GitHub Pages)
+│   ├── index.html
+│   ├── logo.png
+│   └── assets/
+└── lean-ai-agile-agent-team/         ← Full lifecycle skill
     ├── SKILL.md
     ├── README.md
     ├── MANIFEST.json
@@ -317,20 +319,20 @@ Commercial use → sky.kugua@gmail.com
 
 | Skill | 定位 | 适用场景 |
 |---|---|---|
-| **`dev-team`** | 10 智能体快速交付 | 任务已明确（功能开发、重构、评审），直接跑到代码 |
+| **`dev-team`** | 9 智能体快速交付 | 任务已明确（功能开发、重构、评审），场景优先，最小MVP，直接跑到代码 |
 | **`lean-ai-agile-agent-team`** | 完整生命周期交付系统 | 从零开始，或需要严格走：目标对齐 → MVP → BA → 架构 → Sprint → 运营 |
 
 ---
 
-### Skill 1 · `dev-team` — 10 智能体快速交付
+### Skill 1 · `dev-team` — 9 智能体快速交付
 
 #### 这是什么
 
-一套结构化 Prompt 系统，将你的任务路由给 **10 个协作 AI 智能体**：先算清楚做不做、再设计系统、再并行实现、最后四闭环验收。
+一套结构化 Prompt 系统，将你的任务路由给 **9 个协作 AI 智能体**：场景和价值优先锁定，最小 MVP 约束贯穿全程，结构化分阶段交接替代无目的对话，节约 Token。
 
 **三大核心优势：**
 
-> **大幅减少大模型幻觉** — 每个智能体只拿到它需要的上下文：审计师先读代码再诊断，架构师先设计再让开发动手，合规 PM 最后核查所有输出是否一致。
+> **场景驱动、价值优先** — 业务规划师和产品经理在任何开发智能体运行前先锁定场景、ROI 和 MVP 范围，消除无场景代码这一 AI 开发头号浪费。
 
 > **围绕目标直接交付最小 MVP 的端到端闭环** — 先商业价值，再需求，再架构，再并行编码，最后四闭环签核。
 

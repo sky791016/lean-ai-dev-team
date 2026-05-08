@@ -1,3 +1,15 @@
+<!--
+Copyright (c) 2026 Kai Shi (史凯)
+Email: sky.kugua@gmail.com
+Title: Founder of Lean AI Method
+
+Licensed under the Apache License, Version 2.0 with Non-Commercial Restriction.
+Free for personal, educational, and non-commercial use.
+Commercial use requires written authorization — contact: sky.kugua@gmail.com
+
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # 功能点拆分明细表
 
 | 系统 | 模块（Epic） | 一级功能点（Feature） | 二级功能点（Story） | 三级功能点（具体功能点） | 功能点类型 | 功能描述 | 拆分判断依据 | 复用程度 | 功能点系数 |

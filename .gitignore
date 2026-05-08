@@ -1,25 +1,20 @@
-# Website files (maintained on website branch)
-index.html
-gen_qr.py
-gen_role_cards.py
-analytics/
-role-cards/
-qrcode-poster.png
-logo.png
-producthunt.md
-submit_ph.js
-
 # Node
 node_modules/
 package-lock.json
 package.json
 
-# Skills subdir (SKILL.md is now at root)
-skills/
+# Dev tools
+gen_qr.py
+gen_role_cards.py
+qrcode-poster.png
+producthunt.md
+
+# v5 source archives
+lean-ai-agile-agent-team_v5/
+lean-ai-agile-agent-team-skill-v5-correct.zip
 
 # OS
 .DS_Store
 
-# v5 source archives (distributed as lean-ai-agile-agent-team/)
-lean-ai-agile-agent-team_v5/
-lean-ai-agile-agent-team-skill-v5-correct.zip
+# Analytics (contains secrets)
+analytics/
