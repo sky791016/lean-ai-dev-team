@@ -344,6 +344,7 @@
     <a href="#install" data-i18n="nav-install">Install</a>
     <a href="#publications" data-i18n="nav-books">Books</a>
     <a href="#vote" data-i18n="nav-vote">🚀 Vote</a>
+    <a href="#feedback" data-i18n="nav-feedback">Feedback</a>
   </div>
   <button id="lang-toggle" onclick="toggleLang()" style="background:rgba(108,99,255,.15);border:1px solid rgba(108,99,255,.35);color:var(--accent2);border-radius:6px;padding:.4rem .85rem;font-size:.8rem;font-weight:700;cursor:pointer;margin-right:.75rem;transition:background .2s;">EN</button>
   <a href="#vote" class="cta-btn" data-i18n="nav-cta" style="background:linear-gradient(135deg,#ff6b00,#ff8c42);">🚀 Support Us →</a>
@@ -1949,6 +1950,152 @@ function showScenario(name) {
   </div>
 </section>
 
+<!-- FEEDBACK SECTION -->
+<!--
+  SETUP: Get a free access key from https://web3forms.com
+  Enter sky.kugua@gmail.com → copy the access key → replace YOUR_WEB3FORMS_ACCESS_KEY below.
+  Free plan: unlimited submissions, sends email, stores in dashboard.
+-->
+<section id="feedback" style="padding:5rem 2rem; background:linear-gradient(180deg, #0d0d17 0%, #0a0a12 100%); border-top:1px solid var(--border);">
+  <div style="max-width:660px; margin:0 auto; text-align:center;">
+    <span class="badge" style="margin-bottom:1.2rem; display:inline-block;" data-i18n="feedback-label">Share Your Story</span>
+    <h2 style="font-size:clamp(1.6rem,3.5vw,2.2rem); margin-bottom:1rem;" data-i18n="feedback-h2">Help Lean AI Reach the World</h2>
+    <p style="color:var(--muted); font-size:1rem; max-width:540px; margin:0 auto 2.5rem; line-height:1.7;" data-i18n="feedback-p">
+      Lean AI is the first AI delivery methodology created in China, designed for global teams.
+      Share your experience, show us a screenshot, or tell us what you built — every story helps
+      this methodology reach more developers around the world.
+    </p>
+
+    <!-- Form states -->
+    <div id="feedback-success" style="display:none; background:rgba(52,211,153,.08); border:1px solid rgba(52,211,153,.25); border-radius:12px; padding:2rem; margin-bottom:2rem;">
+      <div style="font-size:2rem; margin-bottom:.5rem;">🎉</div>
+      <p style="color:#34d399; font-size:1.05rem; margin:0;" data-i18n="feedback-thanks">Thank you! Your feedback helps Lean AI grow worldwide.</p>
+    </div>
+    <div id="feedback-error" style="display:none; background:rgba(248,113,113,.08); border:1px solid rgba(248,113,113,.25); border-radius:12px; padding:1rem 1.5rem; margin-bottom:1.5rem;">
+      <p style="color:#f87171; margin:0; font-size:.9rem;" data-i18n="feedback-error-msg">Something went wrong. Please email us directly at <a href="mailto:sky.kugua@gmail.com" style="color:#f87171;">sky.kugua@gmail.com</a></p>
+    </div>
+
+    <form id="feedback-form" style="text-align:left;">
+      <!-- Web3Forms hidden fields -->
+      <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+      <input type="hidden" name="subject" value="[Lean AI Dev Team] New Feedback Submission" />
+      <input type="hidden" name="from_name" value="Lean AI Dev Team Website" />
+      <input type="hidden" name="redirect" value="false" />
+      <input type="hidden" id="fb-screenshot-data" name="screenshot_base64" value="" />
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
+        <div>
+          <label style="display:block; font-size:.82rem; color:var(--muted); margin-bottom:.4rem;" data-i18n="feedback-name-label">Your Name</label>
+          <input type="text" name="name" id="fb-name" required
+            style="width:100%; background:rgba(255,255,255,.05); border:1px solid var(--border); border-radius:8px; padding:.65rem .9rem; color:#e2e8f0; font-size:.9rem; outline:none; box-sizing:border-box; transition:border-color .2s;"
+            onfocus="this.style.borderColor='rgba(108,99,255,.6)'" onblur="this.style.borderColor='var(--border)'"
+            data-i18n-placeholder="feedback-name-ph" placeholder="Your name" />
+        </div>
+        <div>
+          <label style="display:block; font-size:.82rem; color:var(--muted); margin-bottom:.4rem;" data-i18n="feedback-email-label">Email <span style="opacity:.5;" data-i18n="feedback-optional">(optional)</span></label>
+          <input type="email" name="email" id="fb-email"
+            style="width:100%; background:rgba(255,255,255,.05); border:1px solid var(--border); border-radius:8px; padding:.65rem .9rem; color:#e2e8f0; font-size:.9rem; outline:none; box-sizing:border-box; transition:border-color .2s;"
+            onfocus="this.style.borderColor='rgba(108,99,255,.6)'" onblur="this.style.borderColor='var(--border)'"
+            data-i18n-placeholder="feedback-email-ph" placeholder="your@email.com" />
+        </div>
+      </div>
+
+      <div style="margin-bottom:1rem;">
+        <label style="display:block; font-size:.82rem; color:var(--muted); margin-bottom:.4rem;" data-i18n="feedback-msg-label">Your Experience</label>
+        <textarea name="message" id="fb-message" required rows="5"
+          style="width:100%; background:rgba(255,255,255,.05); border:1px solid var(--border); border-radius:8px; padding:.75rem .9rem; color:#e2e8f0; font-size:.9rem; outline:none; box-sizing:border-box; resize:vertical; line-height:1.6; transition:border-color .2s; font-family:inherit;"
+          onfocus="this.style.borderColor='rgba(108,99,255,.6)'" onblur="this.style.borderColor='var(--border)'"
+          data-i18n-placeholder="feedback-msg-ph" placeholder="Tell us what you built, what changed in your workflow, or how Lean AI helped your team..."></textarea>
+      </div>
+
+      <!-- Screenshot upload -->
+      <div style="margin-bottom:1.5rem;">
+        <label style="display:block; font-size:.82rem; color:var(--muted); margin-bottom:.4rem;" data-i18n="feedback-screenshot-label">Screenshot <span style="opacity:.5;" data-i18n="feedback-optional">(optional)</span></label>
+        <label for="fb-screenshot-input" id="fb-drop-zone"
+          style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.5rem; border:1.5px dashed var(--border); border-radius:10px; padding:1.5rem; cursor:pointer; transition:border-color .2s, background .2s;"
+          onmouseover="this.style.borderColor='rgba(108,99,255,.5)';this.style.background='rgba(108,99,255,.04)'"
+          onmouseout="this.style.borderColor='var(--border)';this.style.background='transparent'">
+          <input type="file" id="fb-screenshot-input" accept="image/*" style="display:none;" onchange="handleScreenshot(this)" />
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--muted);"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          <span style="font-size:.85rem; color:var(--muted);" data-i18n="feedback-drop-text">Click or drag an image here</span>
+          <span style="font-size:.75rem; color:#475569;" data-i18n="feedback-drop-hint">PNG, JPG up to 5 MB</span>
+        </label>
+        <!-- Preview -->
+        <div id="fb-screenshot-preview" style="display:none; margin-top:.75rem; position:relative;">
+          <img id="fb-preview-img" src="" alt="Screenshot preview"
+            style="width:100%; max-height:280px; object-fit:contain; border-radius:8px; border:1px solid var(--border); background:#0d0d17;" />
+          <button type="button" onclick="clearScreenshot()"
+            style="position:absolute; top:.5rem; right:.5rem; background:rgba(0,0,0,.6); border:none; color:#e2e8f0; border-radius:6px; padding:.3rem .55rem; cursor:pointer; font-size:.75rem;" data-i18n="feedback-remove">Remove</button>
+        </div>
+      </div>
+
+      <button type="submit" id="fb-submit-btn"
+        style="width:100%; background:linear-gradient(135deg,#6c63ff,#38bdf8); border:none; border-radius:10px; padding:.9rem 1.5rem; color:#fff; font-size:1rem; font-weight:700; cursor:pointer; transition:opacity .2s, transform .1s; letter-spacing:.02em;"
+        onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'"
+        onmousedown="this.style.transform='scale(.99)'" onmouseup="this.style.transform='scale(1)'"
+        data-i18n="feedback-submit">Send Feedback</button>
+    </form>
+  </div>
+</section>
+
+<script>
+// ─── Feedback form handlers ────────────────────────────────────────────────
+function handleScreenshot(input) {
+  if (!input.files || !input.files[0]) return;
+  const file = input.files[0];
+  if (file.size > 5 * 1024 * 1024) {
+    alert('Image must be under 5 MB');
+    input.value = '';
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    document.getElementById('fb-preview-img').src = e.target.result;
+    document.getElementById('fb-screenshot-preview').style.display = 'block';
+    document.getElementById('fb-screenshot-data').value = e.target.result.slice(0, 50000); // cap to avoid payload limits
+  };
+  reader.readAsDataURL(file);
+}
+
+function clearScreenshot() {
+  document.getElementById('fb-screenshot-input').value = '';
+  document.getElementById('fb-preview-img').src = '';
+  document.getElementById('fb-screenshot-preview').style.display = 'none';
+  document.getElementById('fb-screenshot-data').value = '';
+}
+
+document.getElementById('feedback-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('fb-submit-btn');
+  const origText = btn.textContent;
+  btn.textContent = '...';
+  btn.disabled = true;
+  document.getElementById('feedback-error').style.display = 'none';
+
+  const data = {};
+  new FormData(this).forEach(function(v, k) { data[k] = v; });
+
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    const json = await res.json();
+    if (json.success) {
+      document.getElementById('feedback-form').style.display = 'none';
+      document.getElementById('feedback-success').style.display = 'block';
+    } else {
+      throw new Error(json.message || 'Submission failed');
+    }
+  } catch(err) {
+    document.getElementById('feedback-error').style.display = 'block';
+    btn.textContent = origText;
+    btn.disabled = false;
+  }
+});
+</script>
+
 <!-- FOOTER -->
 <footer>
   <img src="logo.png" alt="Lean AI Dev Team" style="height:56px; width:auto; margin-bottom:.75rem; opacity:.9;" />
@@ -2171,6 +2318,25 @@ const DICT = {
 
   'vote-h2':{ en:'Support the Future of AI-Native Development', zh:'支持AI原生开发的未来' },
   'vote-p':{ en:'If Lean AI Dev Team has changed how you think about AI-assisted development, show your support — every upvote helps the methodology reach more teams worldwide.', zh:'如果精益AI开发团队改变了你对AI辅助开发的思考方式，请给予支持——每一票都能帮助这套方法论触达全球更多团队。' },
+
+  'nav-feedback':      { en:'Feedback', zh:'反馈' },
+  'feedback-label':    { en:'Share Your Story', zh:'分享你的故事' },
+  'feedback-h2':       { en:'Help Lean AI Reach the World', zh:'帮助精益AI走向世界' },
+  'feedback-p':        { en:'Lean AI is the first AI delivery methodology created in China, designed for global teams. Share your experience, show us a screenshot, or tell us what you built — every story helps this methodology reach more developers around the world.', zh:'精益AI是中国原创、面向全球团队的首个AI交付方法论。分享你的体验、截图或用它构建的成果——每一个故事都能帮助这套方法论触达全球更多开发者。' },
+  'feedback-name-label':{ en:'Your Name', zh:'你的名字' },
+  'feedback-name-ph':  { en:'Your name', zh:'你的名字' },
+  'feedback-email-label':{ en:'Email', zh:'邮箱' },
+  'feedback-email-ph': { en:'your@email.com', zh:'your@email.com' },
+  'feedback-optional': { en:'(optional)', zh:'（可选）' },
+  'feedback-msg-label':{ en:'Your Experience', zh:'使用体验' },
+  'feedback-msg-ph':   { en:'Tell us what you built, what changed in your workflow, or how Lean AI helped your team...', zh:'告诉我们你用它构建了什么，工作流发生了哪些变化，或者精益AI如何帮助了你的团队……' },
+  'feedback-screenshot-label':{ en:'Screenshot', zh:'截图' },
+  'feedback-drop-text':{ en:'Click or drag an image here', zh:'点击或拖拽图片到这里' },
+  'feedback-drop-hint':{ en:'PNG, JPG up to 5 MB', zh:'PNG、JPG，最大 5 MB' },
+  'feedback-remove':   { en:'Remove', zh:'删除' },
+  'feedback-submit':   { en:'Send Feedback', zh:'提交反馈' },
+  'feedback-thanks':   { en:'Thank you! Your feedback helps Lean AI grow worldwide.', zh:'感谢！你的反馈帮助精益AI走向全球。' },
+  'feedback-error-msg':{ en:'Something went wrong. Please email us directly at <a href="mailto:sky.kugua@gmail.com" style="color:#f87171;">sky.kugua@gmail.com</a>', zh:'提交失败，请直接发邮件至 <a href="mailto:sky.kugua@gmail.com" style="color:#f87171;">sky.kugua@gmail.com</a>' },
 };
 
 // ─── core functions ────────────────────────────────────────────────────────
@@ -2183,6 +2349,10 @@ function applyLang(lang) {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (DICT[key] && DICT[key][lang]) el.innerHTML = DICT[key][lang];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (DICT[key] && DICT[key][lang]) el.placeholder = DICT[key][lang];
   });
   // update demo status text if it's still in the default state
   const statusEl = document.getElementById('demo-status');
