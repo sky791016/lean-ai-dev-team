@@ -5,16 +5,16 @@
 # Lean AI Dev Team — Claude Code Skill
 ### 精益AI开发团队技能
 
-**An 8-agent Claude Code skill that thinks in business value before writing a single line of code.**
+**A 9-agent Claude Code skill that thinks in business value before writing a single line of code.**
 
-**一个8智能体的 Claude Code 技能，先想清楚价值，再动手写代码。**
+**一个9智能体的 Claude Code 技能，先想清楚价值，再动手写代码。**
 
 [![Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude_Code-Skill-6c63ff)](https://claude.ai/code)
 [![Lean AI](https://img.shields.io/badge/Powered_by-Lean_AI_Methodology-34d399)](https://sky791016.github.io/lean-ai-dev-team/)
 [![Author](https://img.shields.io/badge/Author-Kai_Shi_史凯-a78bfa)](mailto:sky.kugua@gmail.com)
 
-[**🌐 Website**](https://sky791016.github.io/lean-ai-dev-team/) · [**Quick Start**](#quick-start) · [**The 8 Agents**](#the-8-agent-team) · [**Real Results**](#real-results)
+[**🌐 Website**](https://sky791016.github.io/lean-ai-dev-team/) · [**Quick Start**](#quick-start) · [**The 9 Agents**](#the-8-agent-team) · [**Real Results**](#real-results)
 
 </div>
 
@@ -63,7 +63,7 @@ That's it. The 8-agent team takes over. / 就这样，8 个智能体接管后续
 
 ---
 
-## The 8-Agent Team / 8 智能体团队
+## The 9-Agent Team / 8 智能体团队
 
 Six sequential phases. Zero blind stubs — every agent reads existing code before writing.
 
@@ -89,6 +89,7 @@ Biz Planner      Product Mgr      Biz Analyst      Architect
 
 | Phase | Agent | Key Outputs |
 |---|---|---|
+| **0** | 代码审计师 · Code Auditor | Security vulns (OWASP Top 10), performance bottlenecks, architecture health score, prioritized fix list — **runs first for Refactor & Review** |
 | **1** | 业务规划师 · Business Planner | Business case, L1–L5 scenario level, 3-phase roadmap, stakeholder map |
 | **2** | 产品经理 · Product Manager | Lean AI scenario card, ROI model, KPI dashboard, go/no-go criteria |
 | **3** | 业务分析师 · Business Analyst | User stories, As-Is → To-Be flows, Given/When/Then acceptance criteria |
@@ -97,6 +98,98 @@ Biz Planner      Product Mgr      Biz Analyst      Architect
 | **5b** | 后端开发 · Backend | API endpoints, service logic, audit logs |
 | **5c** | 数据集成 · Data Integration | Migration SQL, knowledge base, data feedback loop |
 | **6** | 合规项目管理 · Compliance PM | 4-loop check, conflict report, execution checklist, Definition of Done |
+
+---
+
+## Three Scenarios / 三种使用场景
+
+### Scenario 1 · Greenfield / 全新项目
+
+Start from scratch — new feature, new product, new AI system. All 9 agents activate.
+
+```
+/dev-team [全新项目]
+
+项目背景：法务团队每天审查 50+ 份合同，平均耗时 2 小时/份
+
+目标：构建合同风险审查 AI 智能体，自动识别高风险条款并给出修改建议
+
+约束：核心 ERP 不能修改，需要人工最终确认
+技术栈：Python Flask + PostgreSQL + React
+```
+
+**Expected output / 预期输出：**
+- Business Planner → L3 流程协同, 控险+增效, 3-phase roadmap
+- Product Manager → ROI: −70% review time, ¥2.4M/yr savings, KPI dashboard
+- Business Analyst → 8 user stories, 12 Given/When/Then criteria, human-AI split
+- Architect → 5 ADRs, 11 REST API contracts, Clean Core + Cognitive Sidecar
+- FE + BE + Data → 14 files changed, migration SQL, knowledge base schema
+- Compliance PM → 4-loop pass, 23-step execution checklist, DoD signed
+
+---
+
+### Scenario 2 · Refactor / 重构优化
+
+Existing codebase with performance issues, tech debt, or AI capability upgrade. **Code Auditor runs first.**
+
+```
+/dev-team [重构优化]
+
+当前状况：
+- 订单查询 P99 延迟 4.2s，用户投诉多
+- 代码是 3 年前写的，缺少测试覆盖
+- 产品要加入个性化推荐功能
+
+目标：P99 降到 500ms，接入推荐模型
+
+相关文件：src/order/OrderService.java, src/order/OrderMapper.xml
+数据库：MySQL，8000 万条订单记录
+```
+
+**Expected output / 预期输出：**
+- Code Auditor → Architecture health: 61/100 · N+1 query at OrderMapper.xml L47 · Missing `orders.user_id` index
+- Business Planner → Performance improvement → order conversion rate +3.2%
+- Architect → Redis 2-tier cache design, recommendation service API contracts
+- Backend + Data → SQL optimization, recommendation API integration, cache layer
+- Compliance PM → Regression test plan, gray-scale release strategy
+
+---
+
+### Scenario 3 · Review / 项目评审
+
+Pre-launch quality gate, security audit, AI compliance check. Generates a CTO-ready report.
+
+```
+/dev-team [项目评审]
+
+AI 客服系统明天上线，需要全面评审
+
+关注点：代码安全 · AI 幻觉风险 · 高并发稳定性 · 数据隐私合规
+
+关键文件：
+src/chat/ChatController.java
+src/ai/LLMService.java
+src/data/UserSessionRepository.java
+
+要求：生成可给 CTO 汇报的评审报告
+```
+
+**Expected output / 预期输出：**
+- Code Auditor → SQL injection (ChatController L89), session token stored in plaintext, LLM call has no timeout guard
+- Architect → Concurrency bottleneck at QPS 500, missing hallucination grounding
+- Compliance PM → Go/No-Go: conditional pass (fix 2 critical issues first), PIPL compliance gap identified
+
+---
+
+## Scenario Selection Guide / 场景选择指南
+
+| Scenario | Command | Agents | When |
+|---|---|---|---|
+| Greenfield | `/dev-team [全新项目] ...` | All 9 | New feature, new product |
+| Refactor | `/dev-team [重构优化] ...` | Auditor → Arch → Dev → PM | Performance, tech debt, AI upgrade |
+| Review | `/dev-team [项目评审] ...` | Auditor + Arch + PM | Pre-launch, security gate |
+| Bug fix | `/dev-team [修复] ...` | Auditor + Dev + PM | Targeted fix |
+| UI only | `/dev-team [前端] ...` | Frontend + PM | Style / component changes |
 
 ---
 

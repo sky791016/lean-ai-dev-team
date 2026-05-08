@@ -339,6 +339,7 @@
     <a href="#manifesto" data-i18n="nav-why">Why Lean AI</a>
     <a href="#demo" data-i18n="nav-demo">Demo</a>
     <a href="#cases" data-i18n="nav-cases">Use Cases</a>
+    <a href="#scenarios" data-i18n="nav-scenarios">How to Use</a>
     <a href="#team" data-i18n="nav-team">The Team</a>
     <a href="#publications" data-i18n="nav-books">Books</a>
     <a href="#whitepaper" data-i18n="nav-whitepaper">Whitepaper</a>
@@ -529,7 +530,7 @@
       </div>
       <div id="terminal" style="padding:1.5rem; font-family:'Fira Code',monospace; font-size:.85rem; line-height:1.9; min-height:420px;">
         <div class="t-line" style="color:#94a3b8;">$ <span style="color:#e2e8f0;">/dev-team</span> <span style="color:#34d399;">Build a procurement AI agent for contract risk review</span></div>
-        <div class="t-line t-delay-1" style="color:#6c63ff; margin-top:.5rem;">⚡ Lean AI Dev Team activated — 8 agents loading...</div>
+        <div class="t-line t-delay-1" style="color:#6c63ff; margin-top:.5rem;">⚡ Lean AI Dev Team activated — 9 agents loading...</div>
 
         <div class="t-line t-delay-2" style="margin-top:1rem;">
           <span style="color:#fbbf24;">▶ Phase 1 · 业务规划师</span>
@@ -589,7 +590,7 @@
         </div>
 
         <div class="t-line t-delay-8" style="margin-top:1rem; color:#6c63ff;">
-          ✨ Report ready. All 8 agents completed. Total wall time: ~4 min.
+          ✨ Report ready. All 9 agents completed. Total wall time: ~4 min.
         </div>
         <div class="t-cursor t-delay-8">█</div>
       </div>
@@ -827,7 +828,7 @@
   <div class="container" style="text-align:center;">
     <p class="section-label" data-i18n="idemo-label">Interactive Demo</p>
     <h2 data-i18n="idemo-h2">Live Agent Workflow — Click to Run</h2>
-    <p class="subtitle" style="margin:0 auto 2.5rem;" data-i18n="idemo-subtitle">Press <strong>▶ Run Demo</strong> to watch all 8 agents execute a real contract risk AI project — step by step, in real time.</p>
+    <p class="subtitle" style="margin:0 auto 2.5rem;" data-i18n="idemo-subtitle">Press <strong>▶ Run Demo</strong> to watch all 9 agents execute a real contract risk AI project — step by step, in real time.</p>
 
     <div style="max-width:900px; margin:0 auto; border-radius:16px; overflow:hidden; border:1px solid var(--border); box-shadow:0 32px 80px rgba(0,0,0,.7);">
       <!-- Window chrome -->
@@ -891,7 +892,7 @@
       <!-- Status bar -->
       <div style="background:#13131c; border-top:1px solid var(--border); padding:.5rem 1rem; display:flex; justify-content:space-between; align-items:center; font-size:.72rem; font-family:monospace;">
         <span id="demo-status" style="color:#475569;" data-i18n="demo-ready">Ready — press ▶ Run Demo to start</span>
-        <span style="color:#475569;" data-i18n="demo-footer-right">Lean AI Dev Team · 8 agents · Apache 2.0 · Kai Shi</span>
+        <span style="color:#475569;" data-i18n="demo-footer-right">Lean AI Dev Team · 9 agents · Apache 2.0 · Kai Shi</span>
       </div>
     </div>
   </div>
@@ -1098,7 +1099,7 @@ function runDemo() {
   const cmdEl = document.getElementById('typed-cmd');
   typeText(cmdEl, COMMAND, 28, () => {
     document.getElementById('cmd-cursor').style.display = 'none';
-    setStatus('⚡ Lean AI Dev Team activated — 8 agents loading...', 8);
+    setStatus('⚡ Lean AI Dev Team activated — 9 agents loading...', 8);
 
     const phases = [
       { tab:1, delay:800,  label:'Phase 1 · Business Planner running...', prog:20 },
@@ -1118,11 +1119,202 @@ function runDemo() {
     });
 
     demoTimers.push(setTimeout(() => {
-      setStatus('✨ Complete — all 8 agents finished in ~4 min · 0 conflicts', 100);
+      setStatus('✨ Complete — all 9 agents finished in ~4 min · 0 conflicts', 100);
       document.getElementById('demoRunBtn').textContent = '▶ Run Again';
       document.getElementById('demoRunBtn').disabled = false;
       demoRunning = false;
     }, 16000));
+  });
+}
+</script>
+
+
+<!-- HOW TO USE — 3 SCENARIOS -->
+<section id="scenarios" style="padding:5rem 2rem; background:var(--bg);">
+  <div class="container">
+    <p class="section-label">How to Use · 三种使用场景</p>
+    <h2>One Skill. Three Scenarios. Zero Guesswork.</h2>
+    <p class="subtitle">Pick your scenario, paste the prompt, watch 9 agents coordinate. Every scenario ships a full report — strategy to code to compliance sign-off.</p>
+
+    <!-- SCENARIO TABS -->
+    <div style="display:flex; gap:.75rem; margin-bottom:2rem; flex-wrap:wrap;">
+      <button onclick="showScenario('greenfield')" id="tab-greenfield"
+        style="padding:.6rem 1.4rem; border-radius:8px; border:1px solid var(--accent); background:rgba(108,99,255,.15); color:var(--accent2); font-weight:700; cursor:pointer; font-size:.9rem;">
+        全新项目 · Greenfield
+      </button>
+      <button onclick="showScenario('refactor')" id="tab-refactor"
+        style="padding:.6rem 1.4rem; border-radius:8px; border:1px solid var(--border); background:transparent; color:var(--muted); font-weight:600; cursor:pointer; font-size:.9rem;">
+        重构优化 · Refactor
+      </button>
+      <button onclick="showScenario('review')" id="tab-review"
+        style="padding:.6rem 1.4rem; border-radius:8px; border:1px solid var(--border); background:transparent; color:var(--muted); font-weight:600; cursor:pointer; font-size:.9rem;">
+        项目评审 · Review
+      </button>
+    </div>
+
+    <!-- SCENARIO 1: GREENFIELD -->
+    <div id="scenario-greenfield" style="display:block;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start;">
+        <div>
+          <h3 style="color:var(--accent2); margin-bottom:1rem;">全新项目 — 从一句话需求到完整交付</h3>
+          <p style="color:var(--muted); margin-bottom:1.5rem; font-size:.95rem;">适用：新功能、新产品、AI 系统从零构建。9 个智能体全部启动，从战略到代码一步到位。</p>
+          <div style="background:rgba(108,99,255,.06); border:1px solid rgba(108,99,255,.2); border-radius:10px; padding:1.25rem; margin-bottom:1rem;">
+            <div style="font-size:.75rem; color:var(--muted); margin-bottom:.5rem; text-transform:uppercase; letter-spacing:.05em;">提示词示例 · Prompt</div>
+            <code style="font-family:'Fira Code',monospace; font-size:.82rem; color:var(--text); line-height:1.8; display:block; white-space:pre-wrap;">/dev-team [全新项目]
+
+项目背景：法务团队每天审查 50+ 份合同，
+平均耗时 2 小时/份
+
+目标：构建合同风险审查 AI 智能体，
+自动识别高风险条款并给出修改建议
+
+约束：核心 ERP 不能修改，需要人工最终确认
+
+技术栈：Python Flask + PostgreSQL + React</code>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:.5rem;">
+            <span style="background:rgba(52,211,153,.1); border:1px solid rgba(52,211,153,.3); color:#34d399; border-radius:6px; padding:.2rem .7rem; font-size:.78rem;">全部 9 智能体</span>
+            <span style="background:rgba(52,211,153,.1); border:1px solid rgba(52,211,153,.3); color:#34d399; border-radius:6px; padding:.2rem .7rem; font-size:.78rem;">ROI 先行</span>
+            <span style="background:rgba(52,211,153,.1); border:1px solid rgba(52,211,153,.3); color:#34d399; border-radius:6px; padding:.2rem .7rem; font-size:.78rem;">API 契约锁定</span>
+          </div>
+        </div>
+        <div style="background:#0d0d14; border:1px solid var(--border); border-radius:12px; overflow:hidden;">
+          <div style="background:#1a1a24; padding:.6rem 1rem; border-bottom:1px solid var(--border); font-size:.75rem; color:var(--muted); font-family:monospace;">团队输出预览 · Output Preview</div>
+          <div style="padding:1.25rem; font-family:'Fira Code',monospace; font-size:.78rem; line-height:1.9; color:#64748b;">
+            <div style="color:#fbbf24;">▶ Phase 1 · 业务规划师 <span style="color:#34d399;">✓</span></div>
+            <div style="padding-left:1.2rem; font-size:.72rem;">L3 流程协同 · 控险+增效 · 3阶段路线图</div>
+            <div style="color:#34d399; margin-top:.4rem;">▶ Phase 2 · 产品经理 <span style="color:#34d399;">✓</span></div>
+            <div style="padding-left:1.2rem; font-size:.72rem;">ROI: −70%审查时间 · ¥2.4M/年节省</div>
+            <div style="color:#38bdf8; margin-top:.4rem;">▶ Phase 3 · 业务分析师 <span style="color:#34d399;">✓</span></div>
+            <div style="padding-left:1.2rem; font-size:.72rem;">8 用户故事 · 12 条 Given/When/Then</div>
+            <div style="color:#a78bfa; margin-top:.4rem;">▶ Phase 4 · 技术架构师 <span style="color:#34d399;">✓</span></div>
+            <div style="padding-left:1.2rem; font-size:.72rem;">5 ADRs · 11 REST API 契约 · Clean Core</div>
+            <div style="color:#f472b6; margin-top:.4rem;">▶ Phase 5 · 前端+后端+数据集成 <span style="color:#34d399;">✓</span></div>
+            <div style="padding-left:1.2rem; font-size:.72rem;">14 文件变更 · 迁移 SQL · 知识库 schema</div>
+            <div style="color:#fbbf24; margin-top:.4rem;">▶ Phase 6 · 合规PM <span style="color:#34d399;">✓</span></div>
+            <div style="padding-left:1.2rem; font-size:.72rem; color:#34d399;">✅ 四闭环通过 · 23步执行清单 · DoD签核</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCENARIO 2: REFACTOR -->
+    <div id="scenario-refactor" style="display:none;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start;">
+        <div>
+          <h3 style="color:#f87171; margin-bottom:1rem;">重构优化 — 先审计，再重构，有据可依</h3>
+          <p style="color:var(--muted); margin-bottom:1.5rem; font-size:.95rem;">适用：性能问题、技术债务清理、AI 能力升级。<strong style="color:#f87171;">代码审计师优先运行</strong>，摸清底细再动手。</p>
+          <div style="background:rgba(248,113,113,.06); border:1px solid rgba(248,113,113,.2); border-radius:10px; padding:1.25rem; margin-bottom:1rem;">
+            <div style="font-size:.75rem; color:var(--muted); margin-bottom:.5rem; text-transform:uppercase; letter-spacing:.05em;">提示词示例 · Prompt</div>
+            <code style="font-family:'Fira Code',monospace; font-size:.82rem; color:var(--text); line-height:1.8; display:block; white-space:pre-wrap;">/dev-team [重构优化]
+
+当前状况：
+- 订单查询 P99 延迟 4.2s，用户投诉多
+- 代码是 3 年前写的，缺少测试覆盖
+- 产品要加入个性化推荐功能
+
+目标：P99 降到 500ms，接入推荐模型
+
+相关文件：
+src/order/OrderService.java
+src/order/OrderMapper.xml
+数据库：MySQL，8000 万条订单记录</code>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:.5rem;">
+            <span style="background:rgba(248,113,113,.1); border:1px solid rgba(248,113,113,.3); color:#f87171; border-radius:6px; padding:.2rem .7rem; font-size:.78rem;">代码审计师优先</span>
+            <span style="background:rgba(248,113,113,.1); border:1px solid rgba(248,113,113,.3); color:#f87171; border-radius:6px; padding:.2rem .7rem; font-size:.78rem;">性能瓶颈诊断</span>
+            <span style="background:rgba(248,113,113,.1); border:1px solid rgba(248,113,113,.3); color:#f87171; border-radius:6px; padding:.2rem .7rem; font-size:.78rem;">有数据再重构</span>
+          </div>
+        </div>
+        <div style="background:#0d0d14; border:1px solid var(--border); border-radius:12px; overflow:hidden;">
+          <div style="background:#1a1a24; padding:.6rem 1rem; border-bottom:1px solid var(--border); font-size:.75rem; color:var(--muted); font-family:monospace;">团队输出预览 · Output Preview</div>
+          <div style="padding:1.25rem; font-family:'Fira Code',monospace; font-size:.78rem; line-height:1.9; color:#64748b;">
+            <div style="color:#f87171;">▶ Phase 0 · 代码审计师 <span style="color:#34d399;">✓</span></div>
+            <div style="padding-left:1.2rem; font-size:.72rem; color:#f87171;">架构健康度: 61/100</div>
+            <div style="padding-left:1.2rem; font-size:.72rem;">🔴 N+1查询（OrderMapper.xml L47）</div>
+            <div style="padding-left:1.2rem; font-size:.72rem;">🔴 缺少 orders.user_id 索引</div>
+            <div style="padding-left:1.2rem; font-size:.72rem;">🟡 3处重复的分页逻辑</div>
+            <div style="color:#fbbf24; margin-top:.4rem;">▶ Phase 1 · 业务规划师 <span style="color:#34d399;">✓</span></div>
+            <div style="padding-left:1.2rem; font-size:.72rem;">性能提升 → 订单转化率预估 +3.2%</div>
+            <div style="color:#a78bfa; margin-top:.4rem;">▶ Phase 4 · 技术架构师 <span style="color:#34d399;">✓</span></div>
+            <div style="padding-left:1.2rem; font-size:.72rem;">Redis 二级缓存 · 推荐服务接口设计</div>
+            <div style="color:#f472b6; margin-top:.4rem;">▶ Phase 5 · 后端+数据集成 <span style="color:#34d399;">✓</span></div>
+            <div style="padding-left:1.2rem; font-size:.72rem;">优化 SQL · 推荐 API 接入 · 缓存层实现</div>
+            <div style="color:#fbbf24; margin-top:.4rem;">▶ Phase 6 · 合规PM <span style="color:#34d399;">✓</span></div>
+            <div style="padding-left:1.2rem; font-size:.72rem; color:#34d399;">✅ 回归测试计划 · 灰度发布方案</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCENARIO 3: REVIEW -->
+    <div id="scenario-review" style="display:none;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start;">
+        <div>
+          <h3 style="color:#fb923c; margin-bottom:1rem;">项目评审 — 上线前的最后一道防线</h3>
+          <p style="color:var(--muted); margin-bottom:1.5rem; font-size:.95rem;">适用：上线前质量把关、安全审查、AI 系统合规检查。生成可直接给 CTO 看的评审报告。</p>
+          <div style="background:rgba(251,146,60,.06); border:1px solid rgba(251,146,60,.2); border-radius:10px; padding:1.25rem; margin-bottom:1rem;">
+            <div style="font-size:.75rem; color:var(--muted); margin-bottom:.5rem; text-transform:uppercase; letter-spacing:.05em;">提示词示例 · Prompt</div>
+            <code style="font-family:'Fira Code',monospace; font-size:.82rem; color:var(--text); line-height:1.8; display:block; white-space:pre-wrap;">/dev-team [项目评审]
+
+AI 客服系统明天上线，需要全面评审
+
+关注点：
+1. 代码安全漏洞
+2. AI 幻觉风险
+3. 高并发稳定性
+4. 用户数据隐私合规
+
+关键文件：
+src/chat/ChatController.java
+src/ai/LLMService.java
+src/data/UserSessionRepository.java
+
+要求：生成可给 CTO 汇报的评审报告</code>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:.5rem;">
+            <span style="background:rgba(251,146,60,.1); border:1px solid rgba(251,146,60,.3); color:#fb923c; border-radius:6px; padding:.2rem .7rem; font-size:.78rem;">安全漏洞扫描</span>
+            <span style="background:rgba(251,146,60,.1); border:1px solid rgba(251,146,60,.3); color:#fb923c; border-radius:6px; padding:.2rem .7rem; font-size:.78rem;">Go/No-Go 建议</span>
+            <span style="background:rgba(251,146,60,.1); border:1px solid rgba(251,146,60,.3); color:#fb923c; border-radius:6px; padding:.2rem .7rem; font-size:.78rem;">CTO 报告</span>
+          </div>
+        </div>
+        <div style="background:#0d0d14; border:1px solid var(--border); border-radius:12px; overflow:hidden;">
+          <div style="background:#1a1a24; padding:.6rem 1rem; border-bottom:1px solid var(--border); font-size:.75rem; color:var(--muted); font-family:monospace;">团队输出预览 · Output Preview</div>
+          <div style="padding:1.25rem; font-family:'Fira Code',monospace; font-size:.78rem; line-height:1.9; color:#64748b;">
+            <div style="color:#f87171;">▶ Phase 0 · 代码审计师 <span style="color:#34d399;">✓</span></div>
+            <div style="padding-left:1.2rem; font-size:.72rem; color:#f87171;">🔴 SQL注入风险（ChatController L89）</div>
+            <div style="padding-left:1.2rem; font-size:.72rem; color:#f87171;">🔴 会话Token未加密存储</div>
+            <div style="padding-left:1.2rem; font-size:.72rem;">🟡 LLM 调用无超时保护</div>
+            <div style="padding-left:1.2rem; font-size:.72rem;">🟢 缺少请求频率限制</div>
+            <div style="color:#a78bfa; margin-top:.4rem;">▶ Phase 4 · 技术架构师 <span style="color:#34d399;">✓</span></div>
+            <div style="padding-left:1.2rem; font-size:.72rem;">并发评估：QPS 500 时存在瓶颈</div>
+            <div style="padding-left:1.2rem; font-size:.72rem;">幻觉防护：缺少 Grounding 机制</div>
+            <div style="color:#fbbf24; margin-top:.4rem;">▶ Phase 6 · 合规PM <span style="color:#34d399;">✓</span></div>
+            <div style="padding-left:1.2rem; font-size:.72rem; color:#f87171;">⚠️ 建议：修复 2 个高危项后上线</div>
+            <div style="padding-left:1.2rem; font-size:.72rem;">个保法合规：需补充数据脱敏</div>
+            <div style="padding-left:1.2rem; font-size:.72rem; color:#fbbf24;">Go/No-Go: 条件通过（修复后）</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+function showScenario(name) {
+  ['greenfield','refactor','review'].forEach(function(s) {
+    document.getElementById('scenario-' + s).style.display = s === name ? 'block' : 'none';
+    var tab = document.getElementById('tab-' + s);
+    if (s === name) {
+      tab.style.borderColor = 'var(--accent)';
+      tab.style.background = 'rgba(108,99,255,.15)';
+      tab.style.color = 'var(--accent2)';
+    } else {
+      tab.style.borderColor = 'var(--border)';
+      tab.style.background = 'transparent';
+      tab.style.color = 'var(--muted)';
+    }
   });
 }
 </script>
@@ -1227,6 +1419,27 @@ function runDemo() {
           <span class="tag">Conflict Report</span>
           <span class="tag">Execution Checklist</span>
           <span class="tag">DoD</span>
+        </div>
+      </div>
+
+      <!-- AGENT 9: CODE AUDITOR -->
+      <div class="agent-card" style="border-color: rgba(248,113,113,.3); grid-column: 1 / -1;">
+        <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+          <div>
+            <div class="agent-phase" style="color: #f87171;" data-i18n="agent9-phase">Phase 0 · Audit (重构/评审必跑)</div>
+            <div class="agent-name" style="color: #f87171;">代码审计师 <span>/ Code Auditor</span></div>
+          </div>
+          <div style="margin-left:auto;">
+            <span style="background:rgba(248,113,113,.12); border:1px solid rgba(248,113,113,.3); color:#f87171; border-radius:100px; padding:.25rem .75rem; font-size:.75rem; font-weight:600;">重构优化必跑</span>
+            <span style="background:rgba(248,113,113,.12); border:1px solid rgba(248,113,113,.3); color:#f87171; border-radius:100px; padding:.25rem .75rem; font-size:.75rem; font-weight:600; margin-left:.5rem;">项目评审必跑</span>
+          </div>
+        </div>
+        <div class="agent-desc" style="margin-top:.75rem;" data-i18n="agent9-desc">Audits existing code before any refactor or review begins. Detects security vulnerabilities (OWASP Top 10), performance bottlenecks (N+1 queries, missing indexes), code quality issues, and architecture debt. Produces a graded issue list so the team knows exactly what to fix first.</div>
+        <div class="agent-outputs">
+          <span class="tag" style="border-color:rgba(248,113,113,.4);color:#f87171;">Security Vulnerabilities</span>
+          <span class="tag" style="border-color:rgba(248,113,113,.4);color:#f87171;">Performance Bottlenecks</span>
+          <span class="tag" style="border-color:rgba(248,113,113,.4);color:#f87171;">Architecture Health Score</span>
+          <span class="tag" style="border-color:rgba(248,113,113,.4);color:#f87171;">Prioritized Fix List</span>
         </div>
       </div>
     </div>
@@ -1629,7 +1842,7 @@ const DICT = {
   'nav-cta':      { en:'🚀 Support Us →',zh:'🚀 支持我们 →' },
 
   'hero-h1':  { en:'The AI Dev Team That Thinks in Business Value', zh:'以业务价值为驱动的AI开发团队' },
-  'hero-p':   { en:'An 8-agent Claude Code skill that coordinates a full development team — from business strategy to ROI measurement to production code — powered by the <strong>Lean AI Methodology</strong>.', zh:'一个8智能体的 Claude Code 技能，从战略规划到 ROI 测量再到生产代码，全程协调开发团队——基于<strong>精益AI方法论</strong>驱动。' },
+  'hero-p':   { en:'An 8-agent Claude Code skill that coordinates a full development team — from business strategy to ROI measurement to production code — powered by the <strong>Lean AI Methodology</strong>.', zh:'一个9智能体的 Claude Code 技能，从战略规划到 ROI 测量再到生产代码，全程协调开发团队——基于<strong>精益AI方法论</strong>驱动。' },
   'hero-btn1':{ en:'Install the Skill →', zh:'安装技能 →' },
   'hero-btn2':{ en:'Meet the Team',       zh:'认识团队' },
 
@@ -1681,9 +1894,9 @@ const DICT = {
   'demo-subtitle':{ en:'Type one command. Eight agents coordinate automatically — strategy first, code last.', zh:'一条指令，八个智能体自动协调——战略优先，代码最后。' },
   'idemo-label':  { en:'Interactive Demo',   zh:'互动演示' },
   'idemo-h2':     { en:'Live Agent Workflow — Click to Run', zh:'实时智能体工作流——点击运行' },
-  'idemo-subtitle':{ en:'Press <strong>▶ Run Demo</strong> to watch all 8 agents execute a real contract risk AI project — step by step, in real time.', zh:'点击 <strong>▶ 运行演示</strong>，实时观看8个智能体逐步执行真实的合同风险AI项目。' },
+  'idemo-subtitle':{ en:'Press <strong>▶ Run Demo</strong> to watch all 9 agents execute a real contract risk AI project — step by step, in real time.', zh:'点击 <strong>▶ 运行演示</strong>，实时观看8个智能体逐步执行真实的合同风险AI项目。' },
   'demo-ready':   { en:'Ready — press ▶ Run Demo to start', zh:'就绪——点击▶ 运行演示开始' },
-  'demo-footer-right':{ en:'Lean AI Dev Team · 8 agents · Apache 2.0 · Kai Shi', zh:'精益AI开发团队 · 8智能体 · Apache 2.0 · 史凯' },
+  'demo-footer-right':{ en:'Lean AI Dev Team · 9 agents · Apache 2.0 · Kai Shi', zh:'精益AI开发团队 · 9智能体 · Apache 2.0 · 史凯' },
 
   'why-label':   { en:'Why Claude Code Skills', zh:'为什么使用Claude Code技能' },
   'why-h2':      { en:'AI Dev Teams Need a Brain, Not Just Tools', zh:'AI开发团队需要大脑，不只是工具' },
@@ -1726,7 +1939,7 @@ const DICT = {
   'case3-m3':{ en:'HR team capacity freed',        zh:'HR团队产能释放' },
   'case3-m4':{ en:'Time to MVP',                   zh:'MVP交付时间' },
 
-  'team-label':   { en:'The 8-Agent Team', zh:'8智能体团队' },
+  'team-label':   { en:'The 8-Agent Team', zh:'9智能体团队' },
   'team-h2':      { en:'Strategy to Code, Without Gaps', zh:'从战略到代码，无缝衔接' },
   'team-subtitle':{ en:'Each agent owns a distinct domain. Earlier agents set constraints that later agents must honor — especially API contracts between Architect → Frontend → Backend.', zh:'每个智能体拥有独立领域。前序智能体设定后续智能体必须遵守的约束——尤其是架构师→前端→后端之间的API契约。' },
   'agent1-phase':{ en:'Phase 1 · Strategy',       zh:'阶段1 · 战略' },
@@ -1742,6 +1955,9 @@ const DICT = {
   'agent6-desc': { en:"Implements APIs per the architect's contracts. Follows existing service patterns, adds @Transactional for multi-table writes, logs all controlled actions.", zh:'按架构师契约实现API。遵循现有服务模式，多表写入使用@Transactional，记录所有受控操作。' },
   'agent7-desc': { en:'Handles schema, migrations, knowledge base design, and external APIs. Crucially: designs the data feedback loop so AI outputs improve future models.', zh:'处理Schema、迁移、知识库设计和外部API。关键：设计数据反馈闭环，使AI输出改进未来模型。' },
   'agent8-phase':{ en:'Phase 6 · Closure', zh:'阶段6 · 收尾' },
+  'agent9-phase':{ en:'Phase 0 · Audit (Refactor/Review)', zh:'阶段0 · 代码审计（重构/评审必跑）' },
+  'agent9-desc': { en:'Audits existing code before any refactor or review begins. Detects security vulnerabilities (OWASP Top 10), performance bottlenecks (N+1 queries, missing indexes), code quality issues, and architecture debt. Produces a graded issue list so the team knows exactly what to fix first.', zh:'在任何重构或评审开始前，对现有代码进行全面审计。检测安全漏洞（OWASP Top 10）、性能瓶颈（N+1查询、缺少索引）、代码质量问题和架构技术债，输出分级问题清单，让团队清楚优先修什么。' },
+  'nav-scenarios':{ en:'How to Use', zh:'使用场景' },
   'agent8-desc': { en:'Consolidates all outputs, runs the four-loop check, detects interface conflicts, produces ordered execution checklist and Definition of Done.', zh:'汇总所有输出，运行四闭环检查，检测接口冲突，产出有序执行清单和完成定义。' },
 
   'method-label':  { en:'Lean AI Framework', zh:'精益AI框架' },
