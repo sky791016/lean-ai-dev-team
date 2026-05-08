@@ -4,6 +4,8 @@
 
 # dev-team — Lean AI Dev Team Skill
 
+### 🌐 [sky791016.github.io/lean-ai-dev-team](https://sky791016.github.io/lean-ai-dev-team/)
+
 [![Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Works with any IDE](https://img.shields.io/badge/Works_with-Any_IDE-6c63ff)](references/ide-compatibility.md)
 [![Claude Code](https://img.shields.io/badge/Claude_Code-Native-6c63ff)](https://claude.ai/code)
