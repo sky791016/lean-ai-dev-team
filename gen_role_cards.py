@@ -166,6 +166,24 @@ ROLES = [
             value="Compliance PM runs four closed-loop checks:\n  Value loop:   does it cover the business goal?\n  Data loop:    is there a data feedback mechanism?\n  Tech loop:    are all interfaces consistent?\n  Ops loop:     is post-launch monitoring in place?\n\nSolve problems before they happen.",
         ),
     ),
+    dict(
+        id="9-biz-person",
+        accent=(249, 115, 22),
+        zh=dict(
+            badge="业务人员  Business Stakeholder",
+            pain_label="你是不是有过这样的经历？",
+            pain="脑子里有个想法，但不会写代码\n找开发说了半天，对方听不懂\n最后做出来的东西，跟你想的完全两回事",
+            value_label="有了它，不懂技术也能把项目做出来",
+            value="你只需要用大白话说清楚你想解决什么问题\n业务规划师帮你整理成可执行的方案\n产品经理帮你算清楚值不值得做\n架构师、前端、后端、数据团队自动跟进\n\n你是甲方，AI 是你的整支开发团队",
+        ),
+        en=dict(
+            badge="Business Stakeholder  (non-technical)",
+            pain_label="Does this sound like you?",
+            pain="You have a great idea but can't code.\nYou explained it to a developer — they didn't get it.\nWhat got built looked nothing like what you imagined.",
+            value_label="With Lean AI Dev Team, no technical background needed.",
+            value="Just describe your problem in plain language.\nBusiness Planner turns it into an actionable plan.\nProduct Manager checks if it's worth building.\nArchitect, Frontend, Backend, Data — all follow through.\n\nYou're the client. 8 AI agents are your dev team.",
+        ),
+    ),
 ]
 
 # ─── utilities ────────────────────────────────────────────────────────────────
@@ -383,14 +401,21 @@ def make_card(role, lang):
 
 
 # ─── generate all ─────────────────────────────────────────────────────────────
+import sys
+
 for lang in ("zh", "en"):
     os.makedirs(os.path.join(OUT_DIR, lang), exist_ok=True)
 
+# If a role id is passed as argument, only generate that one; otherwise generate all
+target = sys.argv[1] if len(sys.argv) > 1 else None
+
 for role in ROLES:
+    if target and role["id"] != target:
+        continue
     for lang in ("zh", "en"):
         card = make_card(role, lang)
         path = os.path.join(OUT_DIR, lang, f"{role['id']}.png")
         card.save(path, "PNG", dpi=(200, 200))
         print(f"  {path}")
 
-print("\nDone — 16 cards generated.")
+print(f"\nDone.")
