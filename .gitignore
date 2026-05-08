@@ -19,3 +19,7 @@ skills/
 
 # OS
 .DS_Store
+
+# v5 source archives (distributed as lean-ai-agile-agent-team/)
+lean-ai-agile-agent-team_v5/
+lean-ai-agile-agent-team-skill-v5-correct.zip

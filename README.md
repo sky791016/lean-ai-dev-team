@@ -2,7 +2,7 @@
 
 <img src="assets/logo.png" alt="Lean AI Dev Team" width="100" />
 
-# dev-team — Lean AI Dev Team Skill
+# Lean AI Agent Team Skills
 
 ### 🌐 [sky791016.github.io/lean-ai-dev-team](https://sky791016.github.io/lean-ai-dev-team/)
 
@@ -15,11 +15,26 @@
 
 ---
 
+## Two Skills, One Methodology
+
+This repository contains two complementary skills built on the **Lean AI Methodology (精益AI方法论)** by Kai Shi.
+
+| Skill | What it is | When to use |
+|---|---|---|
+| **`dev-team`** | 10-agent rapid delivery skill | You have a defined task — feature, refactor, or review. Run straight to code. |
+| **`lean-ai-agile-agent-team`** | Full-lifecycle strategy-to-delivery system | You're starting from zero or need to align goal → MVP → BA → architecture → sprint → ops properly. |
+
+---
+
 ## English
 
-### What It Does
+---
 
-A structured prompt system that routes your task through a **9-agent coordinated team** — from business strategy to production-ready code.
+### Skill 1 · `dev-team` — 10-Agent Rapid Delivery
+
+#### What It Does
+
+A structured prompt system that routes your task through a **10-agent coordinated team** — from business strategy to production-ready code.
 
 **Three core advantages:**
 
@@ -27,7 +42,173 @@ A structured prompt system that routes your task through a **9-agent coordinated
 
 > **Minimum viable end-to-end loop** — Business case first, then requirements, then architecture, then parallel code, then 4-loop sign-off. You get a shippable increment with every run, not a pile of disconnected stubs.
 
-> **Saves tokens** — Structured phase handoffs replace open-ended chat. No iterative clarification loops. One structured prompt → complete output across all 9 roles.
+> **Saves tokens** — Structured phase handoffs replace open-ended chat. No iterative clarification loops. One structured prompt → complete output across all 10 roles.
+
+#### Install
+
+**Claude Code:**
+```bash
+git clone https://github.com/sky791016/lean-ai-dev-team ~/.claude/skills/dev-team
+```
+
+**All other IDEs:**
+Copy the contents of [`SKILL.md`](SKILL.md) into your IDE's system prompt / instruction file.
+
+#### Three Scenarios
+
+**1 · Greenfield**
+```
+[全新项目]
+Background: Legal team reviews 50+ contracts/day, avg 2 hrs each
+Goal: Build a contract risk AI agent — auto-flag high-risk clauses
+Constraints: Core ERP (SAP) must not be modified; human final sign-off required
+Stack: Python Flask + PostgreSQL + React
+```
+
+**2 · Refactor**
+```
+[重构优化]
+Current: Order query P99 = 4.2s, 3-year-old code, no test coverage
+Goal: P99 under 500ms + AI personalized recommendations
+Files: src/order/OrderService.java
+Scale: MySQL, 80M rows
+```
+
+**3 · Review**
+```
+[项目评审]
+AI customer service system launching tomorrow — full review
+Focus: Code security · AI hallucination risk · High concurrency · Data privacy
+Files: src/chat/ChatController.java, src/ai/LLMService.java
+Output: CTO-ready review report
+```
+
+#### The 10-Agent Team
+
+```
+Phase 0  Code Auditor               [required for refactor/review]
+         OWASP security · N+1 detection · Architecture health score
+
+Phase 1  Business Planner           [independent]
+         L1-L5 scenario level · Business case · 3-phase roadmap
+
+Phase 2  Product Manager            [independent]
+         ROI model · Scenario card · KPI dashboard
+
+Phase 3  Business Analyst           [independent]
+         Epics · User stories · IFPUG FP analysis · Acceptance criteria
+
+Phase 4  Technical Architect        [independent]
+         ADRs · API contracts · Clean Core design
+
+Phase 5  Frontend  ─┐
+(parallel) Backend  ─┤  All implement against architect's contracts
+         Data       ─┤
+         Value      ─┘  Assessor: quantitative benefit evaluation
+
+Phase 6  Compliance PM
+         4-loop check · Conflict report · DoD sign-off
+```
+
+---
+
+### Skill 2 · `lean-ai-agile-agent-team` — Full Lifecycle Delivery System
+
+#### What It Does
+
+A complete **Lean Data + Lean AI + Agile Agent Team** delivery system for projects that need disciplined strategy-to-execution alignment.
+
+The full delivery path:
+
+```
+Strategic Goal Alignment
+→ Divergent Requirements
+→ Convergent Requirements
+→ Scenario System & Prioritization
+→ MVP Definition
+→ Metrics System
+→ BA Pipeline (Epic / Story / FP / PRD)
+→ Lean Data Model
+→ AI Capability Design
+→ Architecture & Tech POC
+→ Sprint Delivery
+→ Testing & Release
+→ Measurement & Value Review
+→ Operations & Continuous Improvement
+→ Controlled Agent Evolution
+```
+
+#### Install
+
+**Claude Code:**
+```bash
+git clone https://github.com/sky791016/lean-ai-dev-team /tmp/lean-ai
+mkdir -p ~/.claude/skills
+cp -R /tmp/lean-ai/lean-ai-agile-agent-team ~/.claude/skills/
+```
+
+Or using the bundled script:
+```bash
+bash lean-ai-agile-agent-team/scripts/install.sh /path/to/your/project
+```
+
+#### Bootstrap an Empty Project
+
+```bash
+bash .claude/skills/lean-ai-agile-agent-team/scripts/bootstrap-lean-ai-project.sh
+```
+
+Generates:
+```
+input/
+docs/strategy/   docs/discovery/   docs/scenarios/   docs/metrics/
+docs/ba/         docs/architecture/ docs/delivery/    docs/ops/
+tasks/
+```
+
+#### Common Prompts
+
+```text
+Use lean-ai-agile-agent-team. Bootstrap this empty project. Do not code yet.
+```
+```text
+Use lean-ai-agile-agent-team. Run goal alignment based on input/brief.md.
+```
+```text
+Use lean-ai-agile-agent-team. Diverge requirements, converge them, create scenario canvas, prioritize, define MVP, and create metrics system.
+```
+```text
+Use lean-ai-agile-agent-team. Run BA pipeline: Epic Breakdown, Story Narrative, Functional Breakdown, PRD, validation system.
+```
+```text
+Use lean-ai-agile-agent-team. Design Lean Data Model and AI Capability Design for the selected MVP scenarios.
+```
+```text
+Use lean-ai-agile-agent-team. Start Sprint 1. Every task must link to scenario and metric.
+```
+```text
+Use lean-ai-agile-agent-team. Run value realization review and update operations backlog.
+```
+
+#### 15 Agent Roles
+
+| Role | Responsibility |
+|---|---|
+| Strategy Lead | Goal alignment, value hypothesis, constraints |
+| Lean Data Strategist | Scenario-to-data mapping, data quality, governance |
+| Lean AI Scenario Designer | AI opportunity identification, necessity test, human-in-loop design |
+| Business Analyst | Epic Breakdown, Story Narrative, IFPUG FP, PRD |
+| Product Manager | MVP definition, user value, roadmap, adoption |
+| Architecture Planner | System boundary, architecture, integration decisions |
+| Tech Lead | Tech stack, POC, engineering standards |
+| Data Engineer | Master/transaction/event/knowledge data, pipelines |
+| AI Engineer | Model / RAG / agent / prompt / evaluation |
+| UX Designer | User journey, interface structure, usability |
+| Development Engineers | Frontend, backend, integration, infrastructure |
+| Test Engineer | Test strategy, UAT, regression, AI quality tests |
+| Project Manager | Sprint plan, risk, dependencies, delivery rhythm |
+| Operations Manager | Release ops, feedback channel, metric review |
+| Agent Evolution Coach | Evidence-based improvement of the agent team |
 
 ---
 
@@ -52,81 +233,40 @@ Full setup guide: [`references/ide-compatibility.md`](references/ide-compatibili
 
 ---
 
-### Install
-
-**Claude Code (one command):**
-```bash
-git clone https://github.com/sky791016/lean-ai-dev-team ~/.claude/skills/dev-team
-```
-
-**All other IDEs:**
-Copy the contents of [`SKILL.md`](SKILL.md) into your IDE's system prompt / instruction file.
-
----
-
-### Three Scenarios
-
-**1 · Greenfield**
-```
-[全新项目]
-Background: Legal team reviews 50+ contracts/day, avg 2 hrs each
-Goal: Build a contract risk AI agent — auto-flag high-risk clauses
-Constraints: Core ERP (SAP) must not be modified; human final sign-off required
-Stack: Python Flask + PostgreSQL + React
-```
-
-All 9 agents activate. Output: ROI model → API contracts → parallel code → DoD sign-off.
-
-**2 · Refactor**
-```
-[重构优化]
-Current: Order query P99 = 4.2s, 3-year-old code, no test coverage
-Goal: P99 under 500ms + AI personalized recommendations
-Files: src/order/OrderService.java
-Scale: MySQL, 80M rows
-```
-
-Code Auditor first → diagnoses bottlenecks → architect designs → devs implement.
-
-**3 · Review**
-```
-[项目评审]
-AI customer service system launching tomorrow — full review
-Focus: Code security · AI hallucination risk · High concurrency · Data privacy
-Files: src/chat/ChatController.java, src/ai/LLMService.java
-Output: CTO-ready review report
-```
-
-Code Auditor + Architect + Compliance PM → security report → Go/No-Go.
-
-Full examples: [`references/scenario-examples.md`](references/scenario-examples.md)
-
----
-
-### The 9-Agent Team
+### Repository Structure
 
 ```
-Phase 0  Code Auditor               [required for refactor/review]
-         OWASP security · N+1 detection · Architecture health score
-
-Phase 1  Business Planner           [independent]
-         L1-L5 scenario level · Business case · 3-phase roadmap
-
-Phase 2  Product Manager            [independent]
-         ROI model · Scenario card · KPI dashboard
-
-Phase 3  Business Analyst           [independent]
-         User stories · As-Is/To-Be · Given/When/Then criteria
-
-Phase 4  Technical Architect        [independent]
-         ADRs · API contracts · Clean Core design
-
-Phase 5  Frontend  ─┐
-(parallel) Backend  ─┤  All implement against architect's contracts
-         Data       ─┘
-
-Phase 6  Compliance PM
-         4-loop check · Conflict report · DoD sign-off
+lean-ai-dev-team/
+├── SKILL.md                          ← dev-team skill (10-agent rapid delivery)
+├── README.md
+├── LICENSE
+├── references/
+│   ├── scenario-examples.md
+│   └── ide-compatibility.md
+├── assets/
+│   └── logo.png
+└── lean-ai-agile-agent-team/         ← Full lifecycle skill (v2)
+    ├── SKILL.md
+    ├── README.md
+    ├── MANIFEST.json
+    ├── protocols/
+    │   └── lean-ai-delivery-protocol.md
+    ├── roles/                        ← 15 role definitions
+    ├── scripts/
+    │   ├── bootstrap-lean-ai-project.sh
+    │   ├── install.sh
+    │   └── run-lean-ai-quality-check.sh
+    └── templates/                    ← 30 document templates (00–30)
+        ├── input/
+        ├── strategy/
+        ├── discovery/
+        ├── scenarios/
+        ├── metrics/
+        ├── ba/
+        ├── architecture/
+        ├── delivery/
+        ├── ops/
+        └── tasks/
 ```
 
 ---
@@ -142,28 +282,12 @@ Phase 6  Compliance PM
 
 ---
 
-### Repository Structure
-
-```
-dev-team/
-├── SKILL.md                          ← Skill definition (core file)
-├── README.md
-├── LICENSE
-├── references/
-│   ├── scenario-examples.md          ← Full prompt templates + output previews
-│   └── ide-compatibility.md          ← Setup guide for all IDEs
-└── assets/
-    └── logo.png
-```
-
----
-
 ### Citation
 
 ```bibtex
 @software{lean_ai_dev_team_2026,
   author  = {Kai Shi (史凯)},
-  title   = {Lean AI Dev Team — A 9-Agent AI Development Skill},
+  title   = {Lean AI Agent Team Skills},
   year    = {2026},
   url     = {https://github.com/sky791016/lean-ai-dev-team},
   license = {Apache-2.0}
@@ -185,44 +309,36 @@ Commercial use → sky.kugua@gmail.com
 
 ## 中文说明
 
-### 这是什么
+---
 
-一套结构化 Prompt 系统，将你的任务路由给 **9 个协作 AI 智能体**：先算清楚做不做、再设计系统、再并行实现、最后四闭环验收。
+### 两个 Skill，一套方法论
 
-**三大核心优势，解决 AI 编程最痛的问题：**
+本仓库包含两个基于**精益AI方法论**（史凯 Kai Shi 著）的互补 Skill：
 
-> **大幅减少大模型幻觉** — 每个智能体只拿到它需要的上下文：审计师先读代码再诊断，架构师先设计再让开发动手，合规 PM 最后核查所有输出是否一致。没有任何一个智能体在猜测。
-
-> **围绕目标直接交付最小 MVP 的端到端闭环** — 先商业价值，再需求，再架构，再并行编码，最后四闭环签核。每次运行都能拿到可交付的增量，而不是一堆互不相干的代码片段。
-
-> **大幅节约 Token** — 结构化分阶段交接取代无目的的来回对话。不需要反复澄清需求。一个结构化 Prompt，9 个角色完整输出，直接到位。
+| Skill | 定位 | 适用场景 |
+|---|---|---|
+| **`dev-team`** | 10 智能体快速交付 | 任务已明确（功能开发、重构、评审），直接跑到代码 |
+| **`lean-ai-agile-agent-team`** | 完整生命周期交付系统 | 从零开始，或需要严格走：目标对齐 → MVP → BA → 架构 → Sprint → 运营 |
 
 ---
 
-### 兼容所有 IDE
+### Skill 1 · `dev-team` — 10 智能体快速交付
 
-| IDE / 工具 | 使用方式 |
-|---|---|
-| **Claude Code** | 原生 `/dev-team` 斜杠命令 |
-| **Cursor** | 粘贴 `SKILL.md` → `.cursorrules` |
-| **Windsurf** | 粘贴 `SKILL.md` → `AGENTS.md` |
-| **GitHub Copilot** | 粘贴 → `.github/copilot-instructions.md` |
-| **JetBrains AI** | 设置 → AI → 提示词 → 新建 |
-| **通义灵码** | 自定义指令 → 粘贴 `SKILL.md` |
-| **CodeBuddy** | 指令库 → 新建 → 粘贴 `SKILL.md` |
-| **百度 Comate** | 系统提示词 → 粘贴 `SKILL.md` |
-| **Augment Code** | Workspace Instructions |
-| **Continue.dev** | `config.json` → `systemMessage` |
-| **Dify / Coze / FastGPT** | 系统提示词 → 粘贴 `SKILL.md` |
-| **纯 API** | `system` 角色 → `SKILL.md` 内容 |
+#### 这是什么
 
-完整配置手册：[`references/ide-compatibility.md`](references/ide-compatibility.md)
+一套结构化 Prompt 系统，将你的任务路由给 **10 个协作 AI 智能体**：先算清楚做不做、再设计系统、再并行实现、最后四闭环验收。
 
----
+**三大核心优势：**
 
-### 安装
+> **大幅减少大模型幻觉** — 每个智能体只拿到它需要的上下文：审计师先读代码再诊断，架构师先设计再让开发动手，合规 PM 最后核查所有输出是否一致。
 
-**Claude Code（一条命令）：**
+> **围绕目标直接交付最小 MVP 的端到端闭环** — 先商业价值，再需求，再架构，再并行编码，最后四闭环签核。
+
+> **大幅节约 Token** — 结构化分阶段交接取代无目的的来回对话。一个结构化 Prompt，10 个角色完整输出。
+
+#### 安装
+
+**Claude Code：**
 ```bash
 git clone https://github.com/sky791016/lean-ai-dev-team ~/.claude/skills/dev-team
 ```
@@ -232,84 +348,54 @@ git clone https://github.com/sky791016/lean-ai-dev-team ~/.claude/skills/dev-tea
 
 ---
 
-### 三种使用场景
+### Skill 2 · `lean-ai-agile-agent-team` — 完整生命周期交付系统
 
-**1 · 全新项目**
-```
-[全新项目]
+#### 这是什么
 
-项目背景：法务团队每天审查 50+ 份合同，平均耗时 2 小时/份
-目标：构建合同风险审查 AI 智能体，自动识别高风险条款并给出修改建议
-约束：核心 ERP 不能修改，需要人工最终确认
-技术栈：Python Flask + PostgreSQL + React
-```
+一套将"精益数据方法论 + 精益 AI 体系 + 敏捷智能体团队"合成的可执行协议。
 
-全部 9 个智能体激活。产出：ROI 模型 → API 契约 → 并行代码 → DoD 签核。
-
-**2 · 重构优化**
-```
-[重构优化]
-
-当前状况：订单查询 P99 延迟 4.2s，3 年前的代码，缺少测试覆盖
-目标：P99 降到 500ms，同时接入 AI 个性化推荐
-相关文件：src/order/OrderService.java
-数据规模：MySQL，8000 万条订单
-```
-
-代码审计师优先运行 → 诊断瓶颈 → 架构师设计方案 → 开发并行实现。
-
-**3 · 项目评审**
-```
-[项目评审]
-
-AI 客服系统明天上线，全面评审
-关注点：代码安全 · AI 幻觉风险 · 高并发 · 数据隐私合规
-关键文件：src/chat/ChatController.java, src/ai/LLMService.java
-要求：生成可给 CTO 汇报的评审报告
-```
-
-代码审计师 + 技术架构师 + 合规 PM → 安全报告 → 上线 Go/No-Go 建议。
-
-完整示例和输出预览：[`references/scenario-examples.md`](references/scenario-examples.md)
-
----
-
-### 9 智能体团队
+让空项目也能从战略规划走到开发、测试、评估、运营闭环：
 
 ```
-Phase 0  代码审计师                   [重构/评审必跑]
-         OWASP 安全 · N+1 检测 · 架构健康度评分
-
-Phase 1  业务规划师                   [独立运行]
-         L1–L5 场景分级 · 商业价值 · 三阶段路线图
-
-Phase 2  产品经理                     [独立运行]
-         ROI 测算 · 场景卡 · KPI 仪表盘
-
-Phase 3  业务分析师                   [独立运行]
-         用户故事 · As-Is/To-Be · Given/When/Then 验收标准
-
-Phase 4  技术架构师                   [独立运行]
-         ADR · API 契约 · Clean Core 设计
-
-Phase 5  前端开发  ─┐
-（并行）  后端开发  ─┤  全部按架构师契约实现
-         数据集成  ─┘
-
-Phase 6  合规项目管理
-         四闭环检查 · 冲突报告 · DoD 签核
+战略目标对齐 → 需求发散 → 需求收敛 → 场景识别 → 指标体系 → MVP 定义
+→ BA 业务分析 → 数据模型 → AI 能力设计 → 架构设计 → 技术 POC
+→ Sprint 开发 → 测试发布 → 度量评估 → 运营反馈 → Agent 团队进化
 ```
 
----
+#### 安装
 
-### 真实案例
+```bash
+git clone https://github.com/sky791016/lean-ai-dev-team /tmp/lean-ai
+mkdir -p ~/.claude/skills
+cp -R /tmp/lean-ai/lean-ai-agile-agent-team ~/.claude/skills/
+```
 
-| 案例 | 指标 | 结果 |
-|---|---|---|
-| 合同风险 AI | 审查时间 | 减少 72% |
-| 合同风险 AI | 年节省 | ¥2.4M |
-| 客诉处理 AI | 响应时间 | 8分钟 → 90秒 |
-| 简历筛选 AI | 筛选时间 | 45分钟 → 3分钟 |
+#### 初始化空项目
+
+```bash
+bash .claude/skills/lean-ai-agile-agent-team/scripts/bootstrap-lean-ai-project.sh
+```
+
+#### 常用 Prompt
+
+```text
+Use lean-ai-agile-agent-team. Bootstrap this empty project. Do not code yet.
+```
+```text
+Use lean-ai-agile-agent-team. Run goal alignment based on input/brief.md.
+```
+```text
+Use lean-ai-agile-agent-team. Diverge requirements, converge them, create scenario canvas, prioritize scenarios, define MVP, and create metrics system.
+```
+```text
+Use lean-ai-agile-agent-team. Run BA pipeline after MVP definition: Epic Breakdown, Story Narrative, Functional Breakdown, PRD, and validation system.
+```
+```text
+Use lean-ai-agile-agent-team. Start Sprint 1 for the selected MVP scenario. Every task must link to scenario and metric.
+```
+```text
+Use lean-ai-agile-agent-team. Run value realization review and update operations backlog.
+```
 
 ---
 
