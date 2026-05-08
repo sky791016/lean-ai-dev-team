@@ -1,399 +1,328 @@
 <div align="center">
 
-<img src="logo.png" alt="Lean AI Dev Team" width="120" />
+<img src="assets/logo.png" alt="Lean AI Dev Team" width="100" />
 
-# Lean AI Dev Team — Claude Code Skill
-### 精益AI开发团队技能
-
-**A 9-agent Claude Code skill that thinks in business value before writing a single line of code.**
-
-**一个9智能体的 Claude Code 技能，先想清楚价值，再动手写代码。**
+# dev-team — Lean AI Dev Team Skill
 
 [![Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
-[![Claude Code](https://img.shields.io/badge/Claude_Code-Skill-6c63ff)](https://claude.ai/code)
-[![Lean AI](https://img.shields.io/badge/Powered_by-Lean_AI_Methodology-34d399)](https://sky791016.github.io/lean-ai-dev-team/)
-[![Author](https://img.shields.io/badge/Author-Kai_Shi_史凯-a78bfa)](mailto:sky.kugua@gmail.com)
-
-[**🌐 Website**](https://sky791016.github.io/lean-ai-dev-team/) · [**Quick Start**](#quick-start) · [**The 9 Agents**](#the-8-agent-team) · [**Real Results**](#real-results)
+[![Works with any IDE](https://img.shields.io/badge/Works_with-Any_IDE-6c63ff)](references/ide-compatibility.md)
+[![Claude Code](https://img.shields.io/badge/Claude_Code-Native-6c63ff)](https://claude.ai/code)
+[![Lean AI](https://img.shields.io/badge/Lean_AI_Methodology-精益AI方法论-34d399)](https://sky791016.github.io/lean-ai-dev-team/)
 
 </div>
 
 ---
 
-## The Problem / 问题所在
+## English
 
-> *In the AI coding era, the bottleneck is no longer writing code — it's knowing which code to write, for whom, and why.*
+### What It Does
 
-> *在 AI 编程时代，瓶颈不再是写代码——而是知道该写哪段代码、为谁写、为什么写。*
+A structured prompt system that routes your task through a **9-agent coordinated team** — from business strategy to production-ready code.
 
-Most AI-assisted development falls into **7 new wastes** / 大多数 AI 辅助开发都陷入了 **7 种新浪费**：
+**Three core advantages:**
 
-| # | Waste / 浪费 | What happens / 发生了什么 |
-|---|---|---|
-| W1 | **Scenario-less Code** · 无场景编码 | AI generates correct code for the wrong problem |
-| W2 | **Metric-free Features** · 无指标功能 | Features ship with no KPIs — no one measures impact |
-| W3 | **Hallucinated Architecture** · 幻觉架构 | AI invents APIs and modules that don't match your codebase |
-| W4 | **Data Loop Neglect** · 数据回路缺失 | AI systems launch but never improve |
-| W5 | **Governance Debt** · 治理债务 | Agents act without audit trails or human escalation |
-| W6 | **Platform Before Scenario** · 平台先于场景 | Build AI platforms first, search for use cases second |
-| W7 | **Trust Erosion** · 信任崩塌 | One critical mistake causes the team to abandon AI entirely |
+> **Cuts hallucinations** — Each agent is given only what it needs: the auditor reads code before diagnosing, the architect designs before developers build, the compliance PM checks consistency across all outputs. No agent guesses.
 
-**This skill eliminates all 7. / 本技能消除以上全部 7 种浪费。**
+> **Minimum viable end-to-end loop** — Business case first, then requirements, then architecture, then parallel code, then 4-loop sign-off. You get a shippable increment with every run, not a pile of disconnected stubs.
+
+> **Saves tokens** — Structured phase handoffs replace open-ended chat. No iterative clarification loops. One structured prompt → complete output across all 9 roles.
 
 ---
 
-## Quick Start / 快速开始
+### Works With Any IDE
 
+| IDE / Tool | How |
+|---|---|
+| **Claude Code** | Native `/dev-team` slash command |
+| **Cursor** | Paste `SKILL.md` → `.cursorrules` |
+| **Windsurf** | Paste `SKILL.md` → `AGENTS.md` |
+| **GitHub Copilot** | Paste → `.github/copilot-instructions.md` |
+| **JetBrains AI** | Settings → AI → Prompts → new prompt |
+| **通义灵码** | Custom Instructions → paste `SKILL.md` |
+| **CodeBuddy** | Instruction library → new → paste `SKILL.md` |
+| **百度 Comate** | System prompt → paste `SKILL.md` |
+| **Augment Code** | Workspace Instructions |
+| **Continue.dev** | `config.json` → `systemMessage` |
+| **Dify / Coze / FastGPT** | System prompt → paste `SKILL.md` |
+| **Pure API** | `system` role → `SKILL.md` content |
+
+Full setup guide: [`references/ide-compatibility.md`](references/ide-compatibility.md)
+
+---
+
+### Install
+
+**Claude Code (one command):**
 ```bash
-# 1. Install / 安装
 git clone https://github.com/sky791016/lean-ai-dev-team ~/.claude/skills/dev-team
 ```
 
-Then in any Claude Code session / 然后在任意 Claude Code 会话中：
-
-```
-/dev-team Build a contract risk review AI agent
-```
-
-```
-/dev-team 构建一个合同风险审查 AI 智能体
-```
-
-That's it. The 8-agent team takes over. / 就这样，8 个智能体接管后续所有工作。
+**All other IDEs:**
+Copy the contents of [`SKILL.md`](SKILL.md) into your IDE's system prompt / instruction file.
 
 ---
 
-## The 9-Agent Team / 8 智能体团队
+### Three Scenarios
 
-Six sequential phases. Zero blind stubs — every agent reads existing code before writing.
-
-六个顺序阶段，零盲目代码——每个智能体在编写前都先阅读现有代码。
-
+**1 · Greenfield**
 ```
-Phase 1          Phase 2          Phase 3          Phase 4
-业务规划师   ──▶  产品经理    ──▶  业务分析师   ──▶  技术架构师
-Biz Planner      Product Mgr      Biz Analyst      Architect
-  "Why?"          "Worth it?"     "What exactly?"   "How?"
-                                                       │
-                                          Phase 5 (Parallel / 并行)
-                                    ┌──────────┬───────────┬──────────┐
-                                    │  前端开发  │  后端开发  │  数据集成  │
-                                    │ Frontend  │  Backend  │   Data   │
-                                    └──────────┴───────────┴──────────┘
-                                                       │
-                                                   Phase 6
-                                               合规项目管理
-                                             Compliance PM
-                                          4-Loop Check · DoD
+[全新项目]
+Background: Legal team reviews 50+ contracts/day, avg 2 hrs each
+Goal: Build a contract risk AI agent — auto-flag high-risk clauses
+Constraints: Core ERP (SAP) must not be modified; human final sign-off required
+Stack: Python Flask + PostgreSQL + React
 ```
 
-| Phase | Agent | Key Outputs |
+All 9 agents activate. Output: ROI model → API contracts → parallel code → DoD sign-off.
+
+**2 · Refactor**
+```
+[重构优化]
+Current: Order query P99 = 4.2s, 3-year-old code, no test coverage
+Goal: P99 under 500ms + AI personalized recommendations
+Files: src/order/OrderService.java
+Scale: MySQL, 80M rows
+```
+
+Code Auditor first → diagnoses bottlenecks → architect designs → devs implement.
+
+**3 · Review**
+```
+[项目评审]
+AI customer service system launching tomorrow — full review
+Focus: Code security · AI hallucination risk · High concurrency · Data privacy
+Files: src/chat/ChatController.java, src/ai/LLMService.java
+Output: CTO-ready review report
+```
+
+Code Auditor + Architect + Compliance PM → security report → Go/No-Go.
+
+Full examples: [`references/scenario-examples.md`](references/scenario-examples.md)
+
+---
+
+### The 9-Agent Team
+
+```
+Phase 0  Code Auditor               [required for refactor/review]
+         OWASP security · N+1 detection · Architecture health score
+
+Phase 1  Business Planner           [independent]
+         L1-L5 scenario level · Business case · 3-phase roadmap
+
+Phase 2  Product Manager            [independent]
+         ROI model · Scenario card · KPI dashboard
+
+Phase 3  Business Analyst           [independent]
+         User stories · As-Is/To-Be · Given/When/Then criteria
+
+Phase 4  Technical Architect        [independent]
+         ADRs · API contracts · Clean Core design
+
+Phase 5  Frontend  ─┐
+(parallel) Backend  ─┤  All implement against architect's contracts
+         Data       ─┘
+
+Phase 6  Compliance PM
+         4-loop check · Conflict report · DoD sign-off
+```
+
+---
+
+### Real Results
+
+| Case | Metric | Result |
 |---|---|---|
-| **0** | 代码审计师 · Code Auditor | Security vulns (OWASP Top 10), performance bottlenecks, architecture health score, prioritized fix list — **runs first for Refactor & Review** |
-| **1** | 业务规划师 · Business Planner | Business case, L1–L5 scenario level, 3-phase roadmap, stakeholder map |
-| **2** | 产品经理 · Product Manager | Lean AI scenario card, ROI model, KPI dashboard, go/no-go criteria |
-| **3** | 业务分析师 · Business Analyst | User stories, As-Is → To-Be flows, Given/When/Then acceptance criteria |
-| **4** | 技术架构师 · Technical Architect | ADRs, API contracts, Clean Core design, governance framework |
-| **5a** | 前端开发 · Frontend | Component changes, human-AI collaboration UI, ops dashboard |
-| **5b** | 后端开发 · Backend | API endpoints, service logic, audit logs |
-| **5c** | 数据集成 · Data Integration | Migration SQL, knowledge base, data feedback loop |
-| **6** | 合规项目管理 · Compliance PM | 4-loop check, conflict report, execution checklist, Definition of Done |
+| Contract Risk AI | Review time | −72% |
+| Contract Risk AI | Annual savings | ¥2.4M |
+| Customer Complaint AI | Response time | 8min → 90sec |
+| Resume Screening AI | Screening time | 45min → 3min |
 
 ---
 
-## Three Scenarios / 三种使用场景
-
-### Scenario 1 · Greenfield / 全新项目
-
-Start from scratch — new feature, new product, new AI system. All 9 agents activate.
+### Repository Structure
 
 ```
-/dev-team [全新项目]
+dev-team/
+├── SKILL.md                          ← Skill definition (core file)
+├── README.md
+├── LICENSE
+├── references/
+│   ├── scenario-examples.md          ← Full prompt templates + output previews
+│   └── ide-compatibility.md          ← Setup guide for all IDEs
+└── assets/
+    └── logo.png
+```
+
+---
+
+### Citation
+
+```bibtex
+@software{lean_ai_dev_team_2026,
+  author  = {Kai Shi (史凯)},
+  title   = {Lean AI Dev Team — A 9-Agent AI Development Skill},
+  year    = {2026},
+  url     = {https://github.com/sky791016/lean-ai-dev-team},
+  license = {Apache-2.0}
+}
+```
+
+---
+
+### License
+
+Copyright © 2026 **Kai Shi (史凯)** · sky.kugua@gmail.com · Founder of Lean AI Method
+
+Apache 2.0 with Non-Commercial Restriction.
+Free for personal, educational, non-commercial use.
+Commercial use → sky.kugua@gmail.com
+
+---
+---
+
+## 中文说明
+
+### 这是什么
+
+一套结构化 Prompt 系统，将你的任务路由给 **9 个协作 AI 智能体**：先算清楚做不做、再设计系统、再并行实现、最后四闭环验收。
+
+**三大核心优势，解决 AI 编程最痛的问题：**
+
+> **大幅减少大模型幻觉** — 每个智能体只拿到它需要的上下文：审计师先读代码再诊断，架构师先设计再让开发动手，合规 PM 最后核查所有输出是否一致。没有任何一个智能体在猜测。
+
+> **围绕目标直接交付最小 MVP 的端到端闭环** — 先商业价值，再需求，再架构，再并行编码，最后四闭环签核。每次运行都能拿到可交付的增量，而不是一堆互不相干的代码片段。
+
+> **大幅节约 Token** — 结构化分阶段交接取代无目的的来回对话。不需要反复澄清需求。一个结构化 Prompt，9 个角色完整输出，直接到位。
+
+---
+
+### 兼容所有 IDE
+
+| IDE / 工具 | 使用方式 |
+|---|---|
+| **Claude Code** | 原生 `/dev-team` 斜杠命令 |
+| **Cursor** | 粘贴 `SKILL.md` → `.cursorrules` |
+| **Windsurf** | 粘贴 `SKILL.md` → `AGENTS.md` |
+| **GitHub Copilot** | 粘贴 → `.github/copilot-instructions.md` |
+| **JetBrains AI** | 设置 → AI → 提示词 → 新建 |
+| **通义灵码** | 自定义指令 → 粘贴 `SKILL.md` |
+| **CodeBuddy** | 指令库 → 新建 → 粘贴 `SKILL.md` |
+| **百度 Comate** | 系统提示词 → 粘贴 `SKILL.md` |
+| **Augment Code** | Workspace Instructions |
+| **Continue.dev** | `config.json` → `systemMessage` |
+| **Dify / Coze / FastGPT** | 系统提示词 → 粘贴 `SKILL.md` |
+| **纯 API** | `system` 角色 → `SKILL.md` 内容 |
+
+完整配置手册：[`references/ide-compatibility.md`](references/ide-compatibility.md)
+
+---
+
+### 安装
+
+**Claude Code（一条命令）：**
+```bash
+git clone https://github.com/sky791016/lean-ai-dev-team ~/.claude/skills/dev-team
+```
+
+**其他所有 IDE：**
+将 [`SKILL.md`](SKILL.md) 的内容复制到你的 IDE 系统提示词 / 指令文件中。
+
+---
+
+### 三种使用场景
+
+**1 · 全新项目**
+```
+[全新项目]
 
 项目背景：法务团队每天审查 50+ 份合同，平均耗时 2 小时/份
-
 目标：构建合同风险审查 AI 智能体，自动识别高风险条款并给出修改建议
-
 约束：核心 ERP 不能修改，需要人工最终确认
 技术栈：Python Flask + PostgreSQL + React
 ```
 
-**Expected output / 预期输出：**
-- Business Planner → L3 流程协同, 控险+增效, 3-phase roadmap
-- Product Manager → ROI: −70% review time, ¥2.4M/yr savings, KPI dashboard
-- Business Analyst → 8 user stories, 12 Given/When/Then criteria, human-AI split
-- Architect → 5 ADRs, 11 REST API contracts, Clean Core + Cognitive Sidecar
-- FE + BE + Data → 14 files changed, migration SQL, knowledge base schema
-- Compliance PM → 4-loop pass, 23-step execution checklist, DoD signed
+全部 9 个智能体激活。产出：ROI 模型 → API 契约 → 并行代码 → DoD 签核。
 
----
-
-### Scenario 2 · Refactor / 重构优化
-
-Existing codebase with performance issues, tech debt, or AI capability upgrade. **Code Auditor runs first.**
-
+**2 · 重构优化**
 ```
-/dev-team [重构优化]
+[重构优化]
 
-当前状况：
-- 订单查询 P99 延迟 4.2s，用户投诉多
-- 代码是 3 年前写的，缺少测试覆盖
-- 产品要加入个性化推荐功能
-
-目标：P99 降到 500ms，接入推荐模型
-
-相关文件：src/order/OrderService.java, src/order/OrderMapper.xml
-数据库：MySQL，8000 万条订单记录
+当前状况：订单查询 P99 延迟 4.2s，3 年前的代码，缺少测试覆盖
+目标：P99 降到 500ms，同时接入 AI 个性化推荐
+相关文件：src/order/OrderService.java
+数据规模：MySQL，8000 万条订单
 ```
 
-**Expected output / 预期输出：**
-- Code Auditor → Architecture health: 61/100 · N+1 query at OrderMapper.xml L47 · Missing `orders.user_id` index
-- Business Planner → Performance improvement → order conversion rate +3.2%
-- Architect → Redis 2-tier cache design, recommendation service API contracts
-- Backend + Data → SQL optimization, recommendation API integration, cache layer
-- Compliance PM → Regression test plan, gray-scale release strategy
+代码审计师优先运行 → 诊断瓶颈 → 架构师设计方案 → 开发并行实现。
 
----
-
-### Scenario 3 · Review / 项目评审
-
-Pre-launch quality gate, security audit, AI compliance check. Generates a CTO-ready report.
-
+**3 · 项目评审**
 ```
-/dev-team [项目评审]
+[项目评审]
 
-AI 客服系统明天上线，需要全面评审
-
-关注点：代码安全 · AI 幻觉风险 · 高并发稳定性 · 数据隐私合规
-
-关键文件：
-src/chat/ChatController.java
-src/ai/LLMService.java
-src/data/UserSessionRepository.java
-
+AI 客服系统明天上线，全面评审
+关注点：代码安全 · AI 幻觉风险 · 高并发 · 数据隐私合规
+关键文件：src/chat/ChatController.java, src/ai/LLMService.java
 要求：生成可给 CTO 汇报的评审报告
 ```
 
-**Expected output / 预期输出：**
-- Code Auditor → SQL injection (ChatController L89), session token stored in plaintext, LLM call has no timeout guard
-- Architect → Concurrency bottleneck at QPS 500, missing hallucination grounding
-- Compliance PM → Go/No-Go: conditional pass (fix 2 critical issues first), PIPL compliance gap identified
+代码审计师 + 技术架构师 + 合规 PM → 安全报告 → 上线 Go/No-Go 建议。
+
+完整示例和输出预览：[`references/scenario-examples.md`](references/scenario-examples.md)
 
 ---
 
-## Scenario Selection Guide / 场景选择指南
-
-| Scenario | Command | Agents | When |
-|---|---|---|---|
-| Greenfield | `/dev-team [全新项目] ...` | All 9 | New feature, new product |
-| Refactor | `/dev-team [重构优化] ...` | Auditor → Arch → Dev → PM | Performance, tech debt, AI upgrade |
-| Review | `/dev-team [项目评审] ...` | Auditor + Arch + PM | Pre-launch, security gate |
-| Bug fix | `/dev-team [修复] ...` | Auditor + Dev + PM | Targeted fix |
-| UI only | `/dev-team [前端] ...` | Frontend + PM | Style / component changes |
-
----
-
-## The 4 Closed Loops / 四闭环检查
-
-Every task is verified against four loops before sign-off. / 每项任务在交付前都经过四个闭环验证。
+### 9 智能体团队
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                        4 CLOSED LOOPS                           │
-│                                                                 │
-│  💰  VALUE LOOP    What business problem? For whom? Measurable? │
-│      价值闭环       业务目标是否覆盖？结果是否可量化？             │
-│                                                                 │
-│  🗄️   DATA LOOP    AI outputs feed back → continuous learning   │
-│      数据闭环       数据有没有回流机制？AI输出能否改进未来模型？   │
-│                                                                 │
-│  🤖  MODEL LOOP    No vendor lock-in. Swap-ready architecture   │
-│      模型闭环       架构是否支持未来模型升级？不依赖单一供应商     │
-│                                                                 │
-│  📈  OPS LOOP      KPIs + monitoring defined before launch      │
-│      运营闭环       上线后监控是否就位？运营指标是否提前定义？     │
-└─────────────────────────────────────────────────────────────────┘
+Phase 0  代码审计师                   [重构/评审必跑]
+         OWASP 安全 · N+1 检测 · 架构健康度评分
+
+Phase 1  业务规划师                   [独立运行]
+         L1–L5 场景分级 · 商业价值 · 三阶段路线图
+
+Phase 2  产品经理                     [独立运行]
+         ROI 测算 · 场景卡 · KPI 仪表盘
+
+Phase 3  业务分析师                   [独立运行]
+         用户故事 · As-Is/To-Be · Given/When/Then 验收标准
+
+Phase 4  技术架构师                   [独立运行]
+         ADR · API 契约 · Clean Core 设计
+
+Phase 5  前端开发  ─┐
+（并行）  后端开发  ─┤  全部按架构师契约实现
+         数据集成  ─┘
+
+Phase 6  合规项目管理
+         四闭环检查 · 冲突报告 · DoD 签核
 ```
 
 ---
 
-## Real Results / 真实案例结果
+### 真实案例
 
-Three enterprise deployments built with this methodology / 三个使用本方法论落地的真实企业案例：
-
-### Contract Risk AI Agent / 合同风险审查智能体
-| Metric | Before | After |
+| 案例 | 指标 | 结果 |
 |---|---|---|
-| Contract review time | baseline | **−72%** |
-| Risk clause detection | baseline | **+58%** |
-| Annual labor savings | — | **¥2.4M** |
-| Time to MVP | — | **11 days** |
-
-### Customer Complaint Assistant / 客户投诉处理助手
-| Metric | Before | After |
-|---|---|---|
-| Avg response time | 8 min | **90 sec** |
-| Agent adoption rate | — | **91%** |
-| CSAT score | baseline | **+23 pts** |
-| Time to MVP | — | **8 days** |
-
-### Resume Screening AI / 简历筛选智能体
-| Metric | Before | After |
-|---|---|---|
-| Screening time per candidate | 45 min | **3 min** |
-| Quality-of-hire improvement | baseline | **+31%** |
-| HR capacity freed | — | **60%** |
-| Time to MVP | — | **14 days** |
+| 合同风险 AI | 审查时间 | 减少 72% |
+| 合同风险 AI | 年节省 | ¥2.4M |
+| 客诉处理 AI | 响应时间 | 8分钟 → 90秒 |
+| 简历筛选 AI | 筛选时间 | 45分钟 → 3分钟 |
 
 ---
 
-## How It Works / 运行原理
+### 方法论
 
-```
-You:  /dev-team Add a real-time fraud detection feature to our payment service
+基于 **精益AI方法论（Lean AI Methodology）**，作者：**史凯（Kai Shi）**
 
-─────────────────────────────────────────────────────────────────────────
-[Phase 1] Business Planner
-  → reads your codebase, defines scenario level (L1–L5), maps stakeholders
-  → output: business case + 3-phase roadmap
+> "AI 转型不是采购大模型，而是以业务场景为核心，对流程、数据、组织、技术、运营进行精益化重构。"
 
-[Phase 2] Product Manager
-  → validates ROI: how much to invest, how much saved, months to break even
-  → output: scenario card + KPI dashboard + go/no-go criteria
-
-[Phase 3] Business Analyst
-  → translates strategy to engineering: user stories + acceptance criteria
-  → output: Given/When/Then specs + As-Is → To-Be process maps
-
-[Phase 4] Technical Architect
-  → designs system BEFORE any code is written
-  → output: ADRs + API contracts (all subsequent agents lock to this)
-
-[Phase 5] Frontend + Backend + Data Integration (parallel)
-  → build simultaneously, zero guesswork, all contracts enforced
-  → every agent reads existing code before writing new code
-
-[Phase 6] Compliance PM
-  → runs 4-loop check, detects interface conflicts, signs off DoD
-  → nothing ships without this sign-off
-─────────────────────────────────────────────────────────────────────────
-```
+官网：[sky791016.github.io/lean-ai-dev-team](https://sky791016.github.io/lean-ai-dev-team/)
 
 ---
 
-## The Methodology / 方法论背景
+### 许可
 
-This skill implements the **Lean AI Methodology (精益AI方法论)** by **Kai Shi (史凯)**.
+Copyright © 2026 **Kai Shi (史凯)** · sky.kugua@gmail.com · Founder of Lean AI Method
 
-本技能是史凯《精益AI方法论》的工程实现。
-
-> *"AI transformation is not model procurement — it is lean reconstruction of processes, data, organization, technology, and operations, with business scenarios as the core."*
->
-> *"AI 转型不是采购模型——而是以业务场景为核心，对流程、数据、组织、技术、运营进行精益重构。"*
->
-> — Kai Shi (史凯) · Founder of Lean AI Method
-
-**10 Core Principles / 10 条核心原则**
-
-| # | Principle | 原则 |
-|---|---|---|
-| 1 | Scenario First | 场景优先——先找场景，再选模型 |
-| 2 | Value-Driven | 价值牵引——没有业务指标就不规模化投入 |
-| 3 | Small Steps, Fast Cycles | 小步快跑——POC → MVP → 规模化 |
-| 4 | Data Before Code | 数据先行——高质量 AI 需要高质量数据 |
-| 5 | Knowledge Compounds | 知识沉淀——护城河是业务知识，不是模型 |
-| 6 | Human-AI Collaboration | 人机协同——AI 重构分工，不取代人 |
-| 7 | Controlled Execution | 受控执行——越接近业务，治理越严格 |
-| 8 | Continuous Operations | 持续运营——上线是开始，不是终点 |
-| 9 | Platform Grows from Scenarios | 场景孵化平台——不要先建平台 |
-| 10 | Organizations Must Evolve | 组织必须进化——没有组织变革就没有真正的 AI 转型 |
-
-### Publications / 出版著作
-
-| Title | Publisher | Status |
-|---|---|---|
-| 精益数据方法论 · Lean Data Methodology | 机械工业出版社 | ✅ Published |
-| 数据要素价值化蓝图 | 机械工业出版社 | ✅ Published |
-| 高质量数据建设指南 | 机械工业出版社 | 🔜 Forthcoming |
-| **Lean AI Methodology** (English edition) | **Springer Nature** | 🔜 Forthcoming |
-
----
-
-## Repository Structure / 仓库结构
-
-```
-lean-ai-dev-team/
-├── index.html            # Bilingual landing page (zh/en auto-detect)
-├── logo.png
-├── skills/
-│   └── dev-team/
-│       └── SKILL.md      # Claude Code skill definition (the core file)
-├── role-cards/
-│   ├── zh/               # 9 persona cards in Chinese
-│   └── en/               # 9 persona cards in English
-├── analytics/
-│   ├── tracker.gs        # Google Apps Script visitor tracker
-│   └── SETUP.md          # Analytics setup guide
-├── gen_role_cards.py      # Card generator (Pillow)
-└── qrcode-poster.png      # QR poster for sharing
-```
-
----
-
-## Citation / 引用
-
-If you use this in your research or projects, please cite:
-
-如果你在研究或项目中使用了本技能，请注明出处：
-
-```bibtex
-@software{lean_ai_dev_team_2026,
-  author    = {Kai Shi (史凯)},
-  title     = {Lean AI Dev Team — An 8-Agent Claude Code Skill},
-  year      = {2026},
-  url       = {https://github.com/sky791016/lean-ai-dev-team},
-  note      = {Based on Lean AI Methodology (精益AI方法论)},
-  license   = {Apache-2.0}
-}
-```
-
-Or simply / 或简单注明：
-
-> Powered by [Lean AI Dev Team](https://github.com/sky791016/lean-ai-dev-team) — Kai Shi (史凯), 2026
-
----
-
-## Contributing / 贡献
-
-Issues and PRs welcome. Please open an issue first for significant changes.
-
-欢迎提交 Issue 和 PR，重大改动请先开 Issue 讨论。
-
----
-
-## License / 许可证
-
-Copyright © 2026 **Kai Shi (史凯)** · Founder of Lean AI Method · sky.kugua@gmail.com
-
-Licensed under **Apache License 2.0** with Non-Commercial Restriction:
-
-- ✅ Free for personal, educational, and internal non-commercial use
-- ✅ Free to modify and redistribute with attribution
-- ❌ Commercial use requires written authorization → sky.kugua@gmail.com
-
-All copies must retain:
-> *"Lean AI Dev Team — Copyright © 2026 Kai Shi (史凯), Founder of Lean AI Method"*
-
----
-
-<div align="center">
-
-**[sky791016.github.io/lean-ai-dev-team](https://sky791016.github.io/lean-ai-dev-team/)**
-
-Made with the Lean AI Methodology · 基于精益AI方法论构建
-
-**Kai Shi (史凯)** · sky.kugua@gmail.com
-
-*Forthcoming: Lean AI Methodology — Springer Nature*
-
-</div>
+Apache 2.0 附非商业限制。个人、教育、非商业用途免费。商业用途请联系 sky.kugua@gmail.com

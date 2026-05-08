@@ -1,4 +1,21 @@
+# Website files (maintained on website branch)
+index.html
+gen_qr.py
+gen_role_cards.py
+analytics/
+role-cards/
+qrcode-poster.png
+logo.png
+producthunt.md
+submit_ph.js
+
+# Node
 node_modules/
 package-lock.json
-submit_ph.js
-analytics/.env
+package.json
+
+# Skills subdir (SKILL.md is now at root)
+skills/
+
+# OS
+.DS_Store
