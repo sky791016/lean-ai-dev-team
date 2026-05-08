@@ -1815,11 +1815,11 @@ function toggleLang() {
 
 <!-- ── 访问统计埋点 ──────────────────────────────────────────────────────────────
      部署步骤见 analytics/SETUP.md
-     部署完成后将 YOUR_GAS_URL_HERE 替换为 Google Apps Script 网页应用 URL    -->
+     部署完成后将 https://script.google.com/macros/s/AKfycbzEICQCw50ODJFSkxXTXlIxoE0yZWs4gOjEt21xKUwB3HEwYoo-RbReQkUDhMeEj9Srbw/exec 替换为 Google Apps Script 网页应用 URL    -->
 <script>
 (function () {
-  var TRACKER = 'YOUR_GAS_URL_HERE';
-  if (!TRACKER || TRACKER === 'YOUR_GAS_URL_HERE') return; // 未配置时跳过
+  var TRACKER = 'https://script.google.com/macros/s/AKfycbzEICQCw50ODJFSkxXTXlIxoE0yZWs4gOjEt21xKUwB3HEwYoo-RbReQkUDhMeEj9Srbw/exec';
+  if (!TRACKER) return; // 未配置时跳过
 
   // 获取访客真实 IP，然后发送埋点
   fetch('https://api.ipify.org?format=json')
