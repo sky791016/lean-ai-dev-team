@@ -1597,9 +1597,55 @@ function showScenario(name) {
       </table>
     </div>
 
+    <!-- Two Skills Chooser -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:2.5rem;">
+      <div style="background:rgba(108,99,255,.08); border:1px solid rgba(108,99,255,.25); border-radius:12px; padding:1.5rem;">
+        <div style="font-size:.75rem; color:var(--accent2); font-weight:700; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.5rem;">Skill 1 · dev-team</div>
+        <div style="font-size:1rem; font-weight:700; color:var(--text); margin-bottom:.5rem;">10-Agent Rapid Delivery</div>
+        <div style="font-size:.85rem; color:var(--muted); margin-bottom:1rem;">You have a defined task — feature, refactor, or review. Run straight to code.<br><br>已有明确任务，直接跑到代码。</div>
+        <div class="install-box" style="font-size:.8rem;">
+          <span class="cmd">git clone</span> <span class="str">https://github.com/sky791016/lean-ai-dev-team</span> \<br>
+          &nbsp;&nbsp;<span class="str">~/.claude/skills/dev-team</span><br><br>
+          <span class="comment"># Then use:</span><br>
+          <span class="kw">/dev-team</span> <span class="str">[全新项目] 你的任务</span>
+        </div>
+      </div>
+      <div style="background:rgba(52,211,153,.08); border:1px solid rgba(52,211,153,.25); border-radius:12px; padding:1.5rem;">
+        <div style="font-size:.75rem; color:var(--green); font-weight:700; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.5rem;">Skill 2 · lean-ai-agile-agent-team</div>
+        <div style="font-size:1rem; font-weight:700; color:var(--text); margin-bottom:.5rem;">Full Lifecycle Delivery System</div>
+        <div style="font-size:.85rem; color:var(--muted); margin-bottom:1rem;">Start from zero: goal → MVP → BA → architecture → sprint → ops → agent evolution.<br><br>从零开始，完整走完端到端交付闭环。</div>
+        <div class="install-box" style="font-size:.8rem;">
+          <span class="cmd">git clone</span> <span class="str">https://github.com/sky791016/lean-ai-dev-team</span> <span class="str">/tmp/lean-ai</span><br>
+          <span class="cmd">cp -R</span> <span class="str">/tmp/lean-ai/lean-ai-agile-agent-team</span> \<br>
+          &nbsp;&nbsp;<span class="str">~/.claude/skills/</span><br><br>
+          <span class="comment"># Bootstrap empty project:</span><br>
+          <span class="cmd">bash</span> <span class="str">.claude/skills/lean-ai-agile-agent-team/scripts/bootstrap-lean-ai-project.sh</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Repo Structure -->
+    <div style="background:rgba(255,255,255,.03); border:1px solid var(--border); border-radius:12px; padding:1.5rem; margin-bottom:2rem; font-size:.85rem;">
+      <div style="font-size:.75rem; color:var(--muted); font-weight:700; letter-spacing:.08em; text-transform:uppercase; margin-bottom:1rem;">Repository Structure</div>
+      <div class="install-box" style="font-size:.8rem;">
+        <span style="color:var(--accent2);">lean-ai-dev-team/</span><br>
+        <span style="color:var(--muted);">├── </span><span style="color:var(--text);">SKILL.md</span><span style="color:var(--muted);">                    ← dev-team skill (10-agent rapid delivery)</span><br>
+        <span style="color:var(--muted);">├── </span><span style="color:var(--text);">README.md</span><br>
+        <span style="color:var(--muted);">├── </span><span style="color:var(--text);">references/</span><span style="color:var(--muted);">                 scenario-examples · ide-compatibility</span><br>
+        <span style="color:var(--muted);">└── </span><span style="color:var(--green);">lean-ai-agile-agent-team/</span><span style="color:var(--muted);">   ← Full lifecycle skill (v2)</span><br>
+        <span style="color:var(--muted);">&nbsp;&nbsp;&nbsp;&nbsp;├── SKILL.md · README.md · MANIFEST.json</span><br>
+        <span style="color:var(--muted);">&nbsp;&nbsp;&nbsp;&nbsp;├── </span><span style="color:var(--text);">protocols/</span><span style="color:var(--muted);">              lean-ai-delivery-protocol</span><br>
+        <span style="color:var(--muted);">&nbsp;&nbsp;&nbsp;&nbsp;├── </span><span style="color:var(--text);">roles/</span><span style="color:var(--muted);">                  15 role definitions</span><br>
+        <span style="color:var(--muted);">&nbsp;&nbsp;&nbsp;&nbsp;├── </span><span style="color:var(--text);">scripts/</span><span style="color:var(--muted);">                bootstrap · install · quality-check</span><br>
+        <span style="color:var(--muted);">&nbsp;&nbsp;&nbsp;&nbsp;└── </span><span style="color:var(--text);">templates/</span><span style="color:var(--muted);">              30 document templates (00–30)</span><br>
+        <span style="color:var(--muted);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;input/ strategy/ discovery/ scenarios/ metrics/</span><br>
+        <span style="color:var(--muted);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ba/ architecture/ delivery/ ops/ tasks/</span>
+      </div>
+    </div>
+
     <!-- Claude Code Install Steps -->
     <div style="background:rgba(108,99,255,.06); border:1px solid rgba(108,99,255,.2); border-radius:12px; padding:2rem; margin-bottom:2rem;">
-      <h3 style="margin-bottom:1.25rem; font-size:1.05rem;" data-i18n="cc-install-title">Claude Code — One Command Install</h3>
+      <h3 style="margin-bottom:1.25rem; font-size:1.05rem;" data-i18n="cc-install-title">Claude Code — dev-team (Rapid Delivery)</h3>
       <ol class="step-list">
         <li>
           <div>
@@ -1631,16 +1677,55 @@ function showScenario(name) {
       </ol>
     </div>
 
+    <!-- Full Lifecycle Skill Install -->
+    <div style="background:rgba(52,211,153,.06); border:1px solid rgba(52,211,153,.2); border-radius:12px; padding:2rem; margin-bottom:2rem;">
+      <h3 style="margin-bottom:1.25rem; font-size:1.05rem;">Claude Code — lean-ai-agile-agent-team (Full Lifecycle)</h3>
+      <ol class="step-list">
+        <li>
+          <div>
+            <h4>Clone &amp; install the skill</h4>
+            <div class="install-box" style="margin-top: 0.75rem;">
+              <span class="cmd">git clone</span> <span class="str">https://github.com/sky791016/lean-ai-dev-team</span> <span class="str">/tmp/lean-ai</span><br>
+              <span class="cmd">cp -R</span> <span class="str">/tmp/lean-ai/lean-ai-agile-agent-team</span> <span class="str">~/.claude/skills/</span>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h4>Bootstrap your empty project</h4>
+            <div class="install-box" style="margin-top: 0.75rem;">
+              <span class="comment"># Run inside your project root:</span><br>
+              <span class="cmd">bash</span> <span class="str">.claude/skills/lean-ai-agile-agent-team/scripts/bootstrap-lean-ai-project.sh</span><br><br>
+              <span class="comment"># Add your brief:</span><br>
+              <span class="cmd">echo</span> <span class="str">"Your project brief here"</span> <span class="kw">&gt;</span> <span class="str">input/brief.md</span>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h4>Run the delivery pipeline</h4>
+            <div class="install-box" style="margin-top: 0.75rem;">
+              <span class="comment"># Goal alignment:</span><br>
+              Use lean-ai-agile-agent-team. Run goal alignment based on input/brief.md.<br><br>
+              <span class="comment"># Discovery → Scenarios → MVP:</span><br>
+              Use lean-ai-agile-agent-team. Diverge requirements, converge, create scenario canvas, define MVP.<br><br>
+              <span class="comment"># BA + Architecture + Sprint:</span><br>
+              Use lean-ai-agile-agent-team. Run BA pipeline, design architecture, start Sprint 1.
+            </div>
+          </div>
+        </li>
+      </ol>
+    </div>
+
     <!-- Other IDEs Quick Start -->
-    <div style="background:rgba(52,211,153,.06); border:1px solid rgba(52,211,153,.2); border-radius:12px; padding:2rem;">
+    <div style="background:rgba(255,255,255,.03); border:1px solid var(--border); border-radius:12px; padding:2rem;">
       <h3 style="margin-bottom:1rem; font-size:1.05rem;" data-i18n="other-ide-title">Other IDEs — Copy & Paste</h3>
       <p style="font-size:0.9rem; color:var(--muted); margin-bottom:1rem;" data-i18n="other-ide-desc">Copy the contents of <code>SKILL.md</code> into your IDE's system prompt / instruction file. Then use the scenario prefixes in your chat.</p>
       <div class="install-box">
-        <span class="comment"># Get SKILL.md content:</span><br>
+        <span class="comment"># dev-team SKILL.md:</span><br>
         <span class="cmd">curl</span> <span class="str">https://raw.githubusercontent.com/sky791016/lean-ai-dev-team/main/SKILL.md</span><br><br>
-        <span class="comment"># Or clone and open:</span><br>
-        <span class="cmd">git clone</span> <span class="str">https://github.com/sky791016/lean-ai-dev-team</span><br>
-        <span class="cmd">cat</span> <span class="str">lean-ai-dev-team/SKILL.md</span>
+        <span class="comment"># lean-ai-agile-agent-team SKILL.md:</span><br>
+        <span class="cmd">curl</span> <span class="str">https://raw.githubusercontent.com/sky791016/lean-ai-dev-team/main/lean-ai-agile-agent-team/SKILL.md</span>
       </div>
     </div>
   </div>
