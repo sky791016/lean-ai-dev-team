@@ -2,7 +2,7 @@
 
 <img src="assets/logo.png" alt="Lean AI PRD Team" width="100" />
 
-# Lean AI PRD Team Skills
+# Lean AI PRD Team
 
 ### 🌐 [sky791016.github.io/lean-ai-dev-team](https://sky791016.github.io/lean-ai-dev-team/)
 
@@ -15,15 +15,20 @@
 
 ---
 
-## Three Skills, One Methodology
+## Standard vs. Pro
 
-This repository contains three skills built on the **Lean AI Methodology (精益AI方法论)** by Kai Shi.
-
-| Skill | Tier | Agents | When to use |
-|---|---|---|---|
-| **`lean-ai-prd-team`** | Standard · Free | 8 | Defined task — feature, fix, or refactor. Scenario-first, minimum MVP, straight to code. |
-| **`lean-ai-prd-team-pro`** | Pro · Commercial | 10 | Enterprise delivery. Adds Code Audit, IFPUG FP sizing, ROI Value Assessment. |
-| **`lean-ai-agile-agent-team`** | Strategy · Free | 15 | Start from zero. Full lifecycle: goal alignment → MVP → BA → sprint → ops → agent evolution. |
+| | `lean-ai-prd-team` · Standard | `lean-ai-prd-team-pro` · Pro |
+|---|---|---|
+| **Price** | Free | Commercial authorization required |
+| **Agents** | 8 | 10 |
+| **Scenarios** | Greenfield / Refactor / Review | Greenfield / Refactor / Review |
+| Business Planner → PM → BA | ✅ | ✅ |
+| Technical Architect | ✅ | ✅ |
+| Frontend + Backend + Data | ✅ | ✅ |
+| Compliance PM (4-loop) | ✅ | ✅ |
+| **Code Auditor** (OWASP + Health Score /100) | ❌ | ✅ |
+| **BA FP Sizing** (IFPUG UFP) | ❌ | ✅ |
+| **Value Assessor** (Realized Value Score /100) | ❌ | ✅ |
 
 ---
 
@@ -31,177 +36,120 @@ This repository contains three skills built on the **Lean AI Methodology (精益
 
 ---
 
-### Skill 1 · `lean-ai-prd-team` — Standard (Free · 8 Agents)
+### Install Standard (Free)
 
-#### What It Does
-
-A structured prompt system that routes your task through an **8-agent coordinated team** — scenario and value locked in before any code is written, minimum viable MVP delivered, token-efficient structured handoffs.
-
-**Three core advantages:**
-
-> **Scenario-first, value-first** — Business Planner and PM lock in the scenario, ROI, and MVP scope before any developer agent runs.
-
-> **Minimum viable end-to-end loop** — Business case → requirements → architecture → parallel code → 4-loop sign-off. Shippable increment every run.
-
-> **Saves tokens** — Structured phase handoffs replace open-ended chat. One prompt → 8 roles, complete coordinated output.
-
-#### Install
-
-**Claude Code:**
 ```bash
 git clone https://github.com/sky791016/lean-ai-dev-team ~/.claude/skills/lean-ai-prd-team
 ```
 
-**All other IDEs:**
-Copy [`lean-ai-prd-team/SKILL.md`](lean-ai-prd-team/SKILL.md) into your IDE's system prompt / instruction file.
-
-#### Three Scenarios
-
-**1 · Greenfield**
+Then in Claude Code:
 ```
-/lean-ai-prd-team [全新项目]
-Background: Legal team reviews 50+ contracts/day, avg 2 hrs each
-Goal: Build a contract risk AI agent — auto-flag high-risk clauses
-Constraints: Core ERP (SAP) must not be modified; human final sign-off required
-Stack: Python Flask + PostgreSQL + React
+/lean-ai-prd-team [全新项目] your task
+/lean-ai-prd-team [重构优化] your task
+/lean-ai-prd-team [项目评审] your task
 ```
 
-**2 · Refactor**
-```
-/lean-ai-prd-team [重构优化]
-Current: Order query P99 = 4.2s, 3-year-old code, no test coverage
-Goal: P99 under 500ms + AI personalized recommendations
-Files: src/order/OrderService.java
-Scale: MySQL, 80M rows
-```
-
-**3 · Review**
-```
-/lean-ai-prd-team [项目评审]
-AI customer service system launching tomorrow — full review
-Focus: Code security · AI hallucination risk · Concurrency · Data privacy
-Files: src/chat/ChatController.java, src/ai/LLMService.java
-```
-
-#### The 8-Agent Team
-
-```
-Phase 1  Business Planner     L1-L5 scenario level · Business case · 3-phase roadmap
-Phase 2  Product Manager      ROI model · Scenario card · KPI dashboard · Stop conditions
-Phase 3  Business Analyst     Epics · User stories · Acceptance criteria · Human-AI design
-Phase 4  Technical Architect  ADRs · API contracts · Clean Core design · Directory conventions
-
-Phase 5  Frontend  ─┐
-(parallel) Backend  ─┤  All implement against architect's contracts
-         Data       ─┘
-
-Phase 6  Compliance PM        4-loop check · Conflict report · DoD sign-off
-```
-
-> 🔼 Need Code Audit, IFPUG FP sizing, or ROI Validation? → use `lean-ai-prd-team-pro`
+**Other IDEs:** Copy [`lean-ai-prd-team/SKILL.md`](lean-ai-prd-team/SKILL.md) into your system prompt / instruction file.
 
 ---
 
-### Skill 2 · `lean-ai-prd-team-pro` — Pro (Commercial · 10 Agents)
+### Install Pro (Commercial)
 
-#### What It Does
-
-Everything in Standard, plus three Pro-only capabilities for enterprise delivery and value proof:
-
-| Pro-Only | Description |
-|---|---|
-| **Code Auditor** | OWASP Top 10 scan, N+1 detection, Architecture Health Score /100 |
-| **BA FP Sizing** | Full IFPUG analysis — ILF/EIF/EI/EO/EQ coefficients, UFP total |
-| **Value Assessor** | 4-dimension benefit system, ROI validation vs. PM model, Realized Value Score /100 |
-
-#### Install
-
-**Claude Code:**
 ```bash
 git clone https://github.com/sky791016/lean-ai-dev-team /tmp/lean-ai
 cp -R /tmp/lean-ai/lean-ai-prd-team-pro ~/.claude/skills/
 ```
 
+Then:
+```
+/lean-ai-prd-team-pro [全新项目] your task
+/lean-ai-prd-team-pro [重构优化] your task
+/lean-ai-prd-team-pro [项目评审] your task
+```
+
 **Commercial use requires written authorization — contact: sky.kugua@gmail.com**
 
-#### The 10-Agent Team
+---
+
+### The 8-Agent Team (Standard)
 
 ```
-Phase 0  Code Auditor ★        OWASP security · N+1 detection · Health Score /100
-Phase 1  Business Planner      L1-L5 scenario · Business case · 3-phase roadmap
-Phase 2  Product Manager       ROI model · Scenario card · KPI dashboard
-Phase 3  Business Analyst ★    Epics · Stories · IFPUG FP table (UFP total) · Acceptance criteria
-Phase 4  Technical Architect   ADRs · API contracts · Clean Core design
+Phase 1  Business Planner     L1-L5 scenario · Business case · 3-phase roadmap
+Phase 2  Product Manager      ROI model · Scenario card · KPI dashboard
+Phase 3  Business Analyst     Epics · User stories · Acceptance criteria · Human-AI design
+Phase 4  Technical Architect  ADRs · API contracts · Clean Core design
 
 Phase 5  Frontend  ─┐
-(parallel) Backend  ─┤  All implement against architect's contracts
+(parallel) Backend  ─┤  Implement against architect's contracts
+         Data       ─┘
+
+Phase 6  Compliance PM        4-loop check · Conflict report · DoD sign-off
+```
+
+### The 10-Agent Team (Pro)
+
+```
+Phase 0  Code Auditor ★       OWASP Top 10 · N+1 detection · Health Score /100
+Phase 1  Business Planner
+Phase 2  Product Manager
+Phase 3  Business Analyst ★   + IFPUG FP table (UFP total)
+Phase 4  Technical Architect
+
+Phase 5  Frontend  ─┐
+(parallel) Backend  ─┤
          Data       ─┤
-         Value ★    ─┘  Assessor: Realized Value Score /100 vs. PM model
+         Value ★    ─┘  Assessor: 4-dimension benefit · Realized Value Score /100
 
-Phase 6  Compliance PM         4-loop check · Conflict report · DoD sign-off
-```
-
-#### Three Scenarios
-
-```
-/lean-ai-prd-team-pro [全新项目] ...
-/lean-ai-prd-team-pro [重构优化] ...
-/lean-ai-prd-team-pro [项目评审] ...
+Phase 6  Compliance PM
 ```
 
 ---
 
-### Skill 3 · `lean-ai-agile-agent-team` — Full Lifecycle (Free · 15 Roles)
+### Example Prompts
 
-#### What It Does
-
-A complete **Lean Data + Lean AI + Agile Agent Team** delivery system for projects that need disciplined strategy-to-execution alignment from zero.
-
+**Greenfield:**
 ```
-Strategic Goal Alignment → Divergent Requirements → Convergent Requirements
-→ Scenario System → MVP Definition → Metrics System
-→ BA Pipeline (Epic / Story / FP / PRD)
-→ Lean Data Model → AI Capability Design → Architecture & Tech POC
-→ Sprint Delivery → Testing & Release
-→ Measurement & Value Review → Operations → Controlled Agent Evolution
+/lean-ai-prd-team-pro [全新项目]
+
+Background: Legal team reviews 50+ supplier contracts/day, avg 2 hours each.
+Goal: AI agent to auto-flag high-risk clauses and suggest revisions.
+Constraints: Core ERP (SAP) cannot be modified. Chinese contracts. Human sign-off required.
+Stack: Python Flask + PostgreSQL + React
 ```
 
-#### Install
+**Refactor:**
+```
+/lean-ai-prd-team-pro [重构优化]
 
-**Claude Code:**
-```bash
-git clone https://github.com/sky791016/lean-ai-dev-team /tmp/lean-ai
-cp -R /tmp/lean-ai/lean-ai-agile-agent-team ~/.claude/skills/
+Current: Order query P99 = 4.2s, no test coverage, 3-year-old code.
+Goal: P99 < 500ms + AI personalized recommendations.
+Files: src/order/OrderService.java
+DB: MySQL, 80M rows
 ```
 
-#### Common Prompts
+**Review:**
+```
+/lean-ai-prd-team-pro [项目评审]
 
-```text
-Use lean-ai-agile-agent-team. Bootstrap this empty project. Do not code yet.
-Use lean-ai-agile-agent-team. Run goal alignment based on input/brief.md.
-Use lean-ai-agile-agent-team. Diverge requirements, converge, create scenario canvas, define MVP, create metrics system.
-Use lean-ai-agile-agent-team. Run BA pipeline: Epic Breakdown, Story Narrative, Functional Breakdown, PRD, validation system.
-Use lean-ai-agile-agent-team. Start Sprint 1. Every task must link to scenario and metric.
-Use lean-ai-agile-agent-team. Run value realization review and update operations backlog.
+AI customer service system launching tomorrow.
+Focus: Security vulnerabilities · AI hallucination risk · Concurrency · Data privacy
+Files: src/chat/ChatController.java, src/ai/LLMService.java
+Output: CTO-ready report
 ```
 
 ---
 
 ### Works With Any IDE
 
-| IDE / Tool | How |
+| IDE | How |
 |---|---|
-| **Claude Code** | Native slash command (`/lean-ai-prd-team` or `/lean-ai-prd-team-pro`) |
+| **Claude Code** | Native `/lean-ai-prd-team` or `/lean-ai-prd-team-pro` |
 | **Cursor** | Paste `SKILL.md` → `.cursorrules` |
 | **Windsurf** | Paste `SKILL.md` → `AGENTS.md` |
 | **GitHub Copilot** | Paste → `.github/copilot-instructions.md` |
-| **JetBrains AI** | Settings → AI → Prompts → new prompt |
-| **通义灵码 / CodeBuddy / Comate** | Custom Instructions / System Prompt → paste |
-| **Augment / Continue.dev** | Workspace Instructions / `config.json` → paste |
-| **Dify / Coze / FastGPT** | System prompt → paste |
+| **JetBrains AI** | Settings → AI → Prompts → paste |
+| **通义灵码 / CodeBuddy / Comate** | System Prompt → paste |
 | **Pure API** | `system` role → `SKILL.md` content |
-
-Full guide: [`references/ide-compatibility.md`](references/ide-compatibility.md)
 
 ---
 
@@ -209,52 +157,15 @@ Full guide: [`references/ide-compatibility.md`](references/ide-compatibility.md)
 
 ```
 lean-ai-dev-team/
-├── SKILL.md                          ← lean-ai-prd-team Standard (one-line install)
+├── SKILL.md                    ← Standard skill (root, for one-line install)
 ├── README.md
 ├── LICENSE
-├── references/
-│   ├── scenario-examples.md
-│   └── ide-compatibility.md
-├── docs/                             ← Official website (GitHub Pages)
-│   ├── index.html
-│   ├── logo.png
-│   └── assets/
-├── lean-ai-prd-team/                 ← Standard skill (8 agents · free)
+├── lean-ai-prd-team/           ← Standard (8 agents · free)
 │   └── SKILL.md
-├── lean-ai-prd-team-pro/             ← Pro skill (10 agents · commercial)
+├── lean-ai-prd-team-pro/       ← Pro (10 agents · commercial)
 │   └── SKILL.md
-└── lean-ai-agile-agent-team/         ← Full lifecycle skill (15 roles · free)
-    ├── SKILL.md
-    ├── MANIFEST.json
-    ├── protocols/
-    ├── roles/
-    ├── scripts/
-    └── templates/
-```
-
----
-
-### Real Results
-
-| Case | Metric | Result |
-|---|---|---|
-| Contract Risk AI | Review time | −72% |
-| Contract Risk AI | Annual savings | ¥2.4M |
-| Customer Complaint AI | Response time | 8min → 90sec |
-| Resume Screening AI | Screening time | 45min → 3min |
-
----
-
-### Citation
-
-```bibtex
-@software{lean_ai_prd_team_2026,
-  author  = {Kai Shi (史凯)},
-  title   = {Lean AI PRD Team Skills},
-  year    = {2026},
-  url     = {https://github.com/sky791016/lean-ai-dev-team},
-  license = {Apache-2.0}
-}
+├── docs/                       ← Website (GitHub Pages)
+└── references/
 ```
 
 ---
@@ -265,68 +176,35 @@ Copyright © 2026 **Kai Shi (史凯)** · sky.kugua@gmail.com · Founder of Lean
 
 Apache 2.0 with Non-Commercial Restriction.
 Free for personal, educational, non-commercial use.
-Commercial use (Pro) → sky.kugua@gmail.com
+Commercial use → sky.kugua@gmail.com
 
----
 ---
 
 ## 中文说明
 
----
+### 标准版 vs 专业版
 
-### 三个 Skill，一套方法论
+**标准版（免费）** — 8 个智能体，覆盖全新项目、重构优化、项目评审三种场景。
 
-| Skill | 版本 | 智能体 | 适用场景 |
-|---|---|---|---|
-| **`lean-ai-prd-team`** | 标准版 · 免费 | 8 | 任务明确（功能开发、重构、评审），场景优先，最小MVP，直接交付代码 |
-| **`lean-ai-prd-team-pro`** | 专业版 · 商业授权 | 10 | 企业级交付，含代码审计、IFPUG 功能点估算、ROI 效益评估 |
-| **`lean-ai-agile-agent-team`** | 战略版 · 免费 | 15 | 从零开始，完整生命周期：目标对齐 → MVP → BA → Sprint → 运营 → 进化 |
+**专业版（商业授权）** — 在标准版基础上增加：
+- **代码审计师** — OWASP Top 10 安全扫描 + 架构健康评分 /100
+- **BA 功能点分析** — 完整 IFPUG ILF/EIF/EI/EO/EQ，输出 UFP 总量
+- **效益评估师** — 4 维度效益体系，Realized Value Score /100，对比 PM 原始 ROI 模型
 
----
+### 安装标准版
 
-### Skill 1 · `lean-ai-prd-team` — 标准版（免费 · 8 智能体）
-
-场景优先，价值优先，最小 MVP，结构化分阶段交接节约 Token。
-
-**安装（Claude Code）：**
 ```bash
 git clone https://github.com/sky791016/lean-ai-dev-team ~/.claude/skills/lean-ai-prd-team
 ```
 
-**其他 IDE：** 将 [`lean-ai-prd-team/SKILL.md`](lean-ai-prd-team/SKILL.md) 内容粘贴到系统提示词。
+### 安装专业版
 
-**调用方式：**
-```
-/lean-ai-prd-team [全新项目] 你的任务描述
-/lean-ai-prd-team [重构优化] 你的任务描述
-/lean-ai-prd-team [项目评审] 你的任务描述
-```
-
----
-
-### Skill 2 · `lean-ai-prd-team-pro` — 专业版（商业授权 · 10 智能体）
-
-在标准版基础上增加三项专业能力：
-
-| 专业能力 | 说明 |
-|---|---|
-| **代码审计师** | OWASP Top 10 安全扫描、N+1 检测、架构健康评分 /100 |
-| **BA 功能点分析** | 完整 IFPUG ILF/EIF/EI/EO/EQ 系数计算，UFP 总量 |
-| **效益评估师** | 4 维度效益体系、ROI 验证、Realized Value Score /100 |
-
-商业使用请联系：sky.kugua@gmail.com
-
----
-
-### Skill 3 · `lean-ai-agile-agent-team` — 完整生命周期（免费 · 15 角色）
-
-精益数据方法论 + 精益 AI + 敏捷智能体团队，让空项目从战略走到运营闭环。
-
-**安装：**
 ```bash
 git clone https://github.com/sky791016/lean-ai-dev-team /tmp/lean-ai
-cp -R /tmp/lean-ai/lean-ai-agile-agent-team ~/.claude/skills/
+cp -R /tmp/lean-ai/lean-ai-prd-team-pro ~/.claude/skills/
 ```
+
+商业使用请联系：sky.kugua@gmail.com
 
 ---
 
@@ -338,10 +216,5 @@ cp -R /tmp/lean-ai/lean-ai-agile-agent-team ~/.claude/skills/
 
 官网：[sky791016.github.io/lean-ai-dev-team](https://sky791016.github.io/lean-ai-dev-team/)
 
----
-
-### 许可
-
-Copyright © 2026 **Kai Shi (史凯)** · sky.kugua@gmail.com · Founder of Lean AI Method
-
-Apache 2.0 附非商业限制。个人、教育、非商业用途免费。专业版商业用途请联系 sky.kugua@gmail.com
+Copyright © 2026 **Kai Shi (史凯)** · sky.kugua@gmail.com
+Apache 2.0 附非商业限制。专业版商业使用请联系 sky.kugua@gmail.com
