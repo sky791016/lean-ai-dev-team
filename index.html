@@ -1813,5 +1813,30 @@ function toggleLang() {
 })();
 </script>
 
+<!-- ── 访问统计埋点 ──────────────────────────────────────────────────────────────
+     部署步骤见 analytics/SETUP.md
+     部署完成后将 YOUR_GAS_URL_HERE 替换为 Google Apps Script 网页应用 URL    -->
+<script>
+(function () {
+  var TRACKER = 'YOUR_GAS_URL_HERE';
+  if (!TRACKER || TRACKER === 'YOUR_GAS_URL_HERE') return; // 未配置时跳过
+
+  // 获取访客真实 IP，然后发送埋点
+  fetch('https://api.ipify.org?format=json')
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      var params = new URLSearchParams({
+        ip:   d.ip || '',
+        page: location.pathname,
+        ref:  document.referrer ? document.referrer.slice(0, 200) : '',
+        ua:   navigator.userAgent ? navigator.userAgent.slice(0, 200) : ''
+      });
+      // 用 img.src 发送，无 CORS 限制，不阻塞页面
+      new Image().src = TRACKER + '?' + params.toString();
+    })
+    .catch(function () {}); // 静默失败，不影响用户体验
+})();
+</script>
+
 </body>
 </html>
