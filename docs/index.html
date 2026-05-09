@@ -343,12 +343,13 @@
     <a href="#team" data-i18n="nav-team">The Team</a>
     <a href="#releases" data-i18n="nav-releases">Releases</a>
     <a href="#install" data-i18n="nav-install">Install</a>
+    <a href="#pricing" data-i18n="nav-pricing">Pricing</a>
     <a href="#publications" data-i18n="nav-books">Books</a>
     <a href="#vote" data-i18n="nav-vote">🚀 Vote</a>
     <a href="#feedback" data-i18n="nav-feedback">Feedback</a>
   </div>
   <button id="lang-toggle" onclick="toggleLang()" style="background:rgba(108,99,255,.15);border:1px solid rgba(108,99,255,.35);color:var(--accent2);border-radius:6px;padding:.4rem .85rem;font-size:.8rem;font-weight:700;cursor:pointer;margin-right:.75rem;transition:background .2s;">EN</button>
-  <a href="#vote" class="cta-btn" data-i18n="nav-cta" style="background:linear-gradient(135deg,#ff6b00,#ff8c42);">🚀 Support Us →</a>
+  <a href="#pricing" class="cta-btn" data-i18n="nav-cta">✨ Get Pro →</a>
 </nav>
 
 <!-- HERO -->
@@ -2057,6 +2058,148 @@ function showScenario(name) {
   </div>
 </section>
 
+<!-- PRICING -->
+<section id="pricing" style="padding:5rem 2rem; background:var(--bg2); border-top:1px solid var(--border);">
+  <div class="container">
+    <p class="section-label" data-i18n="pricing-label">Pricing</p>
+    <h2 data-i18n="pricing-h2">Free to Use · Pro to Scale</h2>
+    <p class="subtitle" data-i18n="pricing-subtitle">Standard is free forever. Pro adds Code Audit, FP Sizing, and Value Assessment for teams that need to justify AI investment.</p>
+
+    <!-- Tier Cards -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem; margin-bottom:4rem;">
+
+      <!-- Standard / Free -->
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:16px; padding:2rem; display:flex; flex-direction:column;">
+        <div style="display:inline-flex; align-items:center; gap:.5rem; background:rgba(52,211,153,.1); border:1px solid rgba(52,211,153,.25); border-radius:100px; padding:.3rem .9rem; font-size:.75rem; font-weight:700; color:var(--green); letter-spacing:.06em; margin-bottom:1.5rem; width:fit-content;">FREE</div>
+        <h3 style="font-size:1.5rem; font-weight:800; margin-bottom:.35rem;" data-i18n="plan-std-name">Standard</h3>
+        <div style="font-size:2.5rem; font-weight:800; margin-bottom:.5rem; background:linear-gradient(135deg,#fff,var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">¥0</div>
+        <p style="color:var(--muted); font-size:.875rem; margin-bottom:1.5rem;" data-i18n="plan-std-sub">Free forever · Open source · Apache 2.0</p>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:.75rem; margin-bottom:2rem; flex:1;">
+          <li style="display:flex; gap:.65rem; align-items:start; font-size:.875rem;"><span style="color:var(--green); flex-shrink:0;">✓</span><span data-i18n="std-f1">8 specialized AI agents</span></li>
+          <li style="display:flex; gap:.65rem; align-items:start; font-size:.875rem;"><span style="color:var(--green); flex-shrink:0;">✓</span><span data-i18n="std-f2">3 scenarios: Greenfield / Refactor / Review</span></li>
+          <li style="display:flex; gap:.65rem; align-items:start; font-size:.875rem;"><span style="color:var(--green); flex-shrink:0;">✓</span><span data-i18n="std-f3">Business Planner → PM → BA → Architect</span></li>
+          <li style="display:flex; gap:.65rem; align-items:start; font-size:.875rem;"><span style="color:var(--green); flex-shrink:0;">✓</span><span data-i18n="std-f4">Frontend + Backend + Data parallel build</span></li>
+          <li style="display:flex; gap:.65rem; align-items:start; font-size:.875rem;"><span style="color:var(--green); flex-shrink:0;">✓</span><span data-i18n="std-f5">4-loop Compliance PM sign-off</span></li>
+          <li style="display:flex; gap:.65rem; align-items:start; font-size:.875rem;"><span style="color:var(--green); flex-shrink:0;">✓</span><span data-i18n="std-f6">Works with Claude Code, Cursor, Windsurf and 10+ IDEs</span></li>
+          <li style="display:flex; gap:.65rem; align-items:start; font-size:.875rem;"><span style="color:#475569; flex-shrink:0;">—</span><span style="color:var(--muted);" data-i18n="std-f7">Code Auditor (Pro only)</span></li>
+          <li style="display:flex; gap:.65rem; align-items:start; font-size:.875rem;"><span style="color:#475569; flex-shrink:0;">—</span><span style="color:var(--muted);" data-i18n="std-f8">BA FP Sizing / Value Assessor (Pro only)</span></li>
+        </ul>
+        <a href="#install" style="display:block; text-align:center; background:rgba(52,211,153,.12); border:1px solid rgba(52,211,153,.35); color:var(--green); border-radius:8px; padding:.75rem 1.5rem; font-size:.9rem; font-weight:700; text-decoration:none; transition:background .2s;" onmouseover="this.style.background='rgba(52,211,153,.2)'" onmouseout="this.style.background='rgba(52,211,153,.12)'" data-i18n="plan-std-btn">Install Free →</a>
+      </div>
+
+      <!-- Pro / Commercial -->
+      <div style="background:var(--card); border:2px solid rgba(108,99,255,.5); border-radius:16px; padding:2rem; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+        <div style="position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--accent),var(--accent3));"></div>
+        <div style="display:inline-flex; align-items:center; gap:.5rem; background:rgba(108,99,255,.15); border:1px solid rgba(108,99,255,.35); border-radius:100px; padding:.3rem .9rem; font-size:.75rem; font-weight:700; color:var(--accent2); letter-spacing:.06em; margin-bottom:1.5rem; width:fit-content;">PRO</div>
+        <h3 style="font-size:1.5rem; font-weight:800; margin-bottom:.35rem;" data-i18n="plan-pro-name">Pro</h3>
+        <div style="font-size:2.5rem; font-weight:800; margin-bottom:.25rem; background:linear-gradient(135deg,var(--accent),var(--accent3)); -webkit-background-clip:text; -webkit-text-fill-color:transparent;" data-i18n="plan-pro-price">¥199 / $29</div>
+        <p style="color:var(--muted); font-size:.875rem; margin-bottom:1.5rem;" data-i18n="plan-pro-sub">per year · Commercial License Key · Written authorization</p>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:.75rem; margin-bottom:2rem; flex:1;">
+          <li style="display:flex; gap:.65rem; align-items:start; font-size:.875rem;"><span style="color:var(--accent2); flex-shrink:0;">★</span><span data-i18n="pro-f1">Everything in Standard</span></li>
+          <li style="display:flex; gap:.65rem; align-items:start; font-size:.875rem;"><span style="color:var(--accent2); flex-shrink:0;">★</span><span data-i18n="pro-f2"><strong style="color:#e2e8f0;">Code Auditor</strong> — OWASP Top 10 · Architecture Health Score /100</span></li>
+          <li style="display:flex; gap:.65rem; align-items:start; font-size:.875rem;"><span style="color:var(--accent2); flex-shrink:0;">★</span><span data-i18n="pro-f3"><strong style="color:#e2e8f0;">BA FP Sizing</strong> — IFPUG ILF/EIF/EI/EO/EQ · UFP total</span></li>
+          <li style="display:flex; gap:.65rem; align-items:start; font-size:.875rem;"><span style="color:var(--accent2); flex-shrink:0;">★</span><span data-i18n="pro-f4"><strong style="color:#e2e8f0;">Value Assessor</strong> — 4-dimension benefit · Realized Value Score /100</span></li>
+          <li style="display:flex; gap:.65rem; align-items:start; font-size:.875rem;"><span style="color:var(--accent2); flex-shrink:0;">★</span><span data-i18n="pro-f5">10 agents including Phase 0 Auditor + Phase 5b Value Assessor</span></li>
+          <li style="display:flex; gap:.65rem; align-items:start; font-size:.875rem;"><span style="color:var(--accent2); flex-shrink:0;">★</span><span data-i18n="pro-f6">Commercial use · License Key authorization</span></li>
+        </ul>
+
+        <!-- Payment Methods -->
+        <p style="font-size:.78rem; color:var(--muted); margin-bottom:1rem; font-weight:600; letter-spacing:.05em; text-transform:uppercase;" data-i18n="pay-method-label">Purchase via</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:.75rem; margin-bottom:1rem;">
+
+          <!-- WeChat / Alipay QR -->
+          <div style="background:rgba(255,255,255,.04); border:1px solid var(--border); border-radius:10px; padding:1rem; text-align:center; cursor:pointer; transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(9,187,7,.5)'" onmouseout="this.style.borderColor='var(--border)'" onclick="document.getElementById('qr-modal').style.display='flex'">
+            <div style="font-size:1.35rem; margin-bottom:.35rem;">🇨🇳</div>
+            <div style="font-size:.78rem; font-weight:700; color:#e2e8f0; margin-bottom:.2rem;" data-i18n="pay-wechat-alipay">微信 / 支付宝</div>
+            <div style="font-size:.7rem; color:var(--muted);" data-i18n="pay-scan-qr">扫码支付</div>
+          </div>
+
+          <!-- Stripe -->
+          <a href="mailto:sky.kugua@gmail.com?subject=Pro License - Stripe Payment&body=Hi Kai, I'd like to purchase a Pro license via Stripe. My use case: " target="_blank" style="background:rgba(255,255,255,.04); border:1px solid var(--border); border-radius:10px; padding:1rem; text-align:center; text-decoration:none; display:block; transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(99,102,241,.5)'" onmouseout="this.style.borderColor='var(--border)'">
+            <div style="font-size:1.35rem; margin-bottom:.35rem;">💳</div>
+            <div style="font-size:.78rem; font-weight:700; color:#e2e8f0; margin-bottom:.2rem;">Stripe</div>
+            <div style="font-size:.7rem; color:var(--muted);" data-i18n="pay-stripe-sub">Credit / Debit Card</div>
+          </a>
+
+          <!-- Ko-fi / Buy Me a Coffee -->
+          <a href="mailto:sky.kugua@gmail.com?subject=Pro License - Ko-fi Support&body=Hi Kai, I supported via Ko-fi / Buy Me a Coffee. Please send my License Key." target="_blank" style="background:rgba(255,255,255,.04); border:1px solid var(--border); border-radius:10px; padding:1rem; text-align:center; text-decoration:none; display:block; transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(255,94,0,.4)'" onmouseout="this.style.borderColor='var(--border)'">
+            <div style="font-size:1.35rem; margin-bottom:.35rem;">☕</div>
+            <div style="font-size:.78rem; font-weight:700; color:#e2e8f0; margin-bottom:.2rem;">Ko-fi / BMaC</div>
+            <div style="font-size:.7rem; color:var(--muted);" data-i18n="pay-kofi-sub">Buy Me a Coffee</div>
+          </a>
+
+          <!-- PayPal -->
+          <a href="mailto:sky.kugua@gmail.com?subject=Pro License - PayPal Payment&body=Hi Kai, I'd like to purchase a Pro license via PayPal." target="_blank" style="background:rgba(255,255,255,.04); border:1px solid var(--border); border-radius:10px; padding:1rem; text-align:center; text-decoration:none; display:block; transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(0,112,186,.4)'" onmouseout="this.style.borderColor='var(--border)'">
+            <div style="font-size:1.35rem; margin-bottom:.35rem;">🅿️</div>
+            <div style="font-size:.78rem; font-weight:700; color:#e2e8f0; margin-bottom:.2rem;">PayPal</div>
+            <div style="font-size:.7rem; color:var(--muted);" data-i18n="pay-paypal-sub">Global · Instant</div>
+          </a>
+        </div>
+
+        <!-- License Key flow -->
+        <div style="background:rgba(108,99,255,.06); border:1px solid rgba(108,99,255,.2); border-radius:8px; padding:1rem; margin-bottom:1rem; font-size:.8rem; color:var(--muted); line-height:1.6;">
+          <strong style="color:var(--accent2);" data-i18n="license-key-title">🔑 License Key Flow</strong><br>
+          <span data-i18n="license-key-desc">Pay → Email receipt to <a href="mailto:sky.kugua@gmail.com" style="color:var(--accent2);">sky.kugua@gmail.com</a> → Receive License Key within 24 hrs</span>
+        </div>
+
+        <a href="mailto:sky.kugua@gmail.com?subject=Pro License Inquiry" style="display:block; text-align:center; background:linear-gradient(135deg,var(--accent),#8b83ff); color:#fff; border-radius:8px; padding:.75rem 1.5rem; font-size:.9rem; font-weight:700; text-decoration:none; transition:opacity .2s; box-shadow:0 4px 20px rgba(108,99,255,.35);" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'" data-i18n="plan-pro-btn">Buy Pro License →</a>
+      </div>
+    </div>
+
+    <!-- Donate Row -->
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:16px; padding:2rem; margin-bottom:2rem;">
+      <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:.5rem;" data-i18n="donate-title">☕ Support the Work (Optional Donation)</h3>
+      <p style="color:var(--muted); font-size:.875rem; margin-bottom:1.5rem; max-width:600px;" data-i18n="donate-desc">If Standard has been useful, a small tip keeps the methodology growing. No obligation — Standard is and always will be free.</p>
+      <div style="display:flex; flex-wrap:wrap; gap:1rem;">
+        <a href="mailto:sky.kugua@gmail.com?subject=Donation - Ko-fi" target="_blank" style="display:inline-flex; align-items:center; gap:.6rem; background:rgba(255,94,0,.1); border:1px solid rgba(255,94,0,.3); color:#ff5e00; border-radius:8px; padding:.6rem 1.25rem; font-size:.875rem; font-weight:600; text-decoration:none; transition:background .2s;" onmouseover="this.style.background='rgba(255,94,0,.18)'" onmouseout="this.style.background='rgba(255,94,0,.1)'">☕ Ko-fi</a>
+        <a href="mailto:sky.kugua@gmail.com?subject=Donation - Buy Me a Coffee" target="_blank" style="display:inline-flex; align-items:center; gap:.6rem; background:rgba(255,221,0,.08); border:1px solid rgba(255,221,0,.25); color:#ffd700; border-radius:8px; padding:.6rem 1.25rem; font-size:.875rem; font-weight:600; text-decoration:none; transition:background .2s;" onmouseover="this.style.background='rgba(255,221,0,.15)'" onmouseout="this.style.background='rgba(255,221,0,.08)'">☕ Buy Me a Coffee</a>
+        <div onclick="document.getElementById('qr-modal').style.display='flex'" style="display:inline-flex; align-items:center; gap:.6rem; background:rgba(9,187,7,.08); border:1px solid rgba(9,187,7,.25); color:#09bb07; border-radius:8px; padding:.6rem 1.25rem; font-size:.875rem; font-weight:600; cursor:pointer; transition:background .2s;" onmouseover="this.style.background='rgba(9,187,7,.15)'" onmouseout="this.style.background='rgba(9,187,7,.08)'" data-i18n="donate-wechat">🇨🇳 微信 / 支付宝</div>
+        <a href="mailto:sky.kugua@gmail.com?subject=Donation - PayPal" target="_blank" style="display:inline-flex; align-items:center; gap:.6rem; background:rgba(0,112,186,.08); border:1px solid rgba(0,112,186,.25); color:#0070ba; border-radius:8px; padding:.6rem 1.25rem; font-size:.875rem; font-weight:600; text-decoration:none; transition:background .2s;" onmouseover="this.style.background='rgba(0,112,186,.15)'" onmouseout="this.style.background='rgba(0,112,186,.08)'">🅿️ PayPal</a>
+      </div>
+    </div>
+
+    <!-- npm Install Row -->
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:16px; padding:2rem;">
+      <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:.5rem;" data-i18n="npm-title">📦 Install via npm / npx</h3>
+      <p style="color:var(--muted); font-size:.875rem; margin-bottom:1.25rem;" data-i18n="npm-desc">One command installs the skill to <code>~/.claude/skills/</code>. No git required.</p>
+      <div class="install-box" style="margin-bottom:1rem;">
+        <span class="comment"># Standard (free)</span><br>
+        <span class="cmd">npx</span> <span class="str">lean-ai-prd-team</span><br><br>
+        <span class="comment"># Pro (requires License Key)</span><br>
+        <span class="cmd">npx</span> <span class="str">lean-ai-prd-team</span> <span class="kw">--pro</span>
+      </div>
+      <p style="font-size:.8rem; color:var(--muted);" data-i18n="npm-note">The npm package is a thin installer that clones the skill from GitHub. Node.js 14+ and git required.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WeChat / Alipay QR Modal -->
+<div id="qr-modal" style="display:none; position:fixed; inset:0; z-index:500; background:rgba(0,0,0,.75); backdrop-filter:blur(8px); align-items:center; justify-content:center;" onclick="if(event.target===this)this.style.display='none'">
+  <div style="background:var(--bg2); border:1px solid var(--border); border-radius:16px; padding:2.5rem; max-width:400px; width:90%; text-align:center; position:relative;">
+    <button onclick="document.getElementById('qr-modal').style.display='none'" style="position:absolute; top:1rem; right:1rem; background:rgba(255,255,255,.08); border:none; color:var(--muted); border-radius:6px; padding:.3rem .6rem; cursor:pointer; font-size:1rem;">✕</button>
+    <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:.35rem;" data-i18n="qr-title">微信 / 支付宝收款</h3>
+    <p style="color:var(--muted); font-size:.8rem; margin-bottom:1.5rem;" data-i18n="qr-desc">Scan to pay · 扫码支付</p>
+
+    <!-- WeChat QR placeholder -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.5rem;">
+      <div style="background:rgba(9,187,7,.06); border:1px dashed rgba(9,187,7,.3); border-radius:12px; padding:1.5rem; display:flex; flex-direction:column; align-items:center; gap:.5rem;">
+        <div style="font-size:2rem;">💚</div>
+        <!-- REPLACE: <img src="./assets/wechat-qr.png" alt="WeChat Pay" style="width:120px; height:120px; border-radius:8px;" /> -->
+        <div style="width:120px; height:120px; background:rgba(9,187,7,.1); border:1px dashed rgba(9,187,7,.3); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:.7rem; color:rgba(9,187,7,.6); text-align:center; padding:.5rem;">QR code<br>coming soon<br>即将上线</div>
+        <div style="font-size:.78rem; font-weight:700; color:#09bb07;">微信支付</div>
+      </div>
+      <div style="background:rgba(0,162,232,.06); border:1px dashed rgba(0,162,232,.3); border-radius:12px; padding:1.5rem; display:flex; flex-direction:column; align-items:center; gap:.5rem;">
+        <div style="font-size:2rem;">💙</div>
+        <!-- REPLACE: <img src="./assets/alipay-qr.png" alt="Alipay" style="width:120px; height:120px; border-radius:8px;" /> -->
+        <div style="width:120px; height:120px; background:rgba(0,162,232,.1); border:1px dashed rgba(0,162,232,.3); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:.7rem; color:rgba(0,162,232,.7); text-align:center; padding:.5rem;">QR code<br>coming soon<br>即将上线</div>
+        <div style="font-size:.78rem; font-weight:700; color:#00a2e8;">支付宝</div>
+      </div>
+    </div>
+
+    <p style="font-size:.78rem; color:var(--muted); line-height:1.6;" data-i18n="qr-after">After payment, email your screenshot to <a href="mailto:sky.kugua@gmail.com" style="color:var(--accent2);">sky.kugua@gmail.com</a> to receive your License Key within 24 hours.</p>
+  </div>
+</div>
+
 <!-- PRODUCT HUNT CTA -->
 <section id="vote" style="padding:5rem 2rem; background: linear-gradient(135deg, rgba(108,99,255,.08), rgba(56,189,248,.06)); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
   <div class="container" style="text-align:center;">
@@ -2268,6 +2411,7 @@ document.getElementById('feedback-form').addEventListener('submit', async functi
 <script>
 // ─── i18n dictionary ───────────────────────────────────────────────────────
 const DICT = {
+  'nav-pricing':  { en:'Pricing',         zh:'定价' },
   'nav-why':      { en:'Why Lean AI',    zh:'为什么选精益AI' },
   'nav-demo':     { en:'Demo',           zh:'演示' },
   'nav-cases':    { en:'Use Cases',      zh:'应用案例' },
@@ -2277,7 +2421,49 @@ const DICT = {
   'nav-vote':     { en:'🚀 Vote',        zh:'🚀 投票' },
   'nav-releases': { en:'Releases',       zh:'版本发布' },
   'nav-install':  { en:'Install',        zh:'安装' },
-  'nav-cta':      { en:'🚀 Support Us →',zh:'🚀 支持我们 →' },
+  'nav-cta':      { en:'✨ Get Pro →',   zh:'✨ 获取专业版 →' },
+
+  'pricing-label':  { en:'Pricing',     zh:'定价' },
+  'pricing-h2':     { en:'Free to Use · Pro to Scale', zh:'免费使用 · 专业版扩展' },
+  'pricing-subtitle':{ en:'Standard is free forever. Pro adds Code Audit, FP Sizing, and Value Assessment for teams that need to justify AI investment.', zh:'标准版永久免费。专业版新增代码审计、功能点估算和效益评估，专为需要量化AI投资回报的团队设计。' },
+  'plan-std-name':  { en:'Standard',    zh:'标准版' },
+  'plan-std-sub':   { en:'Free forever · Open source · Apache 2.0', zh:'永久免费 · 开源 · Apache 2.0' },
+  'std-f1':{ en:'8 specialized AI agents', zh:'8个专业AI智能体' },
+  'std-f2':{ en:'3 scenarios: Greenfield / Refactor / Review', zh:'3种场景：全新项目 / 重构优化 / 项目评审' },
+  'std-f3':{ en:'Business Planner → PM → BA → Architect', zh:'业务规划师 → 产品经理 → 业务分析师 → 技术架构师' },
+  'std-f4':{ en:'Frontend + Backend + Data parallel build', zh:'前端 + 后端 + 数据集成并行构建' },
+  'std-f5':{ en:'4-loop Compliance PM sign-off', zh:'四闭环合规项目管理收尾' },
+  'std-f6':{ en:'Works with Claude Code, Cursor, Windsurf and 10+ IDEs', zh:'兼容Claude Code、Cursor、Windsurf及10+主流IDE' },
+  'std-f7':{ en:'Code Auditor (Pro only)', zh:'代码审计师（专业版专属）' },
+  'std-f8':{ en:'BA FP Sizing / Value Assessor (Pro only)', zh:'BA功能点估算 / 效益评估师（专业版专属）' },
+  'plan-std-btn':   { en:'Install Free →', zh:'免费安装 →' },
+  'plan-pro-name':  { en:'Pro',          zh:'专业版' },
+  'plan-pro-price': { en:'¥199 / $29',   zh:'¥199 / $29' },
+  'plan-pro-sub':   { en:'per year · Commercial License Key · Written authorization', zh:'每年 · 商业授权码 · 书面授权' },
+  'pro-f1':{ en:'Everything in Standard', zh:'包含标准版全部功能' },
+  'pro-f2':{ en:'<strong style="color:#e2e8f0;">Code Auditor</strong> — OWASP Top 10 · Architecture Health Score /100', zh:'<strong style="color:#e2e8f0;">代码审计师</strong> — OWASP Top 10 · 架构健康评分 /100' },
+  'pro-f3':{ en:'<strong style="color:#e2e8f0;">BA FP Sizing</strong> — IFPUG ILF/EIF/EI/EO/EQ · UFP total', zh:'<strong style="color:#e2e8f0;">BA功能点估算</strong> — IFPUG ILF/EIF/EI/EO/EQ · UFP总量' },
+  'pro-f4':{ en:'<strong style="color:#e2e8f0;">Value Assessor</strong> — 4-dimension benefit · Realized Value Score /100', zh:'<strong style="color:#e2e8f0;">效益评估师</strong> — 四维效益体系 · 实现价值评分 /100' },
+  'pro-f5':{ en:'10 agents including Phase 0 Auditor + Phase 5b Value Assessor', zh:'10个智能体，含阶段0审计师和阶段5b效益评估师' },
+  'pro-f6':{ en:'Commercial use · License Key authorization', zh:'商业使用授权 · License Key授权码' },
+  'plan-pro-btn':   { en:'Buy Pro License →', zh:'购买专业版授权 →' },
+  'pay-method-label':{ en:'Purchase via', zh:'支付方式' },
+  'pay-wechat-alipay':{ en:'WeChat / Alipay', zh:'微信 / 支付宝' },
+  'pay-scan-qr':    { en:'Scan QR Code', zh:'扫码支付' },
+  'pay-stripe-sub': { en:'Credit / Debit Card', zh:'信用卡 / 借记卡' },
+  'pay-kofi-sub':   { en:'Buy Me a Coffee', zh:'Buy Me a Coffee' },
+  'pay-paypal-sub': { en:'Global · Instant', zh:'全球 · 即时到账' },
+  'license-key-title':{ en:'🔑 License Key Flow', zh:'🔑 授权码流程' },
+  'license-key-desc':{ en:'Pay → Email receipt to <a href="mailto:sky.kugua@gmail.com" style="color:var(--accent2);">sky.kugua@gmail.com</a> → Receive License Key within 24 hrs', zh:'付款 → 将收据发送至 <a href="mailto:sky.kugua@gmail.com" style="color:var(--accent2);">sky.kugua@gmail.com</a> → 24小时内收到授权码' },
+  'donate-title':   { en:'☕ Support the Work (Optional Donation)', zh:'☕ 支持一下（可选捐赠）' },
+  'donate-desc':    { en:'If Standard has been useful, a small tip keeps the methodology growing. No obligation — Standard is and always will be free.', zh:'如果标准版对你有帮助，小额打赏有助于方法论持续演进。没有义务——标准版永远免费。' },
+  'donate-wechat':  { en:'🇨🇳 WeChat / Alipay', zh:'🇨🇳 微信 / 支付宝' },
+  'npm-title':      { en:'📦 Install via npm / npx', zh:'📦 通过npm/npx安装' },
+  'npm-desc':       { en:'One command installs the skill to <code>~/.claude/skills/</code>. No git required.', zh:'一行命令安装技能到 <code>~/.claude/skills/</code>，无需git。' },
+  'npm-note':       { en:'The npm package is a thin installer that clones the skill from GitHub. Node.js 14+ and git required.', zh:'npm包是轻量安装器，从GitHub克隆技能。需要Node.js 14+和git。' },
+  'qr-title':       { en:'WeChat / Alipay Payment', zh:'微信 / 支付宝收款' },
+  'qr-desc':        { en:'Scan to pay', zh:'扫码支付' },
+  'qr-after':       { en:'After payment, email your screenshot to <a href="mailto:sky.kugua@gmail.com" style="color:var(--accent2);">sky.kugua@gmail.com</a> to receive your License Key within 24 hours.', zh:'付款后，将付款截图发送至 <a href="mailto:sky.kugua@gmail.com" style="color:var(--accent2);">sky.kugua@gmail.com</a>，24小时内收到授权码。' },
 
   'hero-h1':  { en:'Scenario-Driven. Value-First. Minimum Viable MVP, Every Time.', zh:'场景驱动。价值优先。每次交付最小MVP。' },
   'hero-p':   { en:'A structured prompt system that routes your task through a <strong>8-agent coordinated team</strong> — locking in the business scenario and ROI <em>before</em> writing a line of code, delivering the smallest valuable loop that proves value, and cutting token waste by replacing open-ended chat with structured phase handoffs. Works with <strong>Claude Code, Cursor, Windsurf, JetBrains, 通义灵码, CodeBuddy</strong> and more.', zh:'将你的任务路由给<strong>8个协作AI智能体</strong>——在写第一行代码<em>之前</em>锁定业务场景和ROI，交付能够证明价值的最小MVP闭环，用结构化分阶段交接替代漫无目的的对话，大幅节约Token。兼容<strong>Claude Code、Cursor、Windsurf、JetBrains、通义灵码、CodeBuddy</strong>等所有主流IDE。' },
