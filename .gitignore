@@ -1,4 +1,20 @@
+# Node
 node_modules/
 package-lock.json
-submit_ph.js
-analytics/.env
+package.json
+
+# Dev tools
+gen_qr.py
+gen_role_cards.py
+qrcode-poster.png
+producthunt.md
+
+# v5 source archives
+lean-ai-agile-agent-team_v5/
+lean-ai-agile-agent-team-skill-v5-correct.zip
+
+# OS
+.DS_Store
+
+# Analytics (contains secrets)
+analytics/

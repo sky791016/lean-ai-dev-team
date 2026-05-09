@@ -7,4 +7,4 @@ main:
             - name: 安装 EdgeOne CLI
               script: npm install -g edgeone
             - name: 发布静态网站到 Pages
-              script: edgeone pages deploy . --name lean-ai-team-skills --token $EDGEONE_PAGES_API_TOKEN
+              script: edgeone pages deploy docs --name lean-ai-team-skills --token $EDGEONE_PAGES_API_TOKEN
