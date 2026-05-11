@@ -1,10 +1,9 @@
-// api/admin/licenses.js — 管理后台 API（需要 ADMIN_SECRET 验证）
-// GET  /api/admin/licenses?secret=xxx          列出所有 licenses
-// POST /api/admin/licenses?secret=xxx          创建新 license
-// DELETE /api/admin/licenses?secret=xxx&key=xx 停用 license
-
-import { sql } from '@vercel/postgres';
+// api/admin/licenses.js — 管理后台 API
+import pkg from 'pg';
+const { Pool } = pkg;
 import crypto from 'crypto';
+
+const pool = new Pool({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } });
 
 function checkAuth(req, res) {
   const secret = req.query.secret || req.headers['x-admin-secret'];
@@ -28,18 +27,13 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (!checkAuth(req, res)) return;
 
-  // GET — 列出所有
   if (req.method === 'GET') {
-    const result = await sql`
-      SELECT id, key, email, name, created_at, expires_at, activated_at,
-             activation_count, is_active, notes
-      FROM licenses
-      ORDER BY created_at DESC
-    `;
+    const result = await pool.query(
+      'SELECT id, key, email, name, created_at, expires_at, activated_at, activation_count, is_active, notes FROM licenses ORDER BY created_at DESC'
+    );
     return res.status(200).json({ licenses: result.rows });
   }
 
-  // POST — 创建新 License
   if (req.method === 'POST') {
     const { email, name, notes, months = 12 } = req.body || {};
     if (!email) return res.status(400).json({ error: 'email is required' });
@@ -48,26 +42,22 @@ export default async function handler(req, res) {
     const expiresAt = new Date();
     expiresAt.setMonth(expiresAt.getMonth() + Number(months));
 
-    await sql`
-      INSERT INTO licenses (key, email, name, expires_at, notes)
-      VALUES (${key}, ${email}, ${name || null}, ${expiresAt.toISOString()}, ${notes || null})
-    `;
+    await pool.query(
+      'INSERT INTO licenses (key, email, name, expires_at, notes) VALUES ($1, $2, $3, $4, $5)',
+      [key, email, name || null, expiresAt.toISOString(), notes || null]
+    );
 
     return res.status(201).json({
-      key,
-      email,
-      name,
+      key, email, name,
       expires_at: expiresAt.toISOString(),
       message: `License created. Send key to ${email}: ${key}`,
     });
   }
 
-  // DELETE — 停用
   if (req.method === 'DELETE') {
     const { key } = req.query;
     if (!key) return res.status(400).json({ error: 'key is required' });
-
-    await sql`UPDATE licenses SET is_active = false WHERE key = ${key}`;
+    await pool.query('UPDATE licenses SET is_active = false WHERE key = $1', [key]);
     return res.status(200).json({ message: `License ${key} deactivated.` });
   }
 
