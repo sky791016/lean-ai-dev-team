@@ -3,7 +3,8 @@ import pkg from 'pg';
 const { Pool } = pkg;
 import crypto from 'crypto';
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } });
+const connectionString = process.env.POSTGRES_URL || process.env.DATABASE_URL;
+const pool = new Pool({ connectionString, ssl: { rejectUnauthorized: false } });
 
 function checkAuth(req, res) {
   const secret = req.query.secret || req.headers['x-admin-secret'];

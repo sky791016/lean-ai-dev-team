@@ -4,7 +4,9 @@
 import pkg from 'pg';
 const { Pool } = pkg;
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } });
+// Neon Postgres via Vercel integration uses POSTGRES_URL; fall back to DATABASE_URL
+const connectionString = process.env.POSTGRES_URL || process.env.DATABASE_URL;
+const pool = new Pool({ connectionString, ssl: { rejectUnauthorized: false } });
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -56,7 +58,7 @@ export default async function handler(req, res) {
     });
 
   } catch (err) {
-    console.error('DB error:', err);
+    console.error('DB error:', err.message || err);
     return res.status(500).json({ valid: false, message: 'Verification service error. Please try again or contact sky.kugua@gmail.com' });
   }
 }
