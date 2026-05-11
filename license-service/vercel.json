@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "lean-ai-license-service",
+  "regions": ["hkg1", "sin1"],
+  "functions": {
+    "api/**/*.js": {
+      "maxDuration": 10
+    }
+  }
+}

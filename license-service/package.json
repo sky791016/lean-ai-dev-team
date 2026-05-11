@@ -1,0 +1,12 @@
+{
+  "name": "lean-ai-license-service",
+  "version": "1.0.0",
+  "description": "License Key verification service for Lean AI PRD Team Pro",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@vercel/postgres": "^0.10.0"
+  }
+}

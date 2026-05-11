@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lean AI PRD Team — License Admin</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0a0a0f; color: #e2e8f0; font-family: -apple-system, sans-serif; padding: 2rem; }
+    h1 { font-size: 1.5rem; margin-bottom: .5rem; background: linear-gradient(135deg, #6c63ff, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .sub { color: #64748b; font-size: .85rem; margin-bottom: 2rem; }
+    .card { background: #16161f; border: 1px solid #2a2a38; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+    h2 { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; color: #a78bfa; }
+    label { display: block; font-size: .8rem; color: #94a3b8; margin-bottom: .35rem; }
+    input, textarea { width: 100%; background: rgba(255,255,255,.05); border: 1px solid #2a2a38; border-radius: 6px; padding: .6rem .9rem; color: #e2e8f0; font-size: .875rem; margin-bottom: .75rem; outline: none; }
+    input:focus, textarea:focus { border-color: rgba(108,99,255,.6); }
+    button { background: linear-gradient(135deg, #6c63ff, #8b83ff); color: #fff; border: none; border-radius: 6px; padding: .65rem 1.5rem; font-size: .875rem; font-weight: 700; cursor: pointer; }
+    button:hover { opacity: .85; }
+    button.danger { background: linear-gradient(135deg, #ef4444, #f87171); }
+    table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+    th { text-align: left; color: #64748b; font-weight: 600; padding: .6rem .75rem; border-bottom: 1px solid #2a2a38; }
+    td { padding: .6rem .75rem; border-bottom: 1px solid #1a1a24; vertical-align: top; }
+    .badge { display: inline-block; border-radius: 4px; padding: .15rem .5rem; font-size: .7rem; font-weight: 700; }
+    .badge.active { background: rgba(52,211,153,.15); color: #34d399; }
+    .badge.inactive { background: rgba(248,113,113,.15); color: #f87171; }
+    .badge.expired { background: rgba(251,191,36,.15); color: #fbbf24; }
+    .key { font-family: monospace; color: #38bdf8; font-size: .8rem; }
+    #result { margin-top: 1rem; padding: 1rem; background: rgba(52,211,153,.08); border: 1px solid rgba(52,211,153,.25); border-radius: 8px; font-family: monospace; font-size: .85rem; color: #34d399; display: none; white-space: pre-wrap; word-break: break-all; }
+    #error { margin-top: 1rem; padding: 1rem; background: rgba(248,113,113,.08); border: 1px solid rgba(248,113,113,.25); border-radius: 8px; font-size: .85rem; color: #f87171; display: none; }
+    .auth-box { max-width: 400px; margin: 4rem auto; }
+  </style>
+</head>
+<body>
+
+<div id="auth-screen" class="auth-box">
+  <h1>License Admin</h1>
+  <p class="sub">Lean AI PRD Team · sky.kugua@gmail.com</p>
+  <div class="card">
+    <h2>🔑 Admin Login</h2>
+    <label>Admin Secret</label>
+    <input type="password" id="secret-input" placeholder="Enter ADMIN_SECRET" onkeydown="if(event.key==='Enter')login()" />
+    <button onclick="login()">Login →</button>
+    <div id="auth-error" style="color:#f87171;font-size:.8rem;margin-top:.75rem;display:none;">Wrong secret.</div>
+  </div>
+</div>
+
+<div id="main-screen" style="display:none; max-width:1100px; margin:0 auto;">
+  <h1>Lean AI PRD Team — License Admin</h1>
+  <p class="sub">Manage Pro licenses · sky.kugua@gmail.com</p>
+
+  <!-- Create License -->
+  <div class="card">
+    <h2>➕ Create New License</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr auto; gap:1rem; align-items:end;">
+      <div>
+        <label>Email *</label>
+        <input type="email" id="new-email" placeholder="user@example.com" />
+      </div>
+      <div>
+        <label>Name</label>
+        <input type="text" id="new-name" placeholder="User Name" />
+      </div>
+      <div>
+        <label>Duration (months)</label>
+        <input type="number" id="new-months" value="12" min="1" max="60" />
+      </div>
+      <div>
+        <button onclick="createLicense()">Generate Key</button>
+      </div>
+    </div>
+    <div>
+      <label>Notes</label>
+      <input type="text" id="new-notes" placeholder="Order ID, payment method, etc." />
+    </div>
+    <div id="result"></div>
+    <div id="error"></div>
+  </div>
+
+  <!-- License List -->
+  <div class="card">
+    <h2>📋 All Licenses <button onclick="loadLicenses()" style="font-size:.75rem;padding:.3rem .75rem;margin-left:.75rem;">Refresh</button></h2>
+    <div style="overflow-x:auto;">
+      <table id="license-table">
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Email / Name</th>
+            <th>Created</th>
+            <th>Expires</th>
+            <th>Activations</th>
+            <th>Status</th>
+            <th>Notes</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="license-tbody">
+          <tr><td colspan="8" style="color:#475569; text-align:center; padding:2rem;">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+let ADMIN_SECRET = '';
+const API = '';
+
+function login() {
+  const s = document.getElementById('secret-input').value.trim();
+  if (!s) return;
+  ADMIN_SECRET = s;
+  fetch(`${API}/api/admin/licenses?secret=${encodeURIComponent(s)}`)
+    .then(r => r.json())
+    .then(d => {
+      if (d.error) { document.getElementById('auth-error').style.display='block'; return; }
+      document.getElementById('auth-screen').style.display = 'none';
+      document.getElementById('main-screen').style.display = 'block';
+      renderTable(d.licenses);
+    })
+    .catch(() => { document.getElementById('auth-error').style.display='block'; });
+}
+
+function loadLicenses() {
+  fetch(`${API}/api/admin/licenses?secret=${encodeURIComponent(ADMIN_SECRET)}`)
+    .then(r => r.json())
+    .then(d => renderTable(d.licenses));
+}
+
+function renderTable(licenses) {
+  const tbody = document.getElementById('license-tbody');
+  if (!licenses || licenses.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="8" style="color:#475569;text-align:center;padding:2rem;">No licenses yet.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = licenses.map(l => {
+    const expired = new Date(l.expires_at) < new Date();
+    const badge = !l.is_active ? '<span class="badge inactive">Inactive</span>'
+                : expired ? '<span class="badge expired">Expired</span>'
+                : '<span class="badge active">Active</span>';
+    return `<tr>
+      <td><span class="key">${l.key}</span></td>
+      <td>${l.email}<br><span style="color:#64748b;font-size:.75rem;">${l.name||''}</span></td>
+      <td style="color:#64748b;">${fmtDate(l.created_at)}</td>
+      <td style="color:${expired?'#fbbf24':'#94a3b8'};">${fmtDate(l.expires_at)}</td>
+      <td style="text-align:center;">${l.activation_count||0}</td>
+      <td>${badge}</td>
+      <td style="color:#64748b;font-size:.75rem;">${l.notes||''}</td>
+      <td>${l.is_active ? `<button class="danger" onclick="deactivate('${l.key}')" style="font-size:.72rem;padding:.3rem .6rem;">Deactivate</button>` : ''}</td>
+    </tr>`;
+  }).join('');
+}
+
+function fmtDate(d) {
+  if (!d) return '—';
+  return new Date(d).toLocaleDateString('zh-CN', { year:'numeric', month:'2-digit', day:'2-digit' });
+}
+
+function createLicense() {
+  const email = document.getElementById('new-email').value.trim();
+  const name  = document.getElementById('new-name').value.trim();
+  const months = parseInt(document.getElementById('new-months').value) || 12;
+  const notes = document.getElementById('new-notes').value.trim();
+  const resultEl = document.getElementById('result');
+  const errorEl  = document.getElementById('error');
+  resultEl.style.display = 'none';
+  errorEl.style.display  = 'none';
+  if (!email) { errorEl.textContent = 'Email is required.'; errorEl.style.display='block'; return; }
+
+  fetch(`${API}/api/admin/licenses?secret=${encodeURIComponent(ADMIN_SECRET)}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, name, months, notes }),
+  })
+  .then(r => r.json())
+  .then(d => {
+    if (d.error) { errorEl.textContent = d.error; errorEl.style.display='block'; return; }
+    resultEl.textContent = `✅ License Created!\n\nKey: ${d.key}\nEmail: ${d.email}\nExpires: ${new Date(d.expires_at).toLocaleDateString('zh-CN')}\n\n--- Email Template ---\nHi ${d.name||d.email},\n\nYour Lean AI PRD Team Pro License Key:\n\n  ${d.key}\n\nInstall:\n  npx lean-ai-prd-team --pro\n\nExpires: ${new Date(d.expires_at).toLocaleDateString()}\nContact: sky.kugua@gmail.com`;
+    resultEl.style.display = 'block';
+    document.getElementById('new-email').value = '';
+    document.getElementById('new-name').value  = '';
+    document.getElementById('new-notes').value = '';
+    loadLicenses();
+  })
+  .catch(e => { errorEl.textContent = 'Request failed: ' + e.message; errorEl.style.display='block'; });
+}
+
+function deactivate(key) {
+  if (!confirm(`Deactivate ${key}?`)) return;
+  fetch(`${API}/api/admin/licenses?secret=${encodeURIComponent(ADMIN_SECRET)}&key=${encodeURIComponent(key)}`, { method: 'DELETE' })
+    .then(() => loadLicenses());
+}
+</script>
+</body>
+</html>
