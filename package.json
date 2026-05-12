@@ -1,6 +1,6 @@
 {
   "name": "lean-ai-prd-team",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Lean AI PRD Team — 8/10-agent AI development skill for Claude Code and other IDEs. Scenario-first, value-driven, minimum viable MVP delivery.",
   "keywords": [
     "claude-code",
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sky791016/lean-ai-dev-team.git"
+    "url": "git+https://github.com/sky791016/lean-ai-dev-team.git"
   },
   "author": {
     "name": "Kai Shi (史凯)",
@@ -28,7 +28,7 @@
   },
   "license": "Apache-2.0",
   "bin": {
-    "lean-ai-prd-team": "./bin/install.js"
+    "lean-ai-prd-team": "bin/install.js"
   },
   "engines": {
     "node": ">=14"
